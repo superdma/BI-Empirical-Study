@@ -66,3 +66,16 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Verify published site
+        run: |
+          url="${{ steps.deployment.outputs.page_url }}"
+          code=000
+          for i in $(seq 1 18); do
+            code=$(curl -s -o /dev/null -w "%{http_code}" "$url" || echo 000)
+            echo "attempt $i: $url -> $code"
+            [ "$code" = "200" ] && exit 0
+            sleep 10
+          done
+          echo "::error::Published site returned HTTP $code after deployment"
+          exit 1
