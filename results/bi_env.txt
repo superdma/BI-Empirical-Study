@@ -1,0 +1,28 @@
+== date ==
+2026-11-17T17:14:39+08:00
+== os ==
+Ubuntu 22.04.4 LTS
+6.5.0-26-generic
+== cpu/mem ==
+               total        used        free      shared  buff/cache   available
+内存：        503          12         394           0          96         487
+== gpu ==
+index, name, memory.total [MiB], compute_cap, driver_version
+0, NVIDIA RTX A6000, 49140 MiB, 8.6, 550.120
+1, NVIDIA RTX A6000, 49140 MiB, 8.6, 550.120
+2, NVIDIA RTX A6000, 49140 MiB, 8.6, 550.120
+3, NVIDIA RTX A6000, 49140 MiB, 8.6, 550.120
+== vllm ==
+vllm 0.23.0
+torch 2.11.0+cu129
+cuda 12.9
+cuda_avail True
+device_cap (8, 6)
+== pkgs ==
+numpy                                    2.5.3
+torch                                    2.11.0+cu129
+transformers                             5.16.1
+triton                                   3.6.0
+vllm                                     0.23.0+cu129
+== disk ==
+/dev/nvme0n1p2  3.6T  2.5T  975G   72% /

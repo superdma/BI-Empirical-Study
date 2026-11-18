@@ -1,0 +1,1710 @@
+{
+  "env": {
+    "eager": false,
+    "pc": false,
+    "max_tokens": 64,
+    "prompt_ids": [
+      785,
+      6722,
+      315,
+      9625,
+      374
+    ],
+    "n_generated": 64
+  },
+  "token_ids": [
+    12095,
+    13,
+    576,
+    6722,
+    315,
+    279,
+    3639,
+    15072,
+    374,
+    7148,
+    13,
+    576,
+    6722,
+    315,
+    9856,
+    374,
+    19846,
+    13,
+    576,
+    6722,
+    315,
+    17689,
+    374,
+    24081,
+    13,
+    576,
+    6722,
+    315,
+    15344,
+    374,
+    21718,
+    13,
+    576,
+    6722,
+    315,
+    33311,
+    374,
+    80701,
+    13,
+    576,
+    6722,
+    315,
+    32961,
+    374,
+    37169,
+    13,
+    576,
+    6722,
+    315,
+    279,
+    25662,
+    374,
+    37741,
+    13,
+    576,
+    6722,
+    315,
+    29121,
+    374,
+    14168,
+    13,
+    576,
+    6722,
+    315
+  ],
+  "decode_logprobs": [
+    -0.2442278414964676,
+    -0.5662076473236084,
+    -1.2652792930603027,
+    -0.17239822447299957,
+    -0.002161073498427868,
+    -1.0256438255310059,
+    -0.23646686971187592,
+    -0.2818922698497772,
+    -0.0004619484825525433,
+    -0.007116327993571758,
+    -0.00717089232057333,
+    -0.28674861788749695,
+    -0.004962983075529337,
+    -0.00034683887497521937,
+    -1.3498831987380981,
+    -0.00015376816736534238,
+    -0.0009400001727044582,
+    -0.007803786545991898,
+    -0.06901976466178894,
+    -0.0006504327175207436,
+    -2.1815061700181104e-05,
+    -0.6816250681877136,
+    -8.11782301752828e-05,
+    -0.005904138553887606,
+    -0.003230474190786481,
+    -0.04819866642355919,
+    -0.00042429505265317857,
+    -2.5152843591058627e-05,
+    -0.14103157818317413,
+    -9.894321920000948e-06,
+    -0.0019212374463677406,
+    -0.005612685810774565,
+    -0.026378009468317032,
+    -0.00020656836568377912,
+    -1.0132738680113107e-05,
+    -0.7679476737976074,
+    -7.152555099310121e-07,
+    -0.0015224544331431389,
+    -0.0022239969111979008,
+    -0.006504436023533344,
+    -0.00019393471302464604,
+    -1.0728830375228426e-06,
+    -0.9120519161224365,
+    -8.344646857949556e-07,
+    -0.0006283930852077901,
+    -0.0012836558744311333,
+    -0.00215798057615757,
+    -1.9311717551317997e-05,
+    -1.4305104514278355e-06,
+    -0.046369172632694244,
+    -0.000442407006630674,
+    -5.483612312673358e-06,
+    -5.4596363042946905e-05,
+    -0.007334922440350056,
+    -0.004717173986136913,
+    -5.5549986427649856e-05,
+    -2.861018856492592e-06,
+    -0.34293457865715027,
+    -2.3841855067985307e-07,
+    -0.003099163994193077,
+    -0.0013562776148319244,
+    -0.001930398982949555,
+    -3.576272320060525e-06,
+    -3.576278118089249e-07
+  ],
+  "refeeds": {
+    "1": {
+      "pairs": [
+        {
+          "pos": 5,
+          "token_id": 12095,
+          "decode": -0.2442278414964676,
+          "refeed": -0.2442278414964676,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 6,
+          "token_id": 13,
+          "decode": -0.5662076473236084,
+          "refeed": -0.5662076473236084,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 7,
+          "token_id": 576,
+          "decode": -1.2652792930603027,
+          "refeed": -1.2652792930603027,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 8,
+          "token_id": 6722,
+          "decode": -0.17239822447299957,
+          "refeed": -0.17239822447299957,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 9,
+          "token_id": 315,
+          "decode": -0.002161073498427868,
+          "refeed": -0.002161073498427868,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 10,
+          "token_id": 279,
+          "decode": -1.0256438255310059,
+          "refeed": -1.0256438255310059,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 11,
+          "token_id": 3639,
+          "decode": -0.23646686971187592,
+          "refeed": -0.23646686971187592,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 12,
+          "token_id": 15072,
+          "decode": -0.2818922698497772,
+          "refeed": -0.2818922698497772,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 13,
+          "token_id": 374,
+          "decode": -0.0004619484825525433,
+          "refeed": -0.0004619484825525433,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 14,
+          "token_id": 7148,
+          "decode": -0.007116327993571758,
+          "refeed": -0.007116327993571758,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 15,
+          "token_id": 13,
+          "decode": -0.00717089232057333,
+          "refeed": -0.00717089232057333,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 16,
+          "token_id": 576,
+          "decode": -0.28674861788749695,
+          "refeed": -0.28674861788749695,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 17,
+          "token_id": 6722,
+          "decode": -0.004962983075529337,
+          "refeed": -0.004962983075529337,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 18,
+          "token_id": 315,
+          "decode": -0.00034683887497521937,
+          "refeed": -0.00034683887497521937,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 19,
+          "token_id": 9856,
+          "decode": -1.3498831987380981,
+          "refeed": -1.3498831987380981,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 20,
+          "token_id": 374,
+          "decode": -0.00015376816736534238,
+          "refeed": -0.00015376816736534238,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 21,
+          "token_id": 19846,
+          "decode": -0.0009400001727044582,
+          "refeed": -0.0009400001727044582,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 22,
+          "token_id": 13,
+          "decode": -0.007803786545991898,
+          "refeed": -0.007803786545991898,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 23,
+          "token_id": 576,
+          "decode": -0.06901976466178894,
+          "refeed": -0.06901976466178894,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 24,
+          "token_id": 6722,
+          "decode": -0.0006504327175207436,
+          "refeed": -0.0006504327175207436,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 25,
+          "token_id": 315,
+          "decode": -2.1815061700181104e-05,
+          "refeed": -2.1815061700181104e-05,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 26,
+          "token_id": 17689,
+          "decode": -0.6816250681877136,
+          "refeed": -0.6816250681877136,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 27,
+          "token_id": 374,
+          "decode": -8.11782301752828e-05,
+          "refeed": -8.11782301752828e-05,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 28,
+          "token_id": 24081,
+          "decode": -0.005904138553887606,
+          "refeed": -0.005904138553887606,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 29,
+          "token_id": 13,
+          "decode": -0.003230474190786481,
+          "refeed": -0.003230474190786481,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 30,
+          "token_id": 576,
+          "decode": -0.04819866642355919,
+          "refeed": -0.04819866642355919,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 31,
+          "token_id": 6722,
+          "decode": -0.00042429505265317857,
+          "refeed": -0.00042429505265317857,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 32,
+          "token_id": 315,
+          "decode": -2.5152843591058627e-05,
+          "refeed": -2.5152843591058627e-05,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 33,
+          "token_id": 15344,
+          "decode": -0.14103157818317413,
+          "refeed": -0.14103157818317413,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 34,
+          "token_id": 374,
+          "decode": -9.894321920000948e-06,
+          "refeed": -9.894321920000948e-06,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 35,
+          "token_id": 21718,
+          "decode": -0.0019212374463677406,
+          "refeed": -0.0019212374463677406,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 36,
+          "token_id": 13,
+          "decode": -0.005612685810774565,
+          "refeed": -0.005612685810774565,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 37,
+          "token_id": 576,
+          "decode": -0.026378009468317032,
+          "refeed": -0.026378009468317032,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 38,
+          "token_id": 6722,
+          "decode": -0.00020656836568377912,
+          "refeed": -0.00020656836568377912,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 39,
+          "token_id": 315,
+          "decode": -1.0132738680113107e-05,
+          "refeed": -1.0132738680113107e-05,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 40,
+          "token_id": 33311,
+          "decode": -0.7679476737976074,
+          "refeed": -0.7679476737976074,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 41,
+          "token_id": 374,
+          "decode": -7.152555099310121e-07,
+          "refeed": -7.152555099310121e-07,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 42,
+          "token_id": 80701,
+          "decode": -0.0015224544331431389,
+          "refeed": -0.0015224544331431389,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 43,
+          "token_id": 13,
+          "decode": -0.0022239969111979008,
+          "refeed": -0.0022239969111979008,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 44,
+          "token_id": 576,
+          "decode": -0.006504436023533344,
+          "refeed": -0.006504436023533344,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 45,
+          "token_id": 6722,
+          "decode": -0.00019393471302464604,
+          "refeed": -0.00019393471302464604,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 46,
+          "token_id": 315,
+          "decode": -1.0728830375228426e-06,
+          "refeed": -1.0728830375228426e-06,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 47,
+          "token_id": 32961,
+          "decode": -0.9120519161224365,
+          "refeed": -0.9120519161224365,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 48,
+          "token_id": 374,
+          "decode": -8.344646857949556e-07,
+          "refeed": -8.344646857949556e-07,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 49,
+          "token_id": 37169,
+          "decode": -0.0006283930852077901,
+          "refeed": -0.0006283930852077901,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 50,
+          "token_id": 13,
+          "decode": -0.0012836558744311333,
+          "refeed": -0.0012836558744311333,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 51,
+          "token_id": 576,
+          "decode": -0.00215798057615757,
+          "refeed": -0.00215798057615757,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 52,
+          "token_id": 6722,
+          "decode": -1.9311717551317997e-05,
+          "refeed": -1.9311717551317997e-05,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 53,
+          "token_id": 315,
+          "decode": -1.4305104514278355e-06,
+          "refeed": -1.4305104514278355e-06,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 54,
+          "token_id": 279,
+          "decode": -0.046369172632694244,
+          "refeed": -0.046369172632694244,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 55,
+          "token_id": 25662,
+          "decode": -0.000442407006630674,
+          "refeed": -0.000442407006630674,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 56,
+          "token_id": 374,
+          "decode": -5.483612312673358e-06,
+          "refeed": -5.483612312673358e-06,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 57,
+          "token_id": 37741,
+          "decode": -5.4596363042946905e-05,
+          "refeed": -5.4596363042946905e-05,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 58,
+          "token_id": 13,
+          "decode": -0.007334922440350056,
+          "refeed": -0.007334922440350056,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 59,
+          "token_id": 576,
+          "decode": -0.004717173986136913,
+          "refeed": -0.004717173986136913,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 60,
+          "token_id": 6722,
+          "decode": -5.5549986427649856e-05,
+          "refeed": -5.5549986427649856e-05,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 61,
+          "token_id": 315,
+          "decode": -2.861018856492592e-06,
+          "refeed": -2.861018856492592e-06,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 62,
+          "token_id": 29121,
+          "decode": -0.34293457865715027,
+          "refeed": -0.34293457865715027,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 63,
+          "token_id": 374,
+          "decode": -2.3841855067985307e-07,
+          "refeed": -2.3841855067985307e-07,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 64,
+          "token_id": 14168,
+          "decode": -0.003099163994193077,
+          "refeed": -0.003099163994193077,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 65,
+          "token_id": 13,
+          "decode": -0.0013562776148319244,
+          "refeed": -0.0013562776148319244,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 66,
+          "token_id": 576,
+          "decode": -0.001930398982949555,
+          "refeed": -0.001930398982949555,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 67,
+          "token_id": 6722,
+          "decode": -3.576272320060525e-06,
+          "refeed": -3.576272320060525e-06,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 68,
+          "token_id": 315,
+          "decode": -3.576278118089249e-07,
+          "refeed": -3.576278118089249e-07,
+          "rank": 1,
+          "bitwise_equal": true
+        }
+      ],
+      "n_compared": 64,
+      "first_mismatch": null,
+      "n_mismatch": 0,
+      "max_abs_diff": null
+    },
+    "5": {
+      "pairs": [
+        {
+          "pos": 5,
+          "token_id": 12095,
+          "decode": -0.2442278414964676,
+          "refeed": -0.2442278414964676,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 6,
+          "token_id": 13,
+          "decode": -0.5662076473236084,
+          "refeed": -0.5662076473236084,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 7,
+          "token_id": 576,
+          "decode": -1.2652792930603027,
+          "refeed": -1.2652792930603027,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 8,
+          "token_id": 6722,
+          "decode": -0.17239822447299957,
+          "refeed": -0.17239822447299957,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 9,
+          "token_id": 315,
+          "decode": -0.002161073498427868,
+          "refeed": -0.002161073498427868,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 10,
+          "token_id": 279,
+          "decode": -1.0256438255310059,
+          "refeed": -1.0256438255310059,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 11,
+          "token_id": 3639,
+          "decode": -0.23646686971187592,
+          "refeed": -0.23646686971187592,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 12,
+          "token_id": 15072,
+          "decode": -0.2818922698497772,
+          "refeed": -0.2818922698497772,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 13,
+          "token_id": 374,
+          "decode": -0.0004619484825525433,
+          "refeed": -0.0004619484825525433,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 14,
+          "token_id": 7148,
+          "decode": -0.007116327993571758,
+          "refeed": -0.007116327993571758,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 15,
+          "token_id": 13,
+          "decode": -0.00717089232057333,
+          "refeed": -0.00717089232057333,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 16,
+          "token_id": 576,
+          "decode": -0.28674861788749695,
+          "refeed": -0.28674861788749695,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 17,
+          "token_id": 6722,
+          "decode": -0.004962983075529337,
+          "refeed": -0.004962983075529337,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 18,
+          "token_id": 315,
+          "decode": -0.00034683887497521937,
+          "refeed": -0.00034683887497521937,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 19,
+          "token_id": 9856,
+          "decode": -1.3498831987380981,
+          "refeed": -1.3498831987380981,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 20,
+          "token_id": 374,
+          "decode": -0.00015376816736534238,
+          "refeed": -0.00015376816736534238,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 21,
+          "token_id": 19846,
+          "decode": -0.0009400001727044582,
+          "refeed": -0.0009400001727044582,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 22,
+          "token_id": 13,
+          "decode": -0.007803786545991898,
+          "refeed": -0.007803786545991898,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 23,
+          "token_id": 576,
+          "decode": -0.06901976466178894,
+          "refeed": -0.06901976466178894,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 24,
+          "token_id": 6722,
+          "decode": -0.0006504327175207436,
+          "refeed": -0.0006504327175207436,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 25,
+          "token_id": 315,
+          "decode": -2.1815061700181104e-05,
+          "refeed": -2.1815061700181104e-05,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 26,
+          "token_id": 17689,
+          "decode": -0.6816250681877136,
+          "refeed": -0.6816250681877136,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 27,
+          "token_id": 374,
+          "decode": -8.11782301752828e-05,
+          "refeed": -8.11782301752828e-05,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 28,
+          "token_id": 24081,
+          "decode": -0.005904138553887606,
+          "refeed": -0.005904138553887606,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 29,
+          "token_id": 13,
+          "decode": -0.003230474190786481,
+          "refeed": -0.003230474190786481,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 30,
+          "token_id": 576,
+          "decode": -0.04819866642355919,
+          "refeed": -0.04819866642355919,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 31,
+          "token_id": 6722,
+          "decode": -0.00042429505265317857,
+          "refeed": -0.00042429505265317857,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 32,
+          "token_id": 315,
+          "decode": -2.5152843591058627e-05,
+          "refeed": -2.5152843591058627e-05,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 33,
+          "token_id": 15344,
+          "decode": -0.14103157818317413,
+          "refeed": -0.14103157818317413,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 34,
+          "token_id": 374,
+          "decode": -9.894321920000948e-06,
+          "refeed": -9.894321920000948e-06,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 35,
+          "token_id": 21718,
+          "decode": -0.0019212374463677406,
+          "refeed": -0.0019212374463677406,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 36,
+          "token_id": 13,
+          "decode": -0.005612685810774565,
+          "refeed": -0.005612685810774565,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 37,
+          "token_id": 576,
+          "decode": -0.026378009468317032,
+          "refeed": -0.026378009468317032,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 38,
+          "token_id": 6722,
+          "decode": -0.00020656836568377912,
+          "refeed": -0.00020656836568377912,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 39,
+          "token_id": 315,
+          "decode": -1.0132738680113107e-05,
+          "refeed": -1.0132738680113107e-05,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 40,
+          "token_id": 33311,
+          "decode": -0.7679476737976074,
+          "refeed": -0.7679476737976074,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 41,
+          "token_id": 374,
+          "decode": -7.152555099310121e-07,
+          "refeed": -7.152555099310121e-07,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 42,
+          "token_id": 80701,
+          "decode": -0.0015224544331431389,
+          "refeed": -0.0015224544331431389,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 43,
+          "token_id": 13,
+          "decode": -0.0022239969111979008,
+          "refeed": -0.0022239969111979008,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 44,
+          "token_id": 576,
+          "decode": -0.006504436023533344,
+          "refeed": -0.006504436023533344,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 45,
+          "token_id": 6722,
+          "decode": -0.00019393471302464604,
+          "refeed": -0.00019393471302464604,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 46,
+          "token_id": 315,
+          "decode": -1.0728830375228426e-06,
+          "refeed": -1.0728830375228426e-06,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 47,
+          "token_id": 32961,
+          "decode": -0.9120519161224365,
+          "refeed": -0.9120519161224365,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 48,
+          "token_id": 374,
+          "decode": -8.344646857949556e-07,
+          "refeed": -8.344646857949556e-07,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 49,
+          "token_id": 37169,
+          "decode": -0.0006283930852077901,
+          "refeed": -0.0006283930852077901,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 50,
+          "token_id": 13,
+          "decode": -0.0012836558744311333,
+          "refeed": -0.0012836558744311333,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 51,
+          "token_id": 576,
+          "decode": -0.00215798057615757,
+          "refeed": -0.00215798057615757,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 52,
+          "token_id": 6722,
+          "decode": -1.9311717551317997e-05,
+          "refeed": -1.9311717551317997e-05,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 53,
+          "token_id": 315,
+          "decode": -1.4305104514278355e-06,
+          "refeed": -1.4305104514278355e-06,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 54,
+          "token_id": 279,
+          "decode": -0.046369172632694244,
+          "refeed": -0.046369172632694244,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 55,
+          "token_id": 25662,
+          "decode": -0.000442407006630674,
+          "refeed": -0.000442407006630674,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 56,
+          "token_id": 374,
+          "decode": -5.483612312673358e-06,
+          "refeed": -5.483612312673358e-06,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 57,
+          "token_id": 37741,
+          "decode": -5.4596363042946905e-05,
+          "refeed": -5.4596363042946905e-05,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 58,
+          "token_id": 13,
+          "decode": -0.007334922440350056,
+          "refeed": -0.007334922440350056,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 59,
+          "token_id": 576,
+          "decode": -0.004717173986136913,
+          "refeed": -0.004717173986136913,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 60,
+          "token_id": 6722,
+          "decode": -5.5549986427649856e-05,
+          "refeed": -5.5549986427649856e-05,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 61,
+          "token_id": 315,
+          "decode": -2.861018856492592e-06,
+          "refeed": -2.861018856492592e-06,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 62,
+          "token_id": 29121,
+          "decode": -0.34293457865715027,
+          "refeed": -0.34293457865715027,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 63,
+          "token_id": 374,
+          "decode": -2.3841855067985307e-07,
+          "refeed": -2.3841855067985307e-07,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 64,
+          "token_id": 14168,
+          "decode": -0.003099163994193077,
+          "refeed": -0.003099163994193077,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 65,
+          "token_id": 13,
+          "decode": -0.0013562776148319244,
+          "refeed": -0.0013562776148319244,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 66,
+          "token_id": 576,
+          "decode": -0.001930398982949555,
+          "refeed": -0.001930398982949555,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 67,
+          "token_id": 6722,
+          "decode": -3.576272320060525e-06,
+          "refeed": -3.576272320060525e-06,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 68,
+          "token_id": 315,
+          "decode": -3.576278118089249e-07,
+          "refeed": -3.576278118089249e-07,
+          "rank": 1,
+          "bitwise_equal": true
+        }
+      ],
+      "n_compared": 64,
+      "first_mismatch": null,
+      "n_mismatch": 0,
+      "max_abs_diff": null
+    },
+    "20": {
+      "pairs": [
+        {
+          "pos": 5,
+          "token_id": 12095,
+          "decode": -0.2442278414964676,
+          "refeed": -0.2442278414964676,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 6,
+          "token_id": 13,
+          "decode": -0.5662076473236084,
+          "refeed": -0.5662076473236084,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 7,
+          "token_id": 576,
+          "decode": -1.2652792930603027,
+          "refeed": -1.2652792930603027,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 8,
+          "token_id": 6722,
+          "decode": -0.17239822447299957,
+          "refeed": -0.17239822447299957,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 9,
+          "token_id": 315,
+          "decode": -0.002161073498427868,
+          "refeed": -0.002161073498427868,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 10,
+          "token_id": 279,
+          "decode": -1.0256438255310059,
+          "refeed": -1.0256438255310059,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 11,
+          "token_id": 3639,
+          "decode": -0.23646686971187592,
+          "refeed": -0.23646686971187592,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 12,
+          "token_id": 15072,
+          "decode": -0.2818922698497772,
+          "refeed": -0.2818922698497772,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 13,
+          "token_id": 374,
+          "decode": -0.0004619484825525433,
+          "refeed": -0.0004619484825525433,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 14,
+          "token_id": 7148,
+          "decode": -0.007116327993571758,
+          "refeed": -0.007116327993571758,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 15,
+          "token_id": 13,
+          "decode": -0.00717089232057333,
+          "refeed": -0.00717089232057333,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 16,
+          "token_id": 576,
+          "decode": -0.28674861788749695,
+          "refeed": -0.28674861788749695,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 17,
+          "token_id": 6722,
+          "decode": -0.004962983075529337,
+          "refeed": -0.004962983075529337,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 18,
+          "token_id": 315,
+          "decode": -0.00034683887497521937,
+          "refeed": -0.00034683887497521937,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 19,
+          "token_id": 9856,
+          "decode": -1.3498831987380981,
+          "refeed": -1.3498831987380981,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 20,
+          "token_id": 374,
+          "decode": -0.00015376816736534238,
+          "refeed": -0.00015376816736534238,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 21,
+          "token_id": 19846,
+          "decode": -0.0009400001727044582,
+          "refeed": -0.0009400001727044582,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 22,
+          "token_id": 13,
+          "decode": -0.007803786545991898,
+          "refeed": -0.007803786545991898,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 23,
+          "token_id": 576,
+          "decode": -0.06901976466178894,
+          "refeed": -0.06901976466178894,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 24,
+          "token_id": 6722,
+          "decode": -0.0006504327175207436,
+          "refeed": -0.0006504327175207436,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 25,
+          "token_id": 315,
+          "decode": -2.1815061700181104e-05,
+          "refeed": -2.1815061700181104e-05,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 26,
+          "token_id": 17689,
+          "decode": -0.6816250681877136,
+          "refeed": -0.6816250681877136,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 27,
+          "token_id": 374,
+          "decode": -8.11782301752828e-05,
+          "refeed": -8.11782301752828e-05,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 28,
+          "token_id": 24081,
+          "decode": -0.005904138553887606,
+          "refeed": -0.005904138553887606,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 29,
+          "token_id": 13,
+          "decode": -0.003230474190786481,
+          "refeed": -0.003230474190786481,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 30,
+          "token_id": 576,
+          "decode": -0.04819866642355919,
+          "refeed": -0.04819866642355919,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 31,
+          "token_id": 6722,
+          "decode": -0.00042429505265317857,
+          "refeed": -0.00042429505265317857,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 32,
+          "token_id": 315,
+          "decode": -2.5152843591058627e-05,
+          "refeed": -2.5152843591058627e-05,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 33,
+          "token_id": 15344,
+          "decode": -0.14103157818317413,
+          "refeed": -0.14103157818317413,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 34,
+          "token_id": 374,
+          "decode": -9.894321920000948e-06,
+          "refeed": -9.894321920000948e-06,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 35,
+          "token_id": 21718,
+          "decode": -0.0019212374463677406,
+          "refeed": -0.0019212374463677406,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 36,
+          "token_id": 13,
+          "decode": -0.005612685810774565,
+          "refeed": -0.005612685810774565,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 37,
+          "token_id": 576,
+          "decode": -0.026378009468317032,
+          "refeed": -0.026378009468317032,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 38,
+          "token_id": 6722,
+          "decode": -0.00020656836568377912,
+          "refeed": -0.00020656836568377912,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 39,
+          "token_id": 315,
+          "decode": -1.0132738680113107e-05,
+          "refeed": -1.0132738680113107e-05,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 40,
+          "token_id": 33311,
+          "decode": -0.7679476737976074,
+          "refeed": -0.7679476737976074,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 41,
+          "token_id": 374,
+          "decode": -7.152555099310121e-07,
+          "refeed": -7.152555099310121e-07,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 42,
+          "token_id": 80701,
+          "decode": -0.0015224544331431389,
+          "refeed": -0.0015224544331431389,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 43,
+          "token_id": 13,
+          "decode": -0.0022239969111979008,
+          "refeed": -0.0022239969111979008,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 44,
+          "token_id": 576,
+          "decode": -0.006504436023533344,
+          "refeed": -0.006504436023533344,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 45,
+          "token_id": 6722,
+          "decode": -0.00019393471302464604,
+          "refeed": -0.00019393471302464604,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 46,
+          "token_id": 315,
+          "decode": -1.0728830375228426e-06,
+          "refeed": -1.0728830375228426e-06,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 47,
+          "token_id": 32961,
+          "decode": -0.9120519161224365,
+          "refeed": -0.9120519161224365,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 48,
+          "token_id": 374,
+          "decode": -8.344646857949556e-07,
+          "refeed": -8.344646857949556e-07,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 49,
+          "token_id": 37169,
+          "decode": -0.0006283930852077901,
+          "refeed": -0.0006283930852077901,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 50,
+          "token_id": 13,
+          "decode": -0.0012836558744311333,
+          "refeed": -0.0012836558744311333,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 51,
+          "token_id": 576,
+          "decode": -0.00215798057615757,
+          "refeed": -0.00215798057615757,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 52,
+          "token_id": 6722,
+          "decode": -1.9311717551317997e-05,
+          "refeed": -1.9311717551317997e-05,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 53,
+          "token_id": 315,
+          "decode": -1.4305104514278355e-06,
+          "refeed": -1.4305104514278355e-06,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 54,
+          "token_id": 279,
+          "decode": -0.046369172632694244,
+          "refeed": -0.046369172632694244,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 55,
+          "token_id": 25662,
+          "decode": -0.000442407006630674,
+          "refeed": -0.000442407006630674,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 56,
+          "token_id": 374,
+          "decode": -5.483612312673358e-06,
+          "refeed": -5.483612312673358e-06,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 57,
+          "token_id": 37741,
+          "decode": -5.4596363042946905e-05,
+          "refeed": -5.4596363042946905e-05,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 58,
+          "token_id": 13,
+          "decode": -0.007334922440350056,
+          "refeed": -0.007334922440350056,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 59,
+          "token_id": 576,
+          "decode": -0.004717173986136913,
+          "refeed": -0.004717173986136913,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 60,
+          "token_id": 6722,
+          "decode": -5.5549986427649856e-05,
+          "refeed": -5.5549986427649856e-05,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 61,
+          "token_id": 315,
+          "decode": -2.861018856492592e-06,
+          "refeed": -2.861018856492592e-06,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 62,
+          "token_id": 29121,
+          "decode": -0.34293457865715027,
+          "refeed": -0.34293457865715027,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 63,
+          "token_id": 374,
+          "decode": -2.3841855067985307e-07,
+          "refeed": -2.3841855067985307e-07,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 64,
+          "token_id": 14168,
+          "decode": -0.003099163994193077,
+          "refeed": -0.003099163994193077,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 65,
+          "token_id": 13,
+          "decode": -0.0013562776148319244,
+          "refeed": -0.0013562776148319244,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 66,
+          "token_id": 576,
+          "decode": -0.001930398982949555,
+          "refeed": -0.001930398982949555,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 67,
+          "token_id": 6722,
+          "decode": -3.576272320060525e-06,
+          "refeed": -3.576272320060525e-06,
+          "rank": 1,
+          "bitwise_equal": true
+        },
+        {
+          "pos": 68,
+          "token_id": 315,
+          "decode": -3.576278118089249e-07,
+          "refeed": -3.576278118089249e-07,
+          "rank": 1,
+          "bitwise_equal": true
+        }
+      ],
+      "n_compared": 64,
+      "first_mismatch": null,
+      "n_mismatch": 0,
+      "max_abs_diff": null
+    }
+  },
+  "total_sec": 52.40494227409363
+}

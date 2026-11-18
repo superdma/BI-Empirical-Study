@@ -1,0 +1,95 @@
+site_name: 批次不变性实测
+site_description: Qwen3-30B-A3B × 4×RTX A6000 × vLLM 0.23.0 的 Batch Invariance 验证
+site_author: BI Validation
+docs_dir: docs
+site_dir: site
+use_directory_urls: true
+
+theme:
+  name: material
+  language: zh
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: 切换深色模式
+    - scheme: slate
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: 切换浅色模式
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - navigation.tracking
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - toc.follow
+
+plugins:
+  - search:
+      lang:
+        - zh
+        - en
+
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.critic
+
+extra_css:
+  - assets/extra.css
+
+extra:
+  generator: false
+
+copyright: 实验记录 · vLLM 0.23.0 · 4×RTX A6000 · 2026
+
+nav:
+  - 首页: index.md
+  - 总览:
+      - 完整索引与一页结论: 00_index.md
+      - BI 定义与比较口径: 01_scope.md
+  - 实验:
+      - 环境与理论依据: 02_environment.md
+      - 测试设计: 03_design.md
+      - v1 离线结果: 04_offline_results.md
+      - v1 在线结果: 05_online_results.md
+      - v2 边界结果: 06_boundary_results.md
+  - 结论:
+      - 关键发现: 07_findings.md
+      - 部署建议: 08_deployment.md
+      - 局限与后续: 09_limitations.md
+  - 附录:
+      - 复现与文件清单: 10_reproduction.md
+      - 参考资料: 11_references.md
+      - 启动日志摘录: appendix_a_logs.md
+      - 精度与哈希: appendix_b_precision.md

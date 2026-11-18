@@ -1,0 +1,357 @@
+/* ---------------------------------------------------------------------------
+   BI validation site — visual layer on top of Material for MkDocs
+   --------------------------------------------------------------------------- */
+
+:root {
+  --md-text-font-family: "Noto Sans SC", "Source Han Sans SC", "PingFang SC",
+    "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  --md-code-font-family: "JetBrains Mono", "SFMono-Regular", Consolas,
+    "Liberation Mono", monospace;
+  --bi-ink: #101528;
+  --bi-muted: #5b6478;
+  --bi-line: rgba(16, 21, 40, 0.10);
+  --bi-card: #ffffff;
+  --bi-accent: #4f5bd5;
+  --bi-accent-2: #0aa88f;
+}
+
+[data-md-color-scheme="slate"] {
+  --bi-ink: #e8ebf5;
+  --bi-muted: #9aa4bd;
+  --bi-line: rgba(232, 235, 245, 0.12);
+  --bi-card: rgba(255, 255, 255, 0.035);
+  --bi-accent: #8f9bff;
+  --bi-accent-2: #3ddbc0;
+}
+
+.md-grid {
+  max-width: 78rem;
+}
+
+.md-typeset {
+  font-size: 0.78rem;
+  line-height: 1.85;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+  letter-spacing: -0.01em;
+}
+
+.md-typeset h1 {
+  font-weight: 700;
+}
+
+.md-typeset h2 {
+  margin-top: 2.2em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--bi-line);
+}
+
+.md-typeset h2 .headerlink,
+.md-typeset h3 .headerlink {
+  opacity: 0.25;
+}
+
+.md-typeset h2:hover .headerlink,
+.md-typeset h3:hover .headerlink {
+  opacity: 1;
+}
+
+/* Long paths and shell commands should not blow up the layout. */
+.md-typeset code {
+  overflow-wrap: anywhere;
+}
+
+/* Tables are the core content of this report: keep them readable and scrollable. */
+.md-typeset table:not([class]) {
+  font-size: 0.70rem;
+  line-height: 1.55;
+  border-radius: 0.35rem;
+}
+
+.md-typeset table:not([class]) th {
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.md-typeset .md-typeset__table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1.2em;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.md-typeset .md-typeset__table > table {
+  display: table;
+  width: max-content;
+  min-width: 100%;
+  max-width: none;
+  margin: 0;
+  overflow: visible;
+}
+
+/* ---------------------------------------------------------------------------
+   Landing hero
+   --------------------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  margin: 0.4rem 0 1.8rem;
+  padding: 2.6rem 2.4rem 2.2rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  color: #f7f8ff;
+  background:
+    radial-gradient(900px 380px at 88% -10%, rgba(61, 219, 192, 0.42), transparent 60%),
+    radial-gradient(700px 420px at 8% 110%, rgba(143, 155, 255, 0.35), transparent 62%),
+    linear-gradient(135deg, #1a2050 0%, #2a3170 48%, #163c52 100%);
+  box-shadow: 0 18px 48px rgba(16, 21, 40, 0.28);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent 78%);
+  pointer-events: none;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-kicker {
+  margin: 0 0 0.7rem;
+  color: #8ff0dd;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.md-typeset .hero h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(1.7rem, 4.4vw, 2.9rem);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+}
+
+.md-typeset .hero h1 .headerlink {
+  display: none;
+}
+
+.hero-sub {
+  margin: 1rem 0 1.5rem;
+  color: rgba(247, 248, 255, 0.78);
+  font-size: 0.78rem;
+  letter-spacing: 0.01em;
+}
+
+.md-typeset .hero .md-button {
+  margin: 0.35rem 0.45rem 0 0;
+  border-color: rgba(255, 255, 255, 0.55);
+  color: #ffffff;
+}
+
+.md-typeset .hero .md-button:hover {
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+.md-typeset .hero .md-button--primary {
+  border-color: #ffffff;
+  background: #ffffff;
+  color: #1a2050;
+}
+
+.md-typeset .hero .md-button--primary:hover {
+  background: #e9ecff;
+  color: #1a2050;
+}
+
+/* ---------------------------------------------------------------------------
+   Stat strip
+   --------------------------------------------------------------------------- */
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin: 1.4rem 0 2.4rem;
+}
+
+.stat {
+  padding: 1.05rem 1.1rem 0.95rem;
+  border: 1px solid var(--bi-line);
+  border-radius: 0.7rem;
+  background: var(--bi-card);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.stat:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(16, 21, 40, 0.10);
+}
+
+.stat-num {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 1.42rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  background: linear-gradient(120deg, var(--bi-accent), var(--bi-accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.stat-label {
+  color: var(--bi-muted);
+  font-size: 0.66rem;
+  line-height: 1.55;
+}
+
+/* ---------------------------------------------------------------------------
+   Reading cards
+   --------------------------------------------------------------------------- */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin: 1.1rem 0 2rem;
+}
+
+.card {
+  padding: 1.15rem 1.2rem 1rem;
+  border: 1px solid var(--bi-line);
+  border-radius: 0.7rem;
+  background: var(--bi-card);
+  transition: border-color 160ms ease, transform 160ms ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--bi-accent) 45%, transparent);
+}
+
+.md-typeset .card h3 {
+  margin: 0 0 0.55rem;
+  font-size: 0.82rem;
+}
+
+.md-typeset .card h3 .twemoji,
+.md-typeset .card h3 svg {
+  color: var(--bi-accent);
+}
+
+.md-typeset .card p {
+  margin: 0 0 0.7rem;
+  color: var(--bi-muted);
+  font-size: 0.72rem;
+  line-height: 1.7;
+}
+
+.md-typeset .card-link {
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------------------------
+   Admonitions and details
+   --------------------------------------------------------------------------- */
+
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 0.55rem;
+  font-size: 0.74rem;
+}
+
+.md-typeset blockquote {
+  color: var(--bi-muted);
+  border-left-width: 3px;
+}
+
+/* ---------------------------------------------------------------------------
+   Responsive
+   --------------------------------------------------------------------------- */
+
+@media screen and (max-width: 76.1875em) {
+  .md-grid {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 52em) {
+  .stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 44em) {
+  .hero h1 br {
+    display: none;
+  }
+
+  .md-typeset .hero .md-button {
+    display: block;
+    width: 100%;
+    margin: 0.4rem 0 0;
+    text-align: center;
+  }
+
+  .hero {
+    padding: 2rem 1.3rem 1.7rem;
+    border-radius: 0.8rem;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-num {
+    font-size: 1.2rem;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Print: the report should still read well as a PDF
+   --------------------------------------------------------------------------- */
+
+@media print {
+  .hero {
+    color: var(--bi-ink);
+    background: none;
+    box-shadow: none;
+    border: 1px solid var(--bi-line);
+  }
+
+  .md-typeset .hero h1 {
+    color: var(--bi-ink);
+  }
+
+  .hero-sub,
+  .hero-kicker {
+    color: var(--bi-muted);
+  }
+
+  .hero::after,
+  .md-typeset .hero .md-button {
+    display: none;
+  }
+}

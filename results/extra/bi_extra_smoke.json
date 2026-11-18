@@ -1,0 +1,177 @@
+{
+  "env": {
+    "tag": "smoke",
+    "model": "~/models/Qwen3-30B-A3B",
+    "tp": 4,
+    "chunk": 8192,
+    "pc": true,
+    "eager": true,
+    "attn": "FLASH_ATTN",
+    "moe": "auto",
+    "bs": 8,
+    "max_tokens": 4,
+    "temp": 0.0,
+    "top_p": 1.0,
+    "seed": 42,
+    "bi": "1",
+    "long_tokens": 1024,
+    "target_ids": [
+      785,
+      6722,
+      315,
+      9625,
+      374
+    ],
+    "total_sec": 21.518853664398193
+  },
+  "cases": {
+    "single": {
+      "token_ids": [
+        12095,
+        13,
+        576,
+        6722
+      ],
+      "logprobs": [
+        -0.2558211088180542,
+        -0.5215257406234741,
+        -1.2674578428268433,
+        -0.15781757235527039
+      ],
+      "text": " Paris. The capital"
+    },
+    "batch": {
+      "token_ids": [
+        12095,
+        13,
+        576,
+        6722
+      ],
+      "logprobs": [
+        -0.2558211088180542,
+        -0.5215257406234741,
+        -1.2674578428268433,
+        -0.15781757235527039
+      ],
+      "text": " Paris. The capital"
+    },
+    "reverse": {
+      "token_ids": [
+        12095,
+        13,
+        576,
+        6722
+      ],
+      "logprobs": [
+        -0.2558211088180542,
+        -0.5215257406234741,
+        -1.2674578428268433,
+        -0.15781757235527039
+      ],
+      "text": " Paris. The capital"
+    },
+    "repeat": {
+      "token_ids": [
+        12095,
+        13,
+        576,
+        6722
+      ],
+      "logprobs": [
+        -0.2558211088180542,
+        -0.5215257406234741,
+        -1.2674578428268433,
+        -0.15781757235527039
+      ],
+      "text": " Paris. The capital"
+    },
+    "long_batch": {
+      "token_ids": [
+        15678,
+        5562,
+        13,
+        576
+      ],
+      "logprobs": [
+        -1.1920922133867862e-06,
+        -5.960462772236497e-07,
+        -0.00019453064305707812,
+        -6.9141146923357155e-06
+      ],
+      "text": " lazy dog. The"
+    },
+    "long_single": {
+      "token_ids": [
+        15678,
+        5562,
+        13,
+        576
+      ],
+      "logprobs": [
+        -1.1920922133867862e-06,
+        -5.960462772236497e-07,
+        -0.00019453064305707812,
+        -6.9141146923357155e-06
+      ],
+      "text": " lazy dog. The"
+    },
+    "refeed": {
+      "available": true,
+      "n_compared": 4,
+      "all_bitwise_equal": true,
+      "max_abs_diff": 0.0,
+      "first_mismatch": null
+    }
+  },
+  "comparisons": {
+    "single_vs_batch": {
+      "token_ids_equal": true,
+      "logprobs_bitwise_equal": true,
+      "first_logprob_mismatch": null,
+      "max_abs_logprob_diff": 0.0,
+      "len_a": 4,
+      "len_b": 4
+    },
+    "single_vs_reverse": {
+      "token_ids_equal": true,
+      "logprobs_bitwise_equal": true,
+      "first_logprob_mismatch": null,
+      "max_abs_logprob_diff": 0.0,
+      "len_a": 4,
+      "len_b": 4
+    },
+    "single_vs_repeat": {
+      "token_ids_equal": true,
+      "logprobs_bitwise_equal": true,
+      "first_logprob_mismatch": null,
+      "max_abs_logprob_diff": 0.0,
+      "len_a": 4,
+      "len_b": 4
+    },
+    "long_batch_vs_single": {
+      "token_ids_equal": true,
+      "logprobs_bitwise_equal": true,
+      "first_logprob_mismatch": null,
+      "max_abs_logprob_diff": 0.0,
+      "len_a": 4,
+      "len_b": 4
+    },
+    "decode_vs_refeed": {
+      "available": true,
+      "n_compared": 4,
+      "all_bitwise_equal": true,
+      "max_abs_diff": 0.0,
+      "first_mismatch": null
+    }
+  },
+  "timing_sec": {
+    "single": 0.8638322353363037,
+    "batch8": 0.5214097499847412,
+    "reverse": 0.5066804885864258,
+    "repeat": 0.3425884246826172,
+    "long_batch": 0.5447878837585449,
+    "long_single": 0.33115077018737793,
+    "refeed": 0.08735513687133789
+  },
+  "errors": []
+}

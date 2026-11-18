@@ -1,0 +1,11 @@
+# local documentation environment and build output
+.venv-docs/
+site/
+__pycache__/
+*.pyc
+
+# OS noise
+.DS_Store
+
+# packaged static site
+dist/
