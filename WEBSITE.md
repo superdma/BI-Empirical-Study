@@ -52,6 +52,9 @@ grep -rn "PRIVATE KEY" docs/ || echo "clean"
 3. 推送到 `main` 后，`.github/workflows/pages.yml` 会自动构建并发布；
 4. 站点地址形如 `https://<user>.github.io/<repo>/`。
 
+如果第一次 workflow 在 `configure-pages` 步骤失败，通常是 Pages 还没启用。
+完成第 2 步后，在 Actions 页面点 **Re-run jobs** 即可。
+
 > 注意：`mkdocs.yml` 里的 `site_url` 目前没写。绑定自定义域名或使用项目页时，
 > 建议补上 `site_url`，否则 sitemap 里的绝对链接不完整（不影响阅读）。
 
