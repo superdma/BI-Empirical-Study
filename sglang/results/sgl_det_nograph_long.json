@@ -1,0 +1,28 @@
+{
+  "env": {
+    "engine": "sglang",
+    "version": "0.5.6",
+    "det": true,
+    "cuda_graph": false,
+    "radix": true,
+    "tp": 4,
+    "model": "$HOME/models/Qwen3-30B-A3B",
+    "load_sec": 24.084943771362305,
+    "test": "long",
+    "n_prompt_tokens": 7584
+  },
+  "fresh_vs_hit": {
+    "ids": true,
+    "bitwise": true,
+    "first": null,
+    "max": 0.0,
+    "n": 8
+  },
+  "hit_vs_hit2": {
+    "ids": true,
+    "bitwise": true,
+    "first": null,
+    "max": 0.0,
+    "n": 8
+  }
+}

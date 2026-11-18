@@ -1,6 +1,6 @@
 site_name: 批次不变性实测
 site_url: https://superdma.github.io/BI-Empirical-Study/
-site_description: Qwen3-30B-A3B × 4×RTX A6000 × vLLM 0.23.0 的 Batch Invariance 验证
+site_description: Qwen3-30B-A3B × 4×RTX A6000 × vLLM 0.23.0 与 SGLang 0.5.6 的 Batch Invariance 验证
 site_author: BI Validation
 docs_dir: docs
 site_dir: site
@@ -85,6 +85,7 @@ nav:
       - v1 离线结果: 04_offline_results.md
       - v1 在线结果: 05_online_results.md
       - v2 边界结果: 06_boundary_results.md
+      - SGLang 复现实验: 12_sglang_results.md
   - 结论:
       - 关键发现: 07_findings.md
       - 部署建议: 08_deployment.md

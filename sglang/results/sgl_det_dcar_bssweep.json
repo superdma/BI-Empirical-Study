@@ -1,0 +1,78 @@
+{
+  "env": {
+    "engine": "sglang",
+    "version": "0.5.6",
+    "det": true,
+    "cuda_graph": false,
+    "radix": true,
+    "tp": 4,
+    "model": "$HOME/models/Qwen3-30B-A3B",
+    "load_sec": 24.07337498664856,
+    "test": "bssweep"
+  },
+  "rows": [
+    {
+      "bs": 128,
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.040827393531799316,
+      "n": 16,
+      "sec": 1.97
+    },
+    {
+      "bs": 192,
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.040827393531799316,
+      "n": 16,
+      "sec": 1.975
+    },
+    {
+      "bs": 224,
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.040827393531799316,
+      "n": 16,
+      "sec": 2.417
+    },
+    {
+      "bs": 240,
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.040827393531799316,
+      "n": 16,
+      "sec": 1.839
+    },
+    {
+      "bs": 255,
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.040827393531799316,
+      "n": 16,
+      "sec": 1.599
+    },
+    {
+      "bs": 256,
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.040827393531799316,
+      "n": 16,
+      "sec": 2.225
+    },
+    {
+      "bs": 257,
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.040827393531799316,
+      "n": 16,
+      "sec": 2.023
+    }
+  ]
+}

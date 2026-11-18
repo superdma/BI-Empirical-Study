@@ -1,0 +1,478 @@
+{
+  "env": {
+    "engine": "sglang",
+    "version": "0.5.6",
+    "det": true,
+    "cuda_graph": false,
+    "radix": true,
+    "tp": 1,
+    "model": "$HOME/models/Qwen3-0.6B",
+    "load_sec": 14.51712965965271,
+    "test": "batchall",
+    "n": 32
+  },
+  "cmp": {
+    "prompt0": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt1": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt2": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt3": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt4": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt5": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt6": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt7": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt8": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt9": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt10": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt11": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt12": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt13": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt14": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt15": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt16": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt17": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt18": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt19": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt20": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt21": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt22": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt23": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt24": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt25": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt26": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt27": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt28": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt29": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt30": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt31": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    }
+  },
+  "repeat": {
+    "prompt0": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt1": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt2": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt3": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt4": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt5": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt6": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt7": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt8": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt9": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt10": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt11": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt12": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt13": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt14": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt15": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt16": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt17": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt18": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt19": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt20": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt21": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt22": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt23": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt24": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt25": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt26": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt27": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt28": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt29": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt30": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt31": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    }
+  },
+  "summary": {
+    "solo_vs_batch": {
+      "n": 32,
+      "bad": 0,
+      "bad_names": []
+    },
+    "batch_repeat": {
+      "n": 32,
+      "bad": 0,
+      "bad_names": []
+    }
+  }
+}

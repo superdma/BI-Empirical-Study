@@ -102,6 +102,20 @@ compiled 的吞吐也更高：
 - 单流 400-token 生成：eager 约 25 s，compiled 约 8 s；
 - 32-prompt 批量请求：eager 约 1.3 s，compiled 约 0.6 s。
 
+### 6. 换成 SGLang
+
+同样 32 条 prompt，SGLang 0.5.6 的结果取决于并行方式：
+
+| 配置 | 32-prompt 位级一致 |
+|---|---|
+| `--enable-deterministic-inference`，TP=4 | 7/32 |
+| 同上，attention 换 triton | 15/32 |
+| `--enable-deterministic-inference`，PP=4 | **32/32** |
+
+跨卡归约是分界点：同一个稠密小模型，TP=1 与 TP=2 通过，TP=4 失败，PP=4 通过。
+PP=4 的在线四类场景也是 96/96 一致，代价是长请求耗时从 7.9 s 涨到 17.6 s。
+细节见 [12_sglang_results.md](12_sglang_results.md)。
+
 ---
 
 ## 文档地图
@@ -114,7 +128,8 @@ compiled 的吞吐也更高：
 | [04_offline_results.md](04_offline_results.md) | v1 离线结果（target-only）及其适用范围 |
 | [05_online_results.md](05_online_results.md) | v1 在线 H1–H6 结果与“批量提交”口径 |
 | [06_boundary_results.md](06_boundary_results.md) | v2 新增：32-prompt、长度、并发、256 边界、re-feed |
-| [07_findings.md](07_findings.md) | 发现 F1–F12：事实、解释、证据强度 |
+| [12_sglang_results.md](12_sglang_results.md) | SGLang 0.5.6 复现：TP=4 与 PP=4 的对照 |
+| [07_findings.md](07_findings.md) | 发现 F1–F13：事实、解释、证据强度 |
 | [08_deployment.md](08_deployment.md) | 部署决策树、脚本、反模式、监控 |
 | [09_limitations.md](09_limitations.md) | 局限、未解释现象、后续工作 |
 | [10_reproduction.md](10_reproduction.md) | 复现命令、文件清单、SHA256 |
@@ -129,7 +144,8 @@ compiled 的吞吐也更高：
 - `results/extra/*.json`：批大小、TP、attention 后端、re-feed 等；
 - `results/http/concurrency/*.json`：32-prompt、并发、突发、长度扫描；
 - `results/extra/analysis_tables.md`、`results/http/concurrency/analysis_tables.md`：
-  自动生成的汇总表。
+  自动生成的汇总表；
+- `sglang/results/*.json`：SGLang 复现的原始数据，脚本在 `sglang/` 下。
 
 ---
 

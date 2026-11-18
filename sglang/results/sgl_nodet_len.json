@@ -1,0 +1,491 @@
+{
+  "env": {
+    "engine": "sglang",
+    "version": "0.5.6",
+    "det": false,
+    "cuda_graph": true,
+    "radix": true,
+    "tp": 4,
+    "model": "$HOME/models/Qwen3-30B-A3B",
+    "load_sec": 34.7633261680603,
+    "test": "len",
+    "n": 32,
+    "L": 9,
+    "total_prompt_tokens": 284
+  },
+  "cmp": {
+    "p0": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.07146111130714417,
+      "n": 16
+    },
+    "p1": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.13077211380004883,
+      "n": 16
+    },
+    "p2": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.13405093550682068,
+      "n": 16
+    },
+    "p3": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.26457932591438293,
+      "n": 16
+    },
+    "p4": {
+      "ids": false,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.6782232522964478,
+      "n": 16
+    },
+    "p5": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.2257554531097412,
+      "n": 16
+    },
+    "p6": {
+      "ids": false,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.3280370235443115,
+      "n": 16
+    },
+    "p7": {
+      "ids": false,
+      "bitwise": false,
+      "first": 0,
+      "max": 1.6377305686473846,
+      "n": 16
+    },
+    "p8": {
+      "ids": false,
+      "bitwise": false,
+      "first": 0,
+      "max": 1.3539039641618729,
+      "n": 16
+    },
+    "p9": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.15709015727043152,
+      "n": 16
+    },
+    "p10": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.09580302238464355,
+      "n": 16
+    },
+    "p11": {
+      "ids": false,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.16886776685714722,
+      "n": 16
+    },
+    "p12": {
+      "ids": false,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.1002347469329834,
+      "n": 16
+    },
+    "p13": {
+      "ids": false,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.20078825950622559,
+      "n": 16
+    },
+    "p14": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.07963347434997559,
+      "n": 16
+    },
+    "p15": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.0814390778541565,
+      "n": 16
+    },
+    "p16": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.10579293966293335,
+      "n": 16
+    },
+    "p17": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.08996272087097168,
+      "n": 16
+    },
+    "p18": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.13924607634544373,
+      "n": 16
+    },
+    "p19": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.18297874927520752,
+      "n": 16
+    },
+    "p20": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.22471943497657776,
+      "n": 16
+    },
+    "p21": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.1330503225326538,
+      "n": 16
+    },
+    "p22": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.2024470567703247,
+      "n": 16
+    },
+    "p23": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.18901123106479645,
+      "n": 16
+    },
+    "p24": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.4176398515701294,
+      "n": 16
+    },
+    "p25": {
+      "ids": false,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.11003080010414124,
+      "n": 16
+    },
+    "p26": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.11620509624481201,
+      "n": 16
+    },
+    "p27": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.13382446765899658,
+      "n": 16
+    },
+    "p28": {
+      "ids": false,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.12489867210388184,
+      "n": 16
+    },
+    "p29": {
+      "ids": false,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.3513376712799072,
+      "n": 16
+    },
+    "p30": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.04767107963562012,
+      "n": 16
+    },
+    "p31": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.0922166109085083,
+      "n": 16
+    }
+  },
+  "repeat": {
+    "p0": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p1": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p2": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p3": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p4": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p5": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p6": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p7": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p8": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p9": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p10": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p11": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p12": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p13": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p14": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p15": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p16": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p17": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p18": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p19": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p20": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p21": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p22": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p23": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p24": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p25": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p26": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p27": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p28": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p29": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p30": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "p31": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    }
+  },
+  "summary": {
+    "solo_vs_batch": {
+      "n": 32,
+      "bad": 32,
+      "bad_names": [
+        "p0",
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p6",
+        "p7",
+        "p8",
+        "p9"
+      ]
+    },
+    "batch_repeat": {
+      "n": 32,
+      "bad": 0,
+      "bad_names": []
+    }
+  }
+}

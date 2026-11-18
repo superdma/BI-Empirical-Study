@@ -1,0 +1,78 @@
+{
+  "env": {
+    "engine": "sglang",
+    "version": "0.5.6",
+    "det": true,
+    "cuda_graph": false,
+    "radix": true,
+    "tp": 2,
+    "model": "$HOME/models/Qwen3-0.6B",
+    "load_sec": 15.678816556930542,
+    "test": "bssweep"
+  },
+  "rows": [
+    {
+      "bs": 128,
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16,
+      "sec": 0.719
+    },
+    {
+      "bs": 192,
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16,
+      "sec": 1.012
+    },
+    {
+      "bs": 224,
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16,
+      "sec": 1.32
+    },
+    {
+      "bs": 240,
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16,
+      "sec": 0.971
+    },
+    {
+      "bs": 255,
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16,
+      "sec": 0.977
+    },
+    {
+      "bs": 256,
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16,
+      "sec": 1.055
+    },
+    {
+      "bs": 257,
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16,
+      "sec": 0.771
+    }
+  ]
+}

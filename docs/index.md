@@ -59,6 +59,22 @@ Ada / Hopper / Blackwell。它名义上满足 CC≥8.0，却不在官方 tuned �
     成立。扩展到 32 条普通 prompt 后，eager 有 **31/32** 不一致，compiled 是
     **32/32**。本网站以 v2 为准，v1 只作为历史记录保留。
 
+## 换一个引擎，结论会变吗
+
+用同一套脚本在 SGLang 0.5.6 上重做实验，结论一致，前提是换一种并行方式。
+
+| 引擎 / 配置 | 32 条 prompt 位级一致 | 32 路并发一致 |
+|---|---|---|
+| vLLM compiled，TP=4 | 32/32 | 32/32 |
+| vLLM eager，TP=4 | 1/32 | 1/32 |
+| SGLang 确定性，TP=4 | 7/32 | 4/32 |
+| SGLang 确定性，PP=4 | 32/32 | 32/32 |
+
+SGLang 的确定性开关在张量并行下只能消掉一部分差异，把 TP 换成流水线并行
+（跨卡不做归约）之后才真正成立。两个引擎的 decode 与 re-feed 都不一致。
+
+[打开 SGLang 复现实验 →](12_sglang_results.md)
+
 ## 从哪一篇开始
 
 <div class="card-grid" markdown>
@@ -82,7 +98,7 @@ Ada / Hopper / Blackwell。它名义上满足 CC≥8.0，却不在官方 tuned �
 <div class="card" markdown>
 <p class="card-title" markdown>:material-lightbulb-on-outline: 要理解原因</p>
 
-F1–F12：每条发现都给出事实、证据与解释强度。
+F1–F13：每条发现都给出事实、证据与解释强度。
 
 [打开关键发现 →](07_findings.md){ .card-link }
 </div>
@@ -93,6 +109,14 @@ F1–F12：每条发现都给出事实、证据与解释强度。
 推荐配置、固定编译产物、发布前逐 prompt 验证清单。
 
 [打开部署建议 →](08_deployment.md){ .card-link }
+</div>
+
+<div class="card" markdown>
+<p class="card-title" markdown>:material-swap-horizontal: 要换推理引擎</p>
+
+SGLang 0.5.6 的复现：为什么 TP=4 不够、PP=4 才成立。
+
+[打开 SGLang 复现 →](12_sglang_results.md){ .card-link }
 </div>
 
 </div>

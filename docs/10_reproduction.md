@@ -180,15 +180,63 @@ python analyze_online_extra.py
 | `docs/04_offline_results.md` | v1 离线 |
 | `docs/05_online_results.md` | v1 在线 |
 | `docs/06_boundary_results.md` | v2 边界 |
-| `docs/07_findings.md` | F1–F12 |
+| `docs/07_findings.md` | F1–F13 |
 | `docs/08_deployment.md` | 部署 |
 | `docs/09_limitations.md` | 局限 |
 | `docs/10_reproduction.md` | 本文 |
 | `docs/11_references.md` | 参考 |
+| `docs/12_sglang_results.md` | SGLang 复现 |
 | `docs/appendix_a_logs.md` | 日志 |
 | `docs/appendix_b_precision.md` | 精度 |
 
-## 10.9 生成 SHA256
+## 10.9 SGLang 复现
+
+SGLang 装在独立 venv 里，不覆盖 vLLM 环境。
+
+```bash
+# 依赖 nvcc >= 12.4：用 conda 环境里的 cuda-nvcc 12.8
+export CUDA_HOME=$HOME/miniconda3/envs/sglang
+export PATH=$CUDA_HOME/bin:$PATH
+
+~/venvs/sglang054/bin/pip install -i https://pypi.tuna.tsinghua.edu.cn/simple \
+  --pre 'sglang[all]==0.5.6'
+```
+
+三组主配置（TP=4 确定性 / TP=4 关闭确定性 / TP=4 关 CUDA graph），随后是
+两组在线（TP=4 确定性、TP=4 关闭确定性）：
+
+```bash
+setsid nohup bash sglang/run_sglang_30b.sh > $HOME/sgl_results/run_30b.log 2>&1 &
+```
+
+消融与并行方式对照：
+
+```bash
+bash sglang/run_sglang_diag.sh    # 0.6B TP=4、30B 关 custom all-reduce、triton attention
+bash sglang/run_sglang_diag2.sh   # 0.6B TP=2、0.6B TP=4 + triton
+bash sglang/run_sglang_diag3.sh   # 0.6B PP=4、30B PP=4
+bash sglang/run_sglang_pp2.sh     # 30B PP=4 + CUDA graph、PP=4 在线
+```
+
+汇总成 Markdown 表：
+
+```bash
+python3 sglang/analyze_sglang.py sglang/results
+```
+
+| 文件 | 用途 |
+|---|---|
+| `sglang/bi_sgl_offline_suite.py` | 五组离线测试，一次引擎加载 |
+| `sglang/bi_sgl_http_suite.py` | 四类在线场景，走原生 `/generate` |
+| `sglang/analyze_sglang.py` | 把 JSON 渲染成表格 |
+| `sglang/run_sglang_30b.sh` | 三组离线 + 两组在线主配置 |
+| `sglang/run_sglang_diag.sh` / `diag2` / `diag3` | 并行方式与后端消融 |
+| `sglang/run_sglang_pp2.sh` | PP=4 的 CUDA graph 与在线复现 |
+| `sglang/results/*.json` | 原始结果 |
+
+脚本里的路径都用 `$HOME`，换机器时只需保证模型与 venv 在同样的相对位置。
+
+## 10.10 生成 SHA256
 
 ```bash
 cd bi_validation

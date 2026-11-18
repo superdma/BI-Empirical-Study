@@ -1,0 +1,489 @@
+{
+  "env": {
+    "engine": "sglang",
+    "version": "0.5.6",
+    "det": true,
+    "cuda_graph": true,
+    "radix": true,
+    "tp": 4,
+    "model": "$HOME/models/Qwen3-30B-A3B",
+    "load_sec": 46.27986550331116,
+    "test": "batchall",
+    "n": 32
+  },
+  "cmp": {
+    "prompt0": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.040827393531799316,
+      "n": 16
+    },
+    "prompt1": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt2": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt3": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt4": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt5": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt6": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt7": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt8": {
+      "ids": true,
+      "bitwise": false,
+      "first": 1,
+      "max": 0.10932689905166626,
+      "n": 16
+    },
+    "prompt9": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.19510412216186523,
+      "n": 16
+    },
+    "prompt10": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.1182587742805481,
+      "n": 16
+    },
+    "prompt11": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.10486239194869995,
+      "n": 16
+    },
+    "prompt12": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.13080936670303345,
+      "n": 16
+    },
+    "prompt13": {
+      "ids": false,
+      "bitwise": false,
+      "first": 0,
+      "max": 2.1239790059626102,
+      "n": 16
+    },
+    "prompt14": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.0667303204536438,
+      "n": 16
+    },
+    "prompt15": {
+      "ids": false,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.6412002742290497,
+      "n": 16
+    },
+    "prompt16": {
+      "ids": false,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.6611620187759399,
+      "n": 16
+    },
+    "prompt17": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.05881553888320923,
+      "n": 16
+    },
+    "prompt18": {
+      "ids": false,
+      "bitwise": false,
+      "first": 0,
+      "max": 2.0600208938121796,
+      "n": 16
+    },
+    "prompt19": {
+      "ids": false,
+      "bitwise": false,
+      "first": 0,
+      "max": 1.3951394744217396,
+      "n": 16
+    },
+    "prompt20": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.06507101655006409,
+      "n": 16
+    },
+    "prompt21": {
+      "ids": false,
+      "bitwise": false,
+      "first": 0,
+      "max": 2.243618369102478,
+      "n": 16
+    },
+    "prompt22": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.21379250288009644,
+      "n": 16
+    },
+    "prompt23": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.0593528151512146,
+      "n": 16
+    },
+    "prompt24": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.026801884174346924,
+      "n": 16
+    },
+    "prompt25": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.200761616230011,
+      "n": 16
+    },
+    "prompt26": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.15419593453407288,
+      "n": 16
+    },
+    "prompt27": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.1760234832763672,
+      "n": 16
+    },
+    "prompt28": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.08234333992004395,
+      "n": 16
+    },
+    "prompt29": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.06942892074584961,
+      "n": 16
+    },
+    "prompt30": {
+      "ids": false,
+      "bitwise": false,
+      "first": 0,
+      "max": 1.5442810505628586,
+      "n": 16
+    },
+    "prompt31": {
+      "ids": true,
+      "bitwise": false,
+      "first": 0,
+      "max": 0.12147653102874756,
+      "n": 16
+    }
+  },
+  "repeat": {
+    "prompt0": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt1": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt2": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt3": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt4": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt5": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt6": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt7": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt8": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt9": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt10": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt11": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt12": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt13": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt14": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt15": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt16": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt17": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt18": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt19": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt20": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt21": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt22": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt23": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt24": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt25": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt26": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt27": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt28": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt29": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt30": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    },
+    "prompt31": {
+      "ids": true,
+      "bitwise": true,
+      "first": null,
+      "max": 0.0,
+      "n": 16
+    }
+  },
+  "summary": {
+    "solo_vs_batch": {
+      "n": 32,
+      "bad": 25,
+      "bad_names": [
+        "prompt0",
+        "prompt8",
+        "prompt9",
+        "prompt10",
+        "prompt11",
+        "prompt12",
+        "prompt13",
+        "prompt14",
+        "prompt15",
+        "prompt16"
+      ]
+    },
+    "batch_repeat": {
+      "n": 32,
+      "bad": 0,
+      "bad_names": []
+    }
+  }
+}

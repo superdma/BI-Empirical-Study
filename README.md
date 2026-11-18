@@ -31,6 +31,25 @@ a v1 archive; its target-only conclusions were superseded.
   matmul tables cover only Ada/Hopper/Blackwell. A6000 is Ampere (SM86), so it
   is nominally supported but outside the tuned path.
 
+## SGLang replication (2026-11-18)
+
+The same suites were re-run on SGLang 0.5.6 (torch 2.9.1+cu128, FlashInfer
+0.5.3) with `--enable-deterministic-inference`; see
+[`docs/12_sglang_results.md`](docs/12_sglang_results.md).
+
+- With TP=4 the deterministic mode matched only 7/32 prompts (7 of them also
+  changed token ids). Disabling custom all-reduce, disabling CUDA graphs, or
+  switching to the Triton attention backend did not close the gap (25/32,
+  25/32, 17/32 mismatches).
+- With PP=4 (pipeline parallel, no cross-GPU reduction) the same model matched
+  32/32 offline, all batch sizes 128-257 at 0.0, and 96/96 online comparisons.
+- A dense 0.6B model isolates the cause: TP=1 and TP=2 pass, TP=4 fails
+  (32/32 mismatches), PP=4 passes.
+- Decode-vs-re-feed fails under every configuration in SGLang as well.
+- SGLang 0.5.9 segfaults on the first `generate` on this box (all backends,
+  CUDA-graph and determinism combinations); 0.5.6 works. Scripts and raw JSONs
+  are in [`sglang/`](sglang/).
+
 ## Publish as a website
 
 The report can be built into a static site with MkDocs Material:
