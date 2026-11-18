@@ -9,3 +9,6 @@ __pycache__/
 
 # packaged static site
 dist/
+
+# private working notes: kept local, never published or pushed
+notes/
