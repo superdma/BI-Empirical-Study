@@ -64,7 +64,7 @@ Ada / Hopper / Blackwell。它名义上满足 CC≥8.0，却不在官方 tuned �
 <div class="card-grid" markdown>
 
 <div class="card" markdown>
-### :material-format-list-checks: 要做部署决策
+<p class="card-title" markdown>:material-format-list-checks: 要做部署决策</p>
 
 先读一页结论，再对照部署清单选模式。
 
@@ -72,7 +72,7 @@ Ada / Hopper / Blackwell。它名义上满足 CC≥8.0，却不在官方 tuned �
 </div>
 
 <div class="card" markdown>
-### :material-table-large: 要看实验数据
+<p class="card-title" markdown>:material-table-large: 要看实验数据</p>
 
 表 I–Q：批大小扫描、32-prompt、并发、256 边界、decode vs re-feed。
 
@@ -80,7 +80,7 @@ Ada / Hopper / Blackwell。它名义上满足 CC≥8.0，却不在官方 tuned �
 </div>
 
 <div class="card" markdown>
-### :material-lightbulb-on-outline: 要理解原因
+<p class="card-title" markdown>:material-lightbulb-on-outline: 要理解原因</p>
 
 F1–F12：每条发现都给出事实、证据与解释强度。
 
@@ -88,7 +88,7 @@ F1–F12：每条发现都给出事实、证据与解释强度。
 </div>
 
 <div class="card" markdown>
-### :material-rocket-launch-outline: 要直接上线
+<p class="card-title" markdown>:material-rocket-launch-outline: 要直接上线</p>
 
 推荐配置、固定编译产物、发布前逐 prompt 验证清单。
 
