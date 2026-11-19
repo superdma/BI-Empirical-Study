@@ -85,15 +85,15 @@ nav:
       - v1 离线结果: 04_offline_results.md
       - v1 在线结果: 05_online_results.md
       - v2 边界结果: 06_boundary_results.md
-      - SGLang 复现实验: 12_sglang_results.md
-      - 机制验证: 13_mechanism_checks.md
-      - 算子与配置打点: 14_kernel_checks.md
+      - SGLang 复现实验: 07_sglang_results.md
+      - 机制验证: 08_mechanism_checks.md
+      - 算子与配置打点: 09_kernel_checks.md
   - 结论:
-      - 关键发现: 07_findings.md
-      - 部署建议: 08_deployment.md
-      - 局限与后续: 09_limitations.md
+      - 关键发现: 10_findings.md
+      - 部署建议: 11_deployment.md
+      - 局限与后续: 12_limitations.md
   - 附录:
-      - 复现与文件清单: 10_reproduction.md
-      - 参考资料: 11_references.md
+      - 复现与文件清单: 13_reproduction.md
+      - 参考资料: 14_references.md
       - 启动日志摘录: appendix_a_logs.md
       - 精度与哈希: appendix_b_precision.md

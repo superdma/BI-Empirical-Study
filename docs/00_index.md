@@ -2,8 +2,8 @@
 
 ## 批次不变性（Batch Invariance, BI）实测文档集
 
-- 版本：2.0
-- 日期：2026-11-17
+- 版本：2.1
+- 日期：2026-11-17（2.1 版于 2026-11-19 重排章号，章节顺序与阅读顺序一致）
 - 主机：4×NVIDIA RTX A6000 48 GB（SM86），无 InfiniBand
 - 软件：vLLM 0.23.0+cu129，PyTorch 2.11.0+cu129，CUDA 12.9，NCCL 2.28.9
 - 模型：`Qwen/Qwen3-30B-A3B`，BF16，TP=4
@@ -21,7 +21,7 @@
 
 ## 一页结论
 
-### 1. 可部署的 BI 配置
+### 一、可部署的 BI 配置
 
 在本次硬件与模型上，**compiled 模式是唯一通过全部进程内测试的配置**：
 
@@ -51,7 +51,7 @@ compiled 模式在以下场景全部位级一致（0 差异）：
 - 批大小 256（decode），以及 256-token 生成后的 decode vs re-feed；
 - 同一配置重复批请求；跨 3 个 warm-cache 服务进程的单独请求输出。
 
-### 2. eager 模式的真实边界
+### 二、eager 模式的真实边界
 
 eager（`--enforce-eager`）的 BI 只在部分形状上成立。本次测到：
 
@@ -69,12 +69,13 @@ target-only 的 0.0 结果都是真的，但不能外推到其他 prompt。离�
 `LLM.generate` 复核得到同样结果：31/32 不一致，且两次相同批请求之间有 1 条
 不一致（说明 eager 连“重复同一批”都不保证）。
 
-vLLM 文档给出了一个解释：BI 支持 compute capability ≥8.0，但实现细节写明
+vLLM 文档里还有一条背景：BI 支持 compute capability ≥8.0，但
 “tuned matmul table entries”只覆盖 **Ada / Hopper / Blackwell**。A6000 是
-Ampere（SM86），名义上能开 BI，却不在官方 tuned 路径里。官方调优覆盖的
-平台是 L40S、H100、B200 这一类。
+Ampere（SM86），名义上能开 BI，却不在官方调优的名单里（官方覆盖的是 L40S、
+H100、B200 这一类）。这说明了它为什么需要“实测通过”，但没有解释 255/256：
+第 9 章测到 SM86 上的 BI 并不使用这张表，而是换成 Triton 常驻内核。
 
-### 3. compiled 与 eager 不能混用
+### 三、compiled 与 eager 不能混用
 
 compiled 与 eager 对同一个 prompt 的输出从第一个 token 起就不同：
 
@@ -86,7 +87,7 @@ compiled 与 eager 对同一个 prompt 的输出从第一个 token 起就不同�
 两种模式各自是确定的，但数值路径不同。选一种并固定，不能拿 compiled
 的结果去对 eager 的日志，也不能在升级/重编译后假设输出不变。
 
-### 4. prefix cache 与长 prompt
+### 四、prefix cache 与长 prompt
 
 - target（5-token）短 prompt 的缓存命中在 eager/compiled 下都可位级一致；
 - eager + 长 prompt + 缓存命中仍是最危险的组合：7600-token 饱和 prompt 有
@@ -95,14 +96,14 @@ compiled 与 eager 对同一个 prompt 的输出从第一个 token 起就不同�
   也不成立，结果依赖具体的 chunk/tail 几何；
 - compiled 在 7584-token 开放结尾的诊断中，fresh 与 cache hit 全部一致。
 
-### 5. 性能
+### 五、性能
 
 compiled 的吞吐也更高：
 
 - 单流 400-token 生成：eager 约 25 s，compiled 约 8 s；
 - 32-prompt 批量请求：eager 约 1.3 s，compiled 约 0.6 s。
 
-### 6. 换成 SGLang
+### 六、换成 SGLang
 
 同样 32 条 prompt，SGLang 0.5.6 的结果取决于并行方式：
 
@@ -114,25 +115,25 @@ compiled 的吞吐也更高：
 
 跨卡归约是分界点：同一个稠密小模型，TP=1 与 TP=2 通过，TP=4 失败，PP=4 通过。
 PP=4 的在线四类场景也是 96/96 一致，代价是长请求耗时从 7.9 s 涨到 17.6 s。
-细节见[第 12 章](12_sglang_results.md)。
+细节见[7. 第 7 章](07_sglang_results.md)。
 
-### 7. 机制上的三个候选解释被排掉了
+### 七、机制上的三个候选解释被排掉了
 
-第 13 章做了四项不需要改 vLLM 源码的检查：
+第 8 章做了四项不需要改 vLLM 源码的检查：
 
 | 检查 | 结果 |
 |---|---|
 | 不加载模型的 all-reduce 探针 | TP=4 时批大小每加 1 都改位（299/299 步），TP=2 一步都不改 |
-| 把 NCCL 算法钉死 | vLLM eager 从 1/32 变成 2/32，失败没有消失 |
+| 把 NCCL 算法钉死 | 三行设置其实相同（BI 会覆盖 `NCCL_ALGO`），失败照旧；第 9 章用 pynccl 重做 |
 | 缓存命中的 tail 扫描 | 只有 256 与 448 分叉，320/384/512 一致，不单调 |
 | CUDA graph bucket 边界 | 32/64/128 两侧 compiled 与 eager 都没有台阶 |
 
 所以 255/256 那条边界既不是 NCCL 算法选的，也不是 graph 分桶造成的；剩下的
-候选仍然是模型侧 kernel 按形状选 tile/split。细节见[第 13 章](13_mechanism_checks.md)。
+候选仍然是模型侧 kernel 按形状选 tile/split。细节见[8. 第 8 章](08_mechanism_checks.md)。
 
-### 8. 第二档：把这个候选也测掉了
+### 八、第二档：把这个候选也测掉了
 
-第 14 章把“模型侧 kernel 按形状选 tile”拆开逐项测：
+第 9 章把“模型侧 kernel 按形状选 tile”拆开逐项测：
 
 | 检查 | 结果 |
 |---|---|
@@ -143,30 +144,30 @@ PP=4 的在线四类场景也是 96/96 一致，代价是长请求耗时从 7.9 
 | 引擎逐层打点 | 256 跑两遍完全一致；与 255 的差异从第 42 层 input_layernorm 开始 |
 
 所以 256 既不是 tile 边界，也不是归约；差异只在引擎里出现，位置固定、可重复，
-但起源还没定位到具体一次 kernel 启动。细节见[第 14 章](14_kernel_checks.md)。
+但起源还没定位到具体一次 kernel 启动。细节见[9. 第 9 章](09_kernel_checks.md)。
 
 ---
 
 ## 文档地图
 
-| 页面 | 内容 |
+| 章节 | 内容 |
 |---|---|
-| [BI 定义与比较口径](01_scope.md) | BI 的定义、比较口径、能保证与不能保证什么 |
-| [环境与理论依据](02_environment.md) | 硬件、软件、模型、环境坑与理论依据 |
-| [测试设计](03_design.md) | 离线/在线测试设计，T1–T10、H1–H6、B1–B12 矩阵 |
-| [v1 离线结果](04_offline_results.md) | v1 离线结果（target-only）及其适用范围 |
-| [v1 在线结果](05_online_results.md) | v1 在线 H1–H6 结果与“批量提交”口径 |
-| [v2 边界结果](06_boundary_results.md) | v2 新增：32-prompt、长度、并发、256 边界、re-feed |
-| [SGLang 复现实验](12_sglang_results.md) | SGLang 0.5.6 复现：TP=4 与 PP=4 的对照 |
-| [机制验证](13_mechanism_checks.md) | 机制验证：归约、NCCL 算法、缓存 tail、graph 分桶 |
-| [算子与配置打点](14_kernel_checks.md) | 第二档：BI 覆盖面、tile 扫描、逐层定位 |
-| [关键发现](07_findings.md) | 发现 F1–F13：事实、解释、证据强度 |
-| [部署建议](08_deployment.md) | 部署决策树、脚本、反模式、监控 |
-| [局限与后续](09_limitations.md) | 局限、未解释现象、后续工作 |
-| [复现与文件清单](10_reproduction.md) | 复现命令、文件清单、SHA256 |
-| [参考资料](11_references.md) | 官方文档、源码、模型卡与相关链接 |
-| [启动日志摘录](appendix_a_logs.md) | 启动日志关键摘录 |
-| [精度与哈希](appendix_b_precision.md) | 位级比较与 HTTP 精度说明 |
+| [1. BI 定义与比较口径](01_scope.md) | BI 的定义、比较口径、能保证与不能保证什么 |
+| [2. 环境与理论依据](02_environment.md) | 硬件、软件、模型、环境坑与理论依据 |
+| [3. 测试设计](03_design.md) | 离线/在线测试设计，T1–T10、H1–H6、B1–B12 矩阵 |
+| [4. v1 离线结果](04_offline_results.md) | v1 离线结果（target-only）及其适用范围 |
+| [5. v1 在线结果](05_online_results.md) | v1 在线 H1–H6 结果与“批量提交”口径 |
+| [6. v2 边界结果](06_boundary_results.md) | v2 新增：32-prompt、长度、并发、256 边界、re-feed |
+| [7. SGLang 复现实验](07_sglang_results.md) | SGLang 0.5.6 复现：TP=4 与 PP=4 的对照 |
+| [8. 机制验证](08_mechanism_checks.md) | 机制验证：归约、NCCL 算法、缓存 tail、graph 分桶 |
+| [9. 算子与配置打点](09_kernel_checks.md) | 第二档：BI 覆盖面、tile 扫描、逐层定位 |
+| [10. 关键发现](10_findings.md) | 发现 F1–F13：事实、解释、证据强度 |
+| [11. 部署建议](11_deployment.md) | 部署决策树、脚本、反模式、监控 |
+| [12. 局限与后续](12_limitations.md) | 局限、未解释现象、后续工作 |
+| [13. 复现与文件清单](13_reproduction.md) | 复现命令、文件清单、SHA256 |
+| [14. 参考资料](14_references.md) | 官方文档、源码、模型卡与相关链接 |
+| [附录 A：启动日志摘录](appendix_a_logs.md) | 启动日志关键摘录 |
+| [附录 B：精度与哈希](appendix_b_precision.md) | 位级比较与 HTTP 精度说明 |
 
 原始数据：
 
@@ -177,14 +178,14 @@ PP=4 的在线四类场景也是 96/96 一致，代价是长请求耗时从 7.9 
 - `results/extra/analysis_tables.md`、`results/http/concurrency/analysis_tables.md`：
   自动生成的汇总表；
 - `sglang/results/*.json`：SGLang 复现的原始数据，脚本在 `sglang/` 下；
-- `results/tier1/*.json`：第 13 章四项机制检查的原始数据；
-- `results/tier2/*.json`：第 14 章的配置扫描、逐算子与逐层打点数据。
+- `results/tier1/*.json`：第 8 章四项机制检查的原始数据；
+- `results/tier2/*.json`：第 9 章的配置扫描、逐算子与逐层打点数据。
 
 ---
 
 ## 怎么读
 
-- 要做部署决策：读 00 → 08 → 06 的表 M/N/O/P。
-- 要复现实验：读 03 → 10，按脚本顺序跑。
-- 要理解为什么：读 01 → 02 → 07 → 09。
+- 要做部署决策：读 00 → 11（部署建议）→ 06 的表 M/N/O/P。
+- 要复现实验：读 03（测试设计）→ 13（复现与文件清单），按脚本顺序跑。
+- 要理解为什么：读 01 → 02 → 10（关键发现）→ 12（局限）。
 - 要核对旧结论：读 04/05，注意它们全部是 target-only 口径。

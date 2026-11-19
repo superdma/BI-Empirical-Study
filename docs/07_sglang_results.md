@@ -1,4 +1,4 @@
-# 12. SGLang 复现实验
+# 7. SGLang 复现实验
 
 前面的章节都在 vLLM 上完成。SGLang 是另一个主流推理引擎，它提供了自己的
 确定性推理开关 `--enable-deterministic-inference`，实现路线与 vLLM 不同：
@@ -18,7 +18,7 @@
 - 同一台机器、同一个模型，TP=1 与 TP=2 通过，TP=4 失败。差异随并行方式
   出现，与批大小无关。
 
-## 12.1 环境
+## 7.1 环境
 
 SGLang 装在独立的 venv 里，与 vLLM 的 conda 环境互不干扰。
 
@@ -64,7 +64,7 @@ FlashInfer 的 JIT 需要两样东西：`ninja` 在 `PATH` 里，以及 nvcc ≥
 （它用 `-std=c++20` 编译）。系统自带的 CUDA 12.2 不够用，解决办法是在 conda
 环境里装 `cuda-nvcc=12.8` 和 `cuda-cudart-dev`，运行时把 `CUDA_HOME` 指向它。
 
-## 12.2 测试方法
+## 7.2 测试方法
 
 测试代码在 `sglang/bi_sgl_offline_suite.py` 与 `sglang/bi_sgl_http_suite.py`，
 与 vLLM 版本一一对应：一次引擎加载跑完五组离线测试，在线部分用原生 `/generate`
@@ -87,7 +87,7 @@ FlashInfer 的 JIT 需要两样东西：`ninja` 在 `PATH` 里，以及 nvcc ≥
   缓存命中”在 SGLang 上退化成“同一长 prompt 连续请求三次”，测的是调度与
   重复执行的一致性，而不是前缀缓存命中。
 
-## 12.3 离线结果
+## 7.3 离线结果
 
 四台 GPU 全部参与，Qwen3-30B-A3B，32 token 生成，greedy。“全等”指 logprob
 逐位相同且 token id 相同；“ids 变化”统计 32 条里有多少条连 token 都变了。
@@ -155,12 +155,12 @@ TP=1 不可行；TP=2 时每卡约 30.5 GB 权重，留给 KV cache 的只有约
 
 <figure class="bi-figure" markdown="span">
   ![SGLang 各配置的 32 条 prompt 位级一致数](assets/figs/fig_sgl_offline.png)
-  <figcaption>图 8　表 S1 与表 S3 的对照。a：30B 上三组 TP=4 配置的条数完全相同
+  <figcaption>图 7　表 S1 与表 S3 的对照。a：30B 上三组 TP=4 配置的条数完全相同
   （7/32），换 triton attention 只到 15/32，换 PP=4 才是 32/32；b：稠密 0.6B
   上 TP=1、TP=2、PP=4 通过，TP=4 失败，排除 MoE 的影响。</figcaption>
 </figure>
 
-## 12.4 在线结果
+## 7.4 在线结果
 
 服务用 `python -m sglang.launch_server` 启动，其余参数与离线一致。在线测试
 沿用第 5 章的四类场景：32 条顺序基线、32 条并发、32 条相同 prompt 并发、
@@ -182,12 +182,12 @@ PP=4 的 96 次比较全部为 0.0，没有一条 token id 变化。也就是说
 
 <figure class="bi-figure" markdown="span">
   ![SGLang 在线三场景通过数与长请求耗时](assets/figs/fig_sgl_online.png)
-  <figcaption>图 9　在线结果的两面。a：三场景各 32 条比较中位级一致的条数，
+  <figcaption>图 8　在线结果的两面。a：三场景各 32 条比较中位级一致的条数，
   PP=4 全部为 32，TP=4 分别为 4、0、7；b：同一条 400-token 请求的墙钟时间，
   PP=4 约为 TP=4 的两倍多，这是流水线并行在解码阶段的气泡代价。</figcaption>
 </figure>
 
-## 12.5 decode vs re-feed
+## 7.5 decode vs re-feed
 
 五组离线测试里，唯一在 PP=4 下也没能通过的是 decode 与 re-feed 的一致性：
 先逐 token 生成 64 个 token，再把它们拼回 prompt 一次性 prefill，比较同一批
@@ -207,7 +207,7 @@ PP=4 的 96 次比较全部为 0.0，没有一条 token id 变化。也就是说
 说明前 12 个 token 的 prefill 与 decode 恰好落在相同的数值路径上，之后才分开，
 这属于具体的几何巧合，不能当成部分保证。
 
-## 12.6 与 vLLM 的对照
+## 7.6 与 vLLM 的对照
 
 | 引擎 / 配置 | 32-prompt 全等 | ids 变化 | 说明 |
 |---|---|---|---|
@@ -227,7 +227,7 @@ PP=4 的 96 次比较全部为 0.0，没有一条 token id 变化。也就是说
   TP=4 则是单条请求与任何批量之间都有差异，与批大小无关；
 - decode 与 re-feed 在两边都不成立，属于共同短板。
 
-## 12.7 结论与建议
+## 7.7 结论与建议
 
 - 想在 A6000 上用 SGLang 得到位级一致的输出，用 `--pp-size 4` 加
   `--enable-deterministic-inference`，不要用 TP=4；
@@ -238,4 +238,4 @@ PP=4 的 96 次比较全部为 0.0，没有一条 token id 变化。也就是说
 - 版本影响很大：0.5.9 在 A6000 上直接段错误，0.5.6 可用；换版本后所有结论
   都应在目标机器上重跑一遍。
 
-复现命令、原始 JSON 与脚本见[复现与文件清单](10_reproduction.md)。
+复现命令、原始 JSON 与脚本见[复现与文件清单](13_reproduction.md)。

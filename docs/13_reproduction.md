@@ -1,6 +1,6 @@
-# 10. 复现步骤与文件清单
+# 13. 复现步骤与文件清单
 
-## 10.1 前置条件
+## 13.1 前置条件
 
 - 4×RTX A6000 48 GB（或等价 SM86 机器）；
 - vLLM 0.23.0+cu129，PyTorch 2.11.0+cu129，CUDA 12.9；
@@ -14,7 +14,7 @@ export VLLM_USE_FLASHINFER_SAMPLER=0
 export TOKENIZERS_PARALLELISM=false
 ```
 
-## 10.2 v1：离线矩阵
+## 13.2 v1：离线矩阵
 
 ```bash
 cd BI-Empirical-Study
@@ -32,7 +32,7 @@ bash serve_bi_eager.sh
 eager 只建议用于小批、同步、已验证的 prompt 集；通用 BI 用
 `serve_bi_compiled.sh`。
 
-## 10.3 v1：在线 H1–H6
+## 13.3 v1：在线 H1–H6
 
 ```bash
 bash run_http_matrix.sh
@@ -44,7 +44,7 @@ BI=0、compiled 8192/PC1。
 产出：`results/http/bi_http_*.json` 与
 `results/http/analysis_tables.md`（表 E–H）。
 
-## 10.4 v1：长 prompt 缓存命中诊断
+## 13.4 v1：长 prompt 缓存命中诊断
 
 ```bash
 bash run_diag2.sh    # eager 1900 / 7600
@@ -53,7 +53,7 @@ bash run_diag3.sh    # eager / compiled 7584
 
 产出：`results/http/bi_long_probe*.json` 等。
 
-## 10.5 v2：批大小、TP、attention、re-feed
+## 13.5 v2：批大小、TP、attention、re-feed
 
 ```bash
 # 12 个配置的批大小/TP/attention/chunk/长 prompt 矩阵
@@ -80,7 +80,7 @@ python analyze_extra.py
 # -> results/extra/analysis_tables.md（表 I–L、Q）
 ```
 
-## 10.6 v2：32-prompt、并发、突发、长度
+## 13.6 v2：32-prompt、并发、突发、长度
 
 ```bash
 # 单次批量请求：逐 prompt 单独 vs 批内
@@ -110,7 +110,7 @@ python analyze_online_extra.py
 # -> results/http/concurrency/analysis_tables.md（表 M–P）
 ```
 
-## 10.7 判读标准
+## 13.7 判读标准
 
 | 字段 | 通过条件 |
 |---|---|
@@ -123,7 +123,7 @@ python analyze_online_extra.py
 
 任何“小于某个阈值”的判读都不算通过；本报告要求位模式相同。
 
-## 10.8 文件清单
+## 13.8 文件清单
 
 ### 脚本
 
@@ -184,9 +184,9 @@ python analyze_online_extra.py
 | `results/http/concurrency/*.json` | 32-prompt、并发、突发、混合、长度 |
 | `results/extra/analysis_tables.md` | 表 I–L、Q |
 | `results/http/concurrency/analysis_tables.md` | 表 M–P |
-| `results/tier1/*.json` | 第 13 章四项机制检查的原始结果 |
+| `results/tier1/*.json` | 第 8 章四项机制检查的原始结果 |
 | `results/tier1/analysis_tables.md` | 表 T1、T1b、T2、T3、T4 |
-| `results/tier2/*.json` | 第 14 章的配置扫描、逐算子与逐层打点结果 |
+| `results/tier2/*.json` | 第 9 章的配置扫描、逐算子与逐层打点结果 |
 | `results/tier2/analysis_tables.md` | 表 T5–T11 |
 
 ### 文档
@@ -200,18 +200,18 @@ python analyze_online_extra.py
 | `docs/04_offline_results.md` | v1 离线 |
 | `docs/05_online_results.md` | v1 在线 |
 | `docs/06_boundary_results.md` | v2 边界 |
-| `docs/07_findings.md` | F1–F13 |
-| `docs/08_deployment.md` | 部署 |
-| `docs/09_limitations.md` | 局限 |
-| `docs/10_reproduction.md` | 本文 |
-| `docs/11_references.md` | 参考 |
-| `docs/12_sglang_results.md` | SGLang 复现 |
-| `docs/13_mechanism_checks.md` | 机制验证（第 13 章） |
-| `docs/14_kernel_checks.md` | 第二档：覆盖面、tile 扫描、逐层定位（第 14 章） |
+| `docs/07_sglang_results.md` | SGLang 复现 |
+| `docs/08_mechanism_checks.md` | 机制验证（第 8 章） |
+| `docs/09_kernel_checks.md` | 第二档：覆盖面、tile 扫描、逐层定位（第 9 章） |
+| `docs/10_findings.md` | F1–F13 |
+| `docs/11_deployment.md` | 部署 |
+| `docs/12_limitations.md` | 局限 |
+| `docs/13_reproduction.md` | 本文 |
+| `docs/14_references.md` | 参考 |
 | `docs/appendix_a_logs.md` | 日志 |
 | `docs/appendix_b_precision.md` | 精度 |
 
-## 10.9 SGLang 复现
+## 13.9 SGLang 复现
 
 SGLang 装在独立 venv 里，不覆盖 vLLM 环境。
 
@@ -258,9 +258,9 @@ python3 sglang/analyze_sglang.py sglang/results
 
 脚本里的路径都用 `$HOME`，换机器时只需保证模型与 venv 在同样的相对位置。
 
-## 10.10 图表复现
+## 13.10 图表复现
 
-站内 9 张图都由 `scripts/figures/` 下的脚本从原始 JSON 现算，不复用表格里的
+站内 13 张图都由 `scripts/figures/` 下的脚本从原始 JSON 现算，不复用表格里的
 手抄数字。
 
 ```bash
@@ -277,13 +277,17 @@ done
 |---|---|---|
 | `fig_overview.py` | 图 1（首页） | `results/http/concurrency/*.json`、`sglang/results/*.json` |
 | `fig_method.py` | 图 2（第 1 章） | `results/extra/bi_batchall_offline_eager.json`、`bi_diag_bs256_pc0.json` |
-| `fig_env.py` | 图 3（第 2 章） | 第 2、12 章的版本表 |
+| `fig_env.py` | 图 3（第 2 章） | 第 2、7 章的版本表 |
 | `fig_v1_matrix.py` | 图 4（第 4 章） | `results/bi_*.json` |
 | `fig_v1_online.py` | 图 5（第 5 章） | `results/http/bi_http_*.json` |
 | `fig_boundary.py` | 图 6（第 6 章） | `results/extra/bi_diag_*.json`、`bi_refeed_*.json`、`results/http/concurrency/bi_http_len_*.json` |
-| `fig_mechanism.py` | 图 7（第 7 章） | 第 4–6、12 章的结论 |
-| `fig_sgl_offline.py` | 图 8（第 12 章） | `sglang/results/*batchall*.json` |
-| `fig_sgl_online.py` | 图 9（第 12 章） | `sglang/results/*_http_http.json` |
+| `fig_sgl_offline.py` | 图 7（第 7 章） | `sglang/results/*batchall*.json` |
+| `fig_sgl_online.py` | 图 8（第 7 章） | `sglang/results/*_http_http.json` |
+| `fig_ar_sensitivity.py` | 图 9（第 8 章） | `results/tier1/bi_ar_*.json` |
+| `fig_engine_checks.py` | 图 10（第 8 章） | `results/tier1/bi_nccl_*.json`、`bi_tail_scan.json`、`bi_bucket_scan*.json` |
+| `fig_bi_coverage.py` | 图 11（第 9 章） | `results/tier2/bi_bi_coverage.json`、`bi_pynccl_*.json` |
+| `fig_layer_probe.py` | 图 12（第 9 章） | `results/tier2/bi_layer_map.json` |
+| `fig_mechanism.py` | 图 13（第 10 章） | 第 4–6、7 章的结论 |
 
 `figstyle.py` 统一了字号、配色与导出流程：每张图同时写出 SVG、PDF 与
 600 dpi PNG，多面板图在导出前跑一遍面板对齐检查，导出后对 PDF 跑文字与线段
@@ -293,7 +297,7 @@ done
 
 每张图旁边的 CSV 是画图时取用的数值，方便核对图与表是否一致。
 
-## 10.11 机制验证（第 13 章）
+## 13.11 机制验证（第 8 章）
 
 四项检查按顺序跑，前两项不需要模型，后两项各需要一次 30B 加载：
 
@@ -326,7 +330,7 @@ all-reduce 探针的输出里 `n_diff` 是位模式不同的元素数，`total` 
 总数；`--tests` 可以只跑 `reshape`、`pad`、`threshold`、`sparse`、`pos` 中的
 某几项。
 
-## 10.12 第二档（第 14 章）
+## 13.12 第二档（第 9 章）
 
 前五项不加载模型，最后一项要加载一次 30B：
 
@@ -364,7 +368,7 @@ python3 analyze_tier2.py results/tier2
 写到 `<dump>/<tag>/rank0/` 下，一个模块调用一个 `.pt`。`analyze_layer_dump.py`
 按调用顺序比两份，`extract_layer_map.py` 只保留 DecoderLayer 的第 0 行。
 
-## 10.13 生成 SHA256
+## 13.13 生成 SHA256
 
 ```bash
 cd bi_validation

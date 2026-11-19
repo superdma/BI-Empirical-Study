@@ -1,6 +1,6 @@
-# 13. 机制验证：先做不需要加载模型的检查
+# 8. 机制验证：先做不需要加载模型的检查
 
-第 7 章给出的解释是：请求形状决定 kernel 的 tile/split 配置，配置决定浮点归约
+第 10 章给出的解释是：请求形状决定 kernel 的 tile/split 配置，配置决定浮点归约
 顺序，归约顺序决定 logits 的末位。这条链条上有三件事可以单独证伪：跨卡归约、
 NCCL 算法选择、CUDA graph 的形状分桶。本章先测这三件，再加一项前缀缓存的
 tail 扫描。四项都不需要改 vLLM 源码，加起来不到十分钟 GPU 时间。
@@ -15,7 +15,7 @@ tail 扫描。四项都不需要改 vLLM 源码，加起来不到十分钟 GPU �
 - compiled 在 31/32/33、63/64/65、127/128/129、255/256/257 上全是 0.0，
   eager 只在 256 之后失败，256 与 graph 的分桶边界无关。
 
-## 13.1 方法
+## 8.1 方法
 
 | 检查 | 脚本 | 是否加载模型 | 墙钟时间 |
 |---|---|---|---|
@@ -37,11 +37,11 @@ all-reduce 探针有三个设计上的注意点：
 3. **H 取 2048**，与 Qwen3-30B-A3B 的 hidden size 一致，bf16 下每行 4096
    字节，批大小 1..300 对应的消息大小与引擎里 decode 阶段同量级。
 
-## 13.2 跨卡归约对消息大小敏感，对形状不敏感
+## 8.2 跨卡归约对消息大小敏感，对形状不敏感
 
 <figure class="bi-figure" markdown="span">
   ![NCCL all-reduce 的形状敏感性探针结果](assets/figs/fig_ar_sensitivity.png)
-  <figcaption>图 10　不加载模型的 all-reduce 探针。a：批大小每加 1，前面那些
+  <figcaption>图 9　不加载模型的 all-reduce 探针。a：批大小每加 1，前面那些
   没变的行里有多少元素改了位（299 步的计数）；b：bs=1 单独跑与和更多请求
   同批跑时，第 0 行的位差元素数。虚线是用全正数据重复 b 的对照。</figcaption>
 </figure>
@@ -72,7 +72,7 @@ all-reduce 探针有三个设计上的注意点：
 全正数据的对照排掉了另一种解释：换成没有正负抵消的输入，行 0 仍有 447 个
 元素改变，所以这些位差不是正负抵消放大出来的。
 
-## 13.3 钉死 NCCL 算法，vLLM 的失败没有跟着消失
+## 8.3 钉死 NCCL 算法，vLLM 的失败没有跟着消失
 
 | NCCL_ALGO | 32 条位级一致 | token id 变化 | 最大 \|Δlogprob\| | 重复批不一致 |
 |---|---|---|---|---|
@@ -80,7 +80,7 @@ all-reduce 探针有三个设计上的注意点：
 | allreduce:ring | 2/32 | 10 | 2.723 | 1 |
 | allreduce:tree | 2/32 | 10 | 2.723 | 0 |
 
-13.2 的探针说 bs=1 与 bs=2 的归约结果就该不同，可第 6 章的表 I 里 eager 在
+8.2 的探针说 bs=1 与 bs=2 的归约结果就该不同，可第 6 章的表 I 里 eager 在
 bs≤255 与 bs=1 之间是 0.0。两边不可能同时是引擎的全部真相。启动日志显示
 这批服务用的是 pynccl（`disable_custom_all_reduce=True`、
 `vLLM is using nccl==2.28.9`），通信器由 vLLM 自己建立，通道数和缓冲注册方式
@@ -94,18 +94,18 @@ bs≤255 与 bs=1 之间是 0.0。两边不可能同时是引擎的全部真相�
 NCCL 的算法选择不是 255/256 那条边界的原因，但它是这台机器上真实存在的形状
 敏感源。在别的引擎配置下（例如 SGLang TP=4）它可能就是主要来源。
 
-!!! note "第 14 章更正"
+!!! note "第 9 章更正"
 
     本节的三行“不指定 / allreduce:ring / allreduce:tree”其实是同一套设置。
     BI 在 worker 初始化时会无条件把 `NCCL_ALGO` 写成 `allreduce:tree`，位置
     在 `init_distributed_environment()` 之前，所以外部设的 ring 被覆盖掉了。
-    1/32 与 2/32 的差别是重复运行的噪声。第 14 章用引擎自己的 pynccl 通信器
+    1/32 与 2/32 的差别是重复运行的噪声。第 9 章用引擎自己的 pynccl 通信器
     把这件事重做了一遍：BI 的环境下 299 步一步都不改位，只有让 NCCL 自己挑
     算法时 255 与 256 才分家。
 
-## 13.4 缓存命中的分叉不随 tail 变长
+## 8.4 缓存命中的分叉不随 tail 变长
 
-第 7 章 F4 的解释是：命中缓存后只剩很短的 tail 需要 prefill，tail 的 chunk
+第 10 章 F4 的解释是：命中缓存后只剩很短的 tail 需要 prefill，tail 的 chunk
 形状与完整 prefill 不同。这个说法隐含“tail 越长越容易分叉”。扫描的结果不
 支持这个单调性。
 
@@ -126,11 +126,11 @@ NCCL 的算法选择不是 255/256 那条边界的原因，但它是这台机器
 立，得写成“某些 tail 长度会命中不同的 chunk 形状”。强度 A（现象），B（几何
 解释）。
 
-## 13.5 256 不是 CUDA graph 的分桶边界
+## 8.5 256 不是 CUDA graph 的分桶边界
 
 <figure class="bi-figure" markdown="span">
   ![引擎层面的三项检查](assets/figs/fig_engine_checks.png)
-  <figcaption>图 11　a：钉死 NCCL 算法后的 32 条 prompt；b：缓存命中与 fresh
+  <figcaption>图 10　a：钉死 NCCL 算法后的 32 条 prompt；b：缓存命中与 fresh
   的差异随 tail 长度；c：compiled 与 eager 在批大小上的差异，虚线标出 eager
   的 255/256 分界。</figcaption>
 </figure>
@@ -149,7 +149,7 @@ compiled 的一致性来自桶内 padding 把形状钉死，eager 应当在同�
 
 这一组同时补上了 compiled 在 31..129 这段此前没测过的批大小：全部 0.0。
 
-## 13.6 排除之后，还剩下什么
+## 8.6 排除之后，还剩下什么
 
 三个候选解释被削弱或排除：
 
@@ -160,23 +160,23 @@ compiled 的一致性来自桶内 padding 把形状钉死，eager 应当在同�
 | tail 越长，缓存命中越容易分叉 | 排除：只有 256 与 448 分叉，320/384/512 一致 |
 | 模型侧 kernel 按形状选 tile/split | 仍然站得住，且是唯一还没被直接测量的 |
 
-跨卡归约这条线仍然有用：它解释了 TP=2 在这台机器上为什么安全（13.2 里
-TP=2 的所有比较都是 0），也和第 12 章的两件事对得上：SGLang 要把 TP=4 换成
+跨卡归约这条线仍然有用：它解释了 TP=2 在这台机器上为什么安全（8.2 里
+TP=2 的所有比较都是 0），也和第 7 章的两件事对得上：SGLang 要把 TP=4 换成
 PP=4 才通过，要把算法钉成 `allreduce:tree` 才让 bf16 归约稳定。
 
 下一步该做的是第二档实验：把 BI 覆盖后的 `matmul_kernel_persistent` 与
 attention/MoE kernel 的 tile 配置打印出来，直接看 256 前后换了什么。那需要
 改 vLLM 源码或加日志，不在本章范围内。
 
-## 13.7 本章的局限
+## 8.7 本章的局限
 
 - all-reduce 探针用的是合成数据与单节点 4 卡，没有覆盖 NVLink、多机、
   `NCCL_PROTO` 的组合；
-- 探针里 torch 默认的通信器与 vLLM 自建的 pynccl 通信器配置不同，13.3 的
+- 探针里 torch 默认的通信器与 vLLM 自建的 pynccl 通信器配置不同，8.3 的
   矛盾没有解决；
 - tail 扫描只用了一种基座长度（6000 token）与一种 tail 文本；换基座长度后
   分叉点大概率会移动，本章只证明“不单调”；
 - bucket 扫描只覆盖到 bs=257，更大的批（以及 prefill 与 decode 混合的批）
   没有测。
 
-复现命令与脚本见[复现与文件清单](10_reproduction.md)。
+复现命令与脚本见[复现与文件清单](13_reproduction.md)。

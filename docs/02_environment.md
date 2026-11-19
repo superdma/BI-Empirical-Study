@@ -27,7 +27,7 @@ A6000 是 SM86，不是 Hopper/Blackwell。它没有 TMA、没有 FP8 tensor cor
 <figure class="bi-figure" markdown="span">
   ![vLLM 与 SGLang 两套环境的分层对照](assets/figs/fig_env.png)
   <figcaption>图 3　同一台机器上的两套环境。引擎、框架与 CUDA 版本互不覆盖，
-  驱动与硬件共用；底部是决定 kernel 路径的硬件条件。第 12 章的 SGLang 实验
+  驱动与硬件共用；底部是决定 kernel 路径的硬件条件。第 7 章的 SGLang 实验
   就装在这套并行的环境里。</figcaption>
 </figure>
 
@@ -112,16 +112,26 @@ A6000 是 **Ampere（SM86）**，不在 Ada/Hopper/Blackwell 的 tuned-table 名
 
 - A6000 名义上满足 CC≥8.0，vLLM 也会初始化 BI；
 - 但它没有官方 tuned matmul 表，实际走的是另一条路径；
-- eager 下 fused kernel 的形状选择没有被完全固定，于是出现 32-prompt 的
-  1/32、bs256 的失败；
+- eager 下出现了 32-prompt 的 1/32 与 bs256 的失败（当时把原因归到 kernel
+  按形状选 tile，第 9 章否掉了这条）；
 - compiled 路径在本次所有形状上一致，但它是“实测通过”，不是“官方 tuned
   路径”。
 
 这一条文档说明：**A6000 不是 BI 的“验证过的黄金平台”，
-只是“满足最低 CC 要求、能开启”的平台。** 本次失败集中在共享的线性层/
-matmul 路径（换 attention、MoE、稠密模型都复现），也与“没有 tuned matmul
-表、kernel 按形状动态选 tile”相符。官方调优覆盖的平台是 Ada/Hopper/Blackwell（例如 L40S、H100、
-B200）。
+只是“满足最低 CC 要求、能开启”的平台。** 官方调优覆盖的平台是
+Ada/Hopper/Blackwell（例如 L40S、H100、B200）。
+
+!!! note "第 9 章更正"
+
+    “没有 tuned matmul 表、kernel 按形状动态选 tile”这条推断被第 9 章直接
+    测量否掉了。vLLM 0.23.0 在 SM86 上根本不用这张表：BI 把
+    `mm/addmm/matmul/linear` 换成 Triton 常驻内核，配置是按 dtype 写死的
+    常量，M 从 1 到 512 不换；MoE 在 BI 下同样是常量。单个算子单独跑，255 与
+    256 逐位相同。差异只在引擎里出现，第一次可见的位置是某一层
+    input_layernorm 的输出，而该层输入逐位相同。
+
+    所以“A6000 不在官方 tuned 平台”仍然成立，但它解释的是“为什么必须实测”，
+    不是 255/256 那条边界。
 
 参考：<https://docs.vllm.ai/en/latest/features/batch_invariance>
 
@@ -135,4 +145,4 @@ B200）。
 - 没有 FP8/INT8 量化；
 - 没有 CUDA graph 之外的图捕获后端。
 
-这些都在[第 9 章](09_limitations.md)中列出。
+这些都在[第 12 章](12_limitations.md)中列出。

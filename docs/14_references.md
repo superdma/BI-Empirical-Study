@@ -1,8 +1,8 @@
-# 11. 参考资料
+# 14. 参考资料
 
 以下链接均为公开可访问的官方文档、源码或模型卡；版本以 2026-11-17 为准。
 
-## 11.1 vLLM 官方
+## 14.1 vLLM 官方
 
 1. Batch Invariance 文档（latest）
    <https://docs.vllm.ai/en/latest/features/batch_invariance>
@@ -25,7 +25,7 @@
 6. vLLM RL 示例中的 BI 用法
    <https://docs.vllm.ai/en/latest/examples/rl/batch_invariance>
 
-## 11.2 模型
+## 14.2 模型
 
 7. Qwen3-30B-A3B 模型卡
    <https://huggingface.co/Qwen/Qwen3-30B-A3B>
@@ -36,7 +36,7 @@
 9. Qwen3-0.6B 模型卡（本文的稠密对照）
    <https://huggingface.co/Qwen/Qwen3-0.6B>
 
-## 11.3 运行时与硬件
+## 14.3 运行时与硬件
 
 10. PyTorch `torch.compile` 文档
     <https://docs.pytorch.org/docs/stable/torch.compiler.html>
@@ -53,7 +53,7 @@
 14. NVIDIA CUDA GPU 计算能力表
     <https://developer.nvidia.com/cuda-gpus>
 
-## 11.4 本文内部资料
+## 14.4 本文内部资料
 
 | 内容 | 路径 |
 |---|---|
@@ -66,8 +66,11 @@
 | 原始在线 JSON | `../results/http/*.json` |
 | 扩展 JSON | `../results/extra/*.json` |
 | 并发/长度 JSON | `../results/http/concurrency/*.json` |
+| 第 8 章机制检查 JSON | `../results/tier1/*.json` |
+| 第 9 章算子与打点 JSON | `../results/tier2/*.json` |
+| SGLang 原始结果 | `../sglang/results/*.json` |
 
-## 11.5 引用说明
+## 14.5 引用说明
 
 - 文档中的版本号、限制和实现细节以官方页面为准；如果上游更新，以新页面为准。
 - 本文的实测数字只对应第 2 章的软件/硬件组合，不应直接外推到其他版本或 GPU。

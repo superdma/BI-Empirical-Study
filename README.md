@@ -35,7 +35,7 @@ a v1 archive; its target-only conclusions were superseded.
 
 The same suites were re-run on SGLang 0.5.6 (torch 2.9.1+cu128, FlashInfer
 0.5.3) with `--enable-deterministic-inference`; see
-[`docs/12_sglang_results.md`](docs/12_sglang_results.md).
+[`docs/07_sglang_results.md`](docs/07_sglang_results.md).
 
 - With TP=4 the deterministic mode matched only 7/32 prompts (7 of them also
   changed token ids). Disabling custom all-reduce, disabling CUDA graphs, or
@@ -84,7 +84,7 @@ hosting and the repository privacy notes.
 |---|---|
 | `docs/00_index.md` | Document collection index and one-page conclusions |
 | `docs/06_boundary_results.md` | v2 boundary experiments (tables I–Q) |
-| `docs/08_deployment.md` | Deployment decision tree and verification checklist |
+| `docs/11_deployment.md` | Deployment decision tree and verification checklist |
 | `bi_test_qwen3_30b.py` | v1 offline BI harness |
 | `compare_bi.py` | Bitwise comparison of two offline result JSONs |
 | `run_all_bi.sh` | v1 compiled-mode matrix + BI-off control |

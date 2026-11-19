@@ -80,7 +80,7 @@ def main():
     for (x, w, text) in items:
         box(ax, x, 5.6, w, 5.6, text, "white", C["grid"], size=6.0)
 
-    ax.text(1, 2.8, "强度：现象为 A；第 14 章逐项测过 tile 与 split 都没有变，"
+    ax.text(1, 2.8, "强度：现象为 A；第 9 章逐项测过 tile 与 split 都没有变，"
             "差异位置在某一层 norm 的输出（A），触发点尚未定位（C）。",
             fontsize=6.4, color=C["muted"])
     ax.text(1, 0.7, "这一链条同时覆盖跨 attention 后端、跨 MoE/稠密模型、跨并行方式的失败。",

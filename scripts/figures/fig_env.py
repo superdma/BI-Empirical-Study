@@ -1,6 +1,6 @@
 """Environment schematic: the two stacks share hardware, not versions.
 
-All values come from docs/02_environment.md and docs/12_sglang_results.md.
+All values come from docs/02_environment.md and docs/07_sglang_results.md.
 """
 import os
 import sys

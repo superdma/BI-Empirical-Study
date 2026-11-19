@@ -13,7 +13,7 @@ description: Qwen3-30B-A3B 在 4×RTX A6000 上的批次不变性实测
 
 [一页结论](00_index.md){ .md-button .md-button--primary }
 [看边界实验](06_boundary_results.md){ .md-button }
-[部署建议](08_deployment.md){ .md-button }
+[部署建议](11_deployment.md){ .md-button }
 
 </div>
 
@@ -45,7 +45,7 @@ description: Qwen3-30B-A3B 在 4×RTX A6000 上的批次不变性实测
   ![四个配置在离线与在线口径下的位级一致条数](assets/figs/fig_overview.png)
   <figcaption>图 1　四个配置在两种口径下的位级一致条数。左：离线 32 条 prompt
   单独跑与同批跑的比较；右：在线 32 路并发与顺序基线的比较。条内绿色为一致
-  条数，灰色为不一致条数。数据来自第 4、5、12 章的原始 JSON。</figcaption>
+  条数，灰色为不一致条数。数据来自第 4、5、7 章的原始 JSON。</figcaption>
 </figure>
 
 ## 先看结论
@@ -55,10 +55,12 @@ description: Qwen3-30B-A3B 在 4×RTX A6000 上的批次不变性实测
 eager 模式并非“开了 `VLLM_BATCH_INVARIANT=1` 就成立”，它的 BI 只在很小、
 很窄的形状内有效；32 条普通 prompt 中只有那条 5-token target 一致。
 
-另一个背景是：A6000 是 Ampere（SM86），而 vLLM 官方的 tuned matmul 表只覆盖
-Ada / Hopper / Blackwell。它名义上满足 CC≥8.0，却不在官方 tuned 路径里。
-这与“换 attention 后端、换 MoE 后端、甚至换稠密模型都不能消除 eager 的
-形状相关失败”相符。
+A6000 是 Ampere（SM86）。vLLM 官方的 tuned matmul 表只覆盖 Ada / Hopper /
+Blackwell，A6000 不在其中：它满足最低 CC 要求、能开 BI，却不是官方调优过的
+平台。第 9 章把这一点测清楚了——SM86 上 BI 根本不用那张表，而是把线性层换成
+Triton 常驻内核，配置是常量。换 attention 后端、换 MoE 后端、换稠密模型都
+不能消除 eager 的形状相关失败，是因为它们共享同一套 BI 覆盖，而差异并不发生
+在任何被覆盖的算子上。
 
 !!! warning "v2 更正声明"
 
@@ -80,7 +82,7 @@ Ada / Hopper / Blackwell。它名义上满足 CC≥8.0，却不在官方 tuned �
 SGLang 的确定性开关在张量并行下只能消掉一部分差异，把 TP 换成流水线并行
 （跨卡不做归约）之后才真正成立。两个引擎的 decode 与 re-feed 都不一致。
 
-[打开 SGLang 复现实验 →](12_sglang_results.md)
+[打开 SGLang 复现实验 →](07_sglang_results.md)
 
 ## 从哪一篇开始
 
@@ -103,28 +105,36 @@ SGLang 的确定性开关在张量并行下只能消掉一部分差异，把 TP 
 </div>
 
 <div class="card" markdown>
-<p class="card-title" markdown>:material-lightbulb-on-outline: 要理解原因</p>
+<p class="card-title" markdown>:material-swap-horizontal: 要换推理引擎</p>
 
-F1–F13：每条发现都给出事实、证据与解释强度。
+SGLang 0.5.6 的复现：为什么 TP=4 不够、PP=4 才成立。
 
-[打开关键发现 →](07_findings.md){ .card-link }
+[打开 SGLang 复现 →](07_sglang_results.md){ .card-link }
 </div>
 
 <div class="card" markdown>
 <p class="card-title" markdown>:material-magnify: 要弄清原因</p>
 
-第 13 章的四项检查：跨卡归约确实随消息大小变位，但 NCCL 算法与 graph 分桶
+第 8 章的四项检查：跨卡归约确实随消息大小变位，但 NCCL 算法与 graph 分桶
 都不是那条 256 边界。
 
-[打开机制验证 →](13_mechanism_checks.md){ .card-link }
+[打开机制验证 →](08_mechanism_checks.md){ .card-link }
 </div>
 
 <div class="card" markdown>
 <p class="card-title" markdown>:material-chip: 要追到算子</p>
 
-第 14 章：BI 替换了哪些算子、tile 配置扫一遍、逐层定位到第一次位差。
+第 9 章：BI 替换了哪些算子、tile 配置扫一遍、逐层定位到第一次位差。
 
-[打开算子与配置打点 →](14_kernel_checks.md){ .card-link }
+[打开算子与配置打点 →](09_kernel_checks.md){ .card-link }
+</div>
+
+<div class="card" markdown>
+<p class="card-title" markdown>:material-lightbulb-on-outline: 要读发现清单</p>
+
+F1–F13：每条发现都给出事实、证据与解释强度。
+
+[打开关键发现 →](10_findings.md){ .card-link }
 </div>
 
 <div class="card" markdown>
@@ -132,15 +142,7 @@ F1–F13：每条发现都给出事实、证据与解释强度。
 
 推荐配置、固定编译产物、发布前逐 prompt 验证清单。
 
-[打开部署建议 →](08_deployment.md){ .card-link }
-</div>
-
-<div class="card" markdown>
-<p class="card-title" markdown>:material-swap-horizontal: 要换推理引擎</p>
-
-SGLang 0.5.6 的复现：为什么 TP=4 不够、PP=4 才成立。
-
-[打开 SGLang 复现 →](12_sglang_results.md){ .card-link }
+[打开部署建议 →](11_deployment.md){ .card-link }
 </div>
 
 </div>
@@ -154,7 +156,7 @@ SGLang 0.5.6 的复现：为什么 TP=4 不够、PP=4 才成立。
 - **范围**：离线 `LLM.generate` 与在线 HTTP 服务都测；同一进程内、跨 warm-cache
   进程、32 路并发、突发、长 prompt、prefix cache 都覆盖。
 
-想看完整实验矩阵和原始 JSON，请从[复现与文件清单](10_reproduction.md)进入。
+想看完整实验矩阵和原始 JSON，请从[复现与文件清单](13_reproduction.md)进入。
 
 ## 结论
 
