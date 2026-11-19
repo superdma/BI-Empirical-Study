@@ -94,6 +94,15 @@ bs≤255 与 bs=1 之间是 0.0。两边不可能同时是引擎的全部真相�
 NCCL 的算法选择不是 255/256 那条边界的原因，但它是这台机器上真实存在的形状
 敏感源。在别的引擎配置下（例如 SGLang TP=4）它可能就是主要来源。
 
+!!! note "第 14 章更正"
+
+    本节的三行“不指定 / allreduce:ring / allreduce:tree”其实是同一套设置。
+    BI 在 worker 初始化时会无条件把 `NCCL_ALGO` 写成 `allreduce:tree`，位置
+    在 `init_distributed_environment()` 之前，所以外部设的 ring 被覆盖掉了。
+    1/32 与 2/32 的差别是重复运行的噪声。第 14 章用引擎自己的 pynccl 通信器
+    把这件事重做了一遍：BI 的环境下 299 步一步都不改位，只有让 NCCL 自己挑
+    算法时 255 与 256 才分家。
+
 ## 13.4 缓存命中的分叉不随 tail 变长
 
 第 7 章 F4 的解释是：命中缓存后只剩很短的 tail 需要 prefill，tail 的 chunk

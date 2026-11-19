@@ -1,0 +1,293 @@
+{
+ "device": "NVIDIA RTX A6000",
+ "rows": [
+  {
+   "shape": "qkv\uff08\u6bcf\u5361\uff09",
+   "K": 2048,
+   "N": 1280,
+   "M": 1,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "qkv\uff08\u6bcf\u5361\uff09",
+   "K": 2048,
+   "N": 1280,
+   "M": 63,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "qkv\uff08\u6bcf\u5361\uff09",
+   "K": 2048,
+   "N": 1280,
+   "M": 64,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "qkv\uff08\u6bcf\u5361\uff09",
+   "K": 2048,
+   "N": 1280,
+   "M": 96,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "qkv\uff08\u6bcf\u5361\uff09",
+   "K": 2048,
+   "N": 1280,
+   "M": 127,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "qkv\uff08\u6bcf\u5361\uff09",
+   "K": 2048,
+   "N": 1280,
+   "M": 128,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "qkv\uff08\u6bcf\u5361\uff09",
+   "K": 2048,
+   "N": 1280,
+   "M": 129,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "qkv\uff08\u6bcf\u5361\uff09",
+   "K": 2048,
+   "N": 1280,
+   "M": 192,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "qkv\uff08\u6bcf\u5361\uff09",
+   "K": 2048,
+   "N": 1280,
+   "M": 255,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "qkv\uff08\u6bcf\u5361\uff09",
+   "K": 2048,
+   "N": 1280,
+   "M": 256,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "qkv\uff08\u6bcf\u5361\uff09",
+   "K": 2048,
+   "N": 1280,
+   "M": 257,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "qkv\uff08\u6bcf\u5361\uff09",
+   "K": 2048,
+   "N": 1280,
+   "M": 300,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "o_proj",
+   "K": 2048,
+   "N": 2048,
+   "M": 1,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "o_proj",
+   "K": 2048,
+   "N": 2048,
+   "M": 63,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "o_proj",
+   "K": 2048,
+   "N": 2048,
+   "M": 64,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "o_proj",
+   "K": 2048,
+   "N": 2048,
+   "M": 96,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "o_proj",
+   "K": 2048,
+   "N": 2048,
+   "M": 127,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "o_proj",
+   "K": 2048,
+   "N": 2048,
+   "M": 128,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "o_proj",
+   "K": 2048,
+   "N": 2048,
+   "M": 129,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "o_proj",
+   "K": 2048,
+   "N": 2048,
+   "M": 192,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "o_proj",
+   "K": 2048,
+   "N": 2048,
+   "M": 255,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "o_proj",
+   "K": 2048,
+   "N": 2048,
+   "M": 256,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "o_proj",
+   "K": 2048,
+   "N": 2048,
+   "M": 257,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "o_proj",
+   "K": 2048,
+   "N": 2048,
+   "M": 300,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "lm_head",
+   "K": 2048,
+   "N": 151936,
+   "M": 1,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "lm_head",
+   "K": 2048,
+   "N": 151936,
+   "M": 63,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "lm_head",
+   "K": 2048,
+   "N": 151936,
+   "M": 64,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "lm_head",
+   "K": 2048,
+   "N": 151936,
+   "M": 96,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "lm_head",
+   "K": 2048,
+   "N": 151936,
+   "M": 127,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "lm_head",
+   "K": 2048,
+   "N": 151936,
+   "M": 128,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "lm_head",
+   "K": 2048,
+   "N": 151936,
+   "M": 129,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "lm_head",
+   "K": 2048,
+   "N": 151936,
+   "M": 192,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "lm_head",
+   "K": 2048,
+   "N": 151936,
+   "M": 255,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "lm_head",
+   "K": 2048,
+   "N": 151936,
+   "M": 256,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "lm_head",
+   "K": 2048,
+   "N": 151936,
+   "M": 257,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  },
+  {
+   "shape": "lm_head",
+   "K": 2048,
+   "N": 151936,
+   "M": 300,
+   "row0_diff": 0,
+   "row0_max": 0.0
+  }
+ ]
+}

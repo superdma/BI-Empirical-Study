@@ -87,6 +87,7 @@ nav:
       - v2 边界结果: 06_boundary_results.md
       - SGLang 复现实验: 12_sglang_results.md
       - 机制验证: 13_mechanism_checks.md
+      - 算子与配置打点: 14_kernel_checks.md
   - 结论:
       - 关键发现: 07_findings.md
       - 部署建议: 08_deployment.md

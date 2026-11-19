@@ -1,0 +1,228 @@
+{
+ "rows": [
+  {
+   "kv_len": 11,
+   "n_seq": 1,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 11,
+   "n_seq": 64,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 11,
+   "n_seq": 128,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 11,
+   "n_seq": 192,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 11,
+   "n_seq": 255,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 11,
+   "n_seq": 256,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 11,
+   "n_seq": 257,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 11,
+   "n_seq": 300,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 16,
+   "n_seq": 1,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 16,
+   "n_seq": 64,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 16,
+   "n_seq": 128,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 16,
+   "n_seq": 192,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 16,
+   "n_seq": 255,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 16,
+   "n_seq": 256,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 16,
+   "n_seq": 257,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 16,
+   "n_seq": 300,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 31,
+   "n_seq": 1,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 31,
+   "n_seq": 64,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 31,
+   "n_seq": 128,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 31,
+   "n_seq": 192,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 31,
+   "n_seq": 255,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 31,
+   "n_seq": 256,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 31,
+   "n_seq": 257,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 31,
+   "n_seq": 300,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 32,
+   "n_seq": 1,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 32,
+   "n_seq": 64,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 32,
+   "n_seq": 128,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 32,
+   "n_seq": 192,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 32,
+   "n_seq": 255,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 32,
+   "n_seq": 256,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 32,
+   "n_seq": 257,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  },
+  {
+   "kv_len": 32,
+   "n_seq": 300,
+   "row0_diff": 0,
+   "elems": 1024,
+   "max": 0.0
+  }
+ ]
+}

@@ -1,0 +1,301 @@
+{
+ "env": {
+  "model": "$HOME/models/Qwen3-30B-A3B",
+  "bi": "1",
+  "eager": true,
+  "tp": 4
+ },
+ "runs": {
+  "a256": {
+   "token_ids": [
+    12095,
+    13,
+    576,
+    6722,
+    315,
+    279,
+    3639,
+    15072
+   ],
+   "logprobs": [
+    -0.2558211088180542,
+    -0.5215257406234741,
+    -1.2674578428268433,
+    -0.15781757235527039,
+    -0.00226205843500793,
+    -1.100678563117981,
+    -0.22250151634216309,
+    -0.38762232661247253
+   ]
+  },
+  "b256": {
+   "token_ids": [
+    12095,
+    13,
+    576,
+    6722,
+    315,
+    279,
+    3639,
+    15072
+   ],
+   "logprobs": [
+    -0.2558211088180542,
+    -0.5215257406234741,
+    -1.2674578428268433,
+    -0.15781757235527039,
+    -0.00226205843500793,
+    -1.100678563117981,
+    -0.22250151634216309,
+    -0.38762232661247253
+   ]
+  },
+  "a255": {
+   "token_ids": [
+    12095,
+    13,
+    576,
+    6722,
+    315,
+    279,
+    3639,
+    15072
+   ],
+   "logprobs": [
+    -0.2558211088180542,
+    -0.5215257406234741,
+    -1.2674578428268433,
+    -0.15781757235527039,
+    -0.00226205843500793,
+    -1.012633204460144,
+    -0.23834344744682312,
+    -0.38764530420303345
+   ]
+  }
+ },
+ "pairs": {
+  "a256_vs_b256": {
+   "calls": 4340,
+   "files_changed": 0,
+   "first": null,
+   "changed": []
+  },
+  "a256_vs_a255": {
+   "calls": 4340,
+   "files_changed": 1028,
+   "first": {
+    "index": 2548,
+    "name": "RMSNorm",
+    "shape": [
+     256,
+     2048
+    ],
+    "n_diff": 25,
+    "elems": 2048,
+    "max_abs": 0.001953125
+   },
+   "changed": [
+    {
+     "index": 2548,
+     "name": "RMSNorm",
+     "n_diff": 25
+    },
+    {
+     "index": 2549,
+     "name": "QKVParallelLinear",
+     "n_diff": 179
+    },
+    {
+     "index": 2550,
+     "name": "Attention",
+     "n_diff": 321
+    },
+    {
+     "index": 2551,
+     "name": "RowParallelLinear",
+     "n_diff": 1092
+    },
+    {
+     "index": 2552,
+     "name": "Qwen3MoeAttention",
+     "n_diff": 1092
+    },
+    {
+     "index": 2553,
+     "name": "RMSNorm",
+     "n_diff": 437
+    },
+    {
+     "index": 2554,
+     "name": "FusedMoE",
+     "n_diff": 1251
+    },
+    {
+     "index": 2555,
+     "name": "Qwen3MoeSparseMoeBlock",
+     "n_diff": 1251
+    },
+    {
+     "index": 2556,
+     "name": "Qwen3MoeDecoderLayer",
+     "n_diff": 1251
+    },
+    {
+     "index": 2557,
+     "name": "RMSNorm",
+     "n_diff": 765
+    },
+    {
+     "index": 2558,
+     "name": "QKVParallelLinear",
+     "n_diff": 629
+    },
+    {
+     "index": 2559,
+     "name": "Attention",
+     "n_diff": 610
+    },
+    {
+     "index": 2560,
+     "name": "RowParallelLinear",
+     "n_diff": 1349
+    },
+    {
+     "index": 2561,
+     "name": "Qwen3MoeAttention",
+     "n_diff": 1349
+    },
+    {
+     "index": 2562,
+     "name": "RMSNorm",
+     "n_diff": 890
+    },
+    {
+     "index": 2563,
+     "name": "FusedMoE",
+     "n_diff": 1481
+    },
+    {
+     "index": 2564,
+     "name": "Qwen3MoeSparseMoeBlock",
+     "n_diff": 1481
+    },
+    {
+     "index": 2565,
+     "name": "Qwen3MoeDecoderLayer",
+     "n_diff": 1481
+    },
+    {
+     "index": 2566,
+     "name": "RMSNorm",
+     "n_diff": 1061
+    },
+    {
+     "index": 2567,
+     "name": "QKVParallelLinear",
+     "n_diff": 696
+    },
+    {
+     "index": 2568,
+     "name": "Attention",
+     "n_diff": 644
+    },
+    {
+     "index": 2569,
+     "name": "RowParallelLinear",
+     "n_diff": 1834
+    },
+    {
+     "index": 2570,
+     "name": "Qwen3MoeAttention",
+     "n_diff": 1834
+    },
+    {
+     "index": 2571,
+     "name": "RMSNorm",
+     "n_diff": 1182
+    },
+    {
+     "index": 2572,
+     "name": "FusedMoE",
+     "n_diff": 1562
+    },
+    {
+     "index": 2573,
+     "name": "Qwen3MoeSparseMoeBlock",
+     "n_diff": 1562
+    },
+    {
+     "index": 2574,
+     "name": "Qwen3MoeDecoderLayer",
+     "n_diff": 1562
+    },
+    {
+     "index": 2575,
+     "name": "RMSNorm",
+     "n_diff": 1279
+    },
+    {
+     "index": 2576,
+     "name": "QKVParallelLinear",
+     "n_diff": 746
+    },
+    {
+     "index": 2577,
+     "name": "Attention",
+     "n_diff": 835
+    },
+    {
+     "index": 2578,
+     "name": "RowParallelLinear",
+     "n_diff": 1733
+    },
+    {
+     "index": 2579,
+     "name": "Qwen3MoeAttention",
+     "n_diff": 1733
+    },
+    {
+     "index": 2580,
+     "name": "RMSNorm",
+     "n_diff": 1320
+    },
+    {
+     "index": 2581,
+     "name": "FusedMoE",
+     "n_diff": 1710
+    },
+    {
+     "index": 2582,
+     "name": "Qwen3MoeSparseMoeBlock",
+     "n_diff": 1710
+    },
+    {
+     "index": 2583,
+     "name": "Qwen3MoeDecoderLayer",
+     "n_diff": 1710
+    },
+    {
+     "index": 2584,
+     "name": "RMSNorm",
+     "n_diff": 1463
+    },
+    {
+     "index": 2585,
+     "name": "QKVParallelLinear",
+     "n_diff": 804
+    },
+    {
+     "index": 2586,
+     "name": "Attention",
+     "n_diff": 652
+    },
+    {
+     "index": 2587,
+     "name": "RowParallelLinear",
+     "n_diff": 1736
+    }
+   ]
+  }
+ }
+}

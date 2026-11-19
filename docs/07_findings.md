@@ -25,6 +25,15 @@ attention 的 tile/split 配置；MoE 的 `fused_moe_kernel` 也按 expert token
 A6000 是 Ampere（SM86），名义上满足 CC≥8.0，但不在 tuned 路径里。这解释了
 为什么“官方 tested model + 官方支持 CC”仍会在本机出现形状相关的失败。
 
+!!! note "第 14 章更正"
+
+    上面这段“按形状选 tile”的解释，在第 14 章被直接测量否掉了。vLLM 0.23.0
+    在 SM86 上根本不用 tuned matmul 表，而是把 `mm/addmm/matmul/linear`
+    换成 Triton 常驻内核，配置是常量；MoE 在 BI 下的配置也是常量，不开 BI
+    时的切换点里没有 256。单个算子单独跑 255 与 256 也全部逐位相同。现在
+    只能说：差异只在引擎里出现，第一次可见的位置是某一层 input_layernorm
+    的输出，起源还没定位到具体一次 kernel 启动。
+
 [第 13 章](13_mechanism_checks.md)用三个独立实验缩小了候选范围：把 NCCL
 算法钉死（`allreduce:ring` / `allreduce:tree`）不改变失败数量，CUDA graph
 的分桶边界（32/64/128）上 eager 也没有台阶，因此这两条解释被排除，剩下的
@@ -262,30 +271,34 @@ bf16 的归约对批大小不再敏感，这正是 SGLang 确定性模式在做�
 
 ## 机制总结（推断）
 
-一个自洽的解释是：
+原来给的解释是：BI 固定 matmul 的归约顺序，但内核仍按 M/N/K 选 tile，256
+跨过边界就换配置。第 14 章把这条拆开测，中间两步都被否掉了。现在能写的是
+一条更窄的链：
 
-1. BI 模式把线性层 matmul 的归约顺序固定，但固定实现本身仍是一个 Triton
-   persistent matmul kernel；启动日志里能看到
-   `Triton kernel JIT compilation during inference: matmul_kernel_persistent`；
-2. 官方文档说 tuned matmul table entries 只覆盖 Ada/Hopper/Blackwell；
-   A6000（Ampere）没有这张表，kernel 可能按运行时 M/N/K 动态选 tile 配置；
-3. 当形状跨过某个阈值（本机反复出现在 256 附近），tile/split 配置变化，
-   浮点归约顺序变化，logits 最后几位不同；
-4. 这能解释为什么换 attention 后端、关 chunked prefill、换 MoE 后端、甚至
-   换稠密模型都不能修复：它们共享线性层/matmul 路径；
-5. 贪心 argmax 多数时候不变，但接近平局时会翻 token；logprob 直接暴露差异；
-6. compiled 模式走另一套图/kernel 选择（可能把配置固定或融合掉），在本次
-   所有形状上保持一致。
+1. BI 在 SM86 上把 `mm/addmm/matmul/linear` 四条 dispatcher 换成 Triton
+   常驻内核，配置是常量，不随 M 变；MoE 的配置与 attention 的 `num_splits`
+   在 BI 下同样被钉住；
+2. BI 在 worker 初始化时把 NCCL 钉成 tree + Simple + 单通道，位置在通信器
+   创建之前，所以外部设 `NCCL_ALGO` 不会生效；
+3. 单个算子单独跑，255 与 256 逐位相同；引擎自带的 pynccl 在 BI 环境下
+   b=1 到 300 一步都不改位；
+4. 整机仍然在 256 上稳定偏离：同一批 256 跑两遍完全一致，与 255 的差异从
+   第 42 层 input_layernorm 的输出开始，而这一层的输入逐位相同；
+5. 所以差异不是某个 kernel 的 tile 配置，也不是跨卡归约，而是引擎在 256 条
+   时给这一层的执行上下文与 255 不同；具体是哪一次 kernel 启动，还没有测
+   出来；
+6. 放大方式不变：logits 末位差 → 个别 token 的 logprob 改变 → 接近平局时
+   翻 token。
 
-这个解释覆盖了跨 attention 后端、
-跨 MoE/稠密模型的失败，也比单因解释更符合证据；256 阈值又像一个
-matmul tile 的边界。
+这个链条仍然解释了“换 attention 后端、关 chunked prefill、换 MoE 后端都不能
+修复”：它们共享同一套 BI 覆盖，而问题不在被覆盖的那些算子里。
 
 <figure class="bi-figure" markdown="span">
   ![机制推断的因果链](assets/figs/fig_mechanism.png)
   <figcaption>图 7　上面这段解释的结构。两处标注分开说清 BI 覆盖了什么
-  （matmul 的归约顺序）与没覆盖什么（attention 的 split、MoE tile、TP 的
-  all-reduce、编译产物）；底部四个观测分别来自第 4–6 章与第 12 章。</figcaption>
+  （matmul 的归约顺序、attention 的 split、MoE 的配置）与没覆盖什么（TP 的
+  all-reduce、编译产物）；底部四个观测分别来自第 4–6 章与第 12 章。第 14 章
+  测过了“没覆盖”里最能解释 256 的那一格，结论写在该章 14.8。</figcaption>
 </figure>
 
 第 13 章排掉了三个替代解释：NCCL 的算法选择（钉死后失败照旧）、CUDA graph
@@ -293,6 +306,7 @@ matmul tile 的边界。
 同一章也测到跨卡归约本身确实随消息大小改变结果，只是它不是 eager 这条
 255/256 边界的来源。
 
-尚未证明的部分：具体是哪一个 kernel、哪一条启发式、哪一个 tile 参数。要回答
-需要 Nsight/逐 kernel 打点，或修改 vLLM 源码打印 `matmul_kernel_persistent`
-的配置选择，超出本次范围。
+尚未证明的部分：256 条时引擎里究竟哪一次 kernel 启动与 255 条不同。第 14 章
+把候选缩到了“某一层 norm 的输入相同、输出不同”，要到具体一行，需要抓 kernel
+的启动参数（CUPTI/nsys），或用带调试符号的 vLLM 源码看 `num_tokens` 有没有
+分支，这超出本次范围。

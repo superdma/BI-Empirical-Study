@@ -135,4 +135,4 @@ B200）。
 - 没有 FP8/INT8 量化；
 - 没有 CUDA graph 之外的图捕获后端。
 
-这些都在 [09_limitations.md](09_limitations.md) 中列出。
+这些都在[第 9 章](09_limitations.md)中列出。

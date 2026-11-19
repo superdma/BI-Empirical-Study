@@ -120,6 +120,14 @@ F1–F13：每条发现都给出事实、证据与解释强度。
 </div>
 
 <div class="card" markdown>
+<p class="card-title" markdown>:material-chip: 要追到算子</p>
+
+第 14 章：BI 替换了哪些算子、tile 配置扫一遍、逐层定位到第一次位差。
+
+[打开算子与配置打点 →](14_kernel_checks.md){ .card-link }
+</div>
+
+<div class="card" markdown>
 <p class="card-title" markdown>:material-rocket-launch-outline: 要直接上线</p>
 
 推荐配置、固定编译产物、发布前逐 prompt 验证清单。

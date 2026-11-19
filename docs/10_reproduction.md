@@ -161,6 +161,16 @@ python analyze_online_extra.py
 | `bi_bucket_scan.py` | CUDA graph bucket 边界的批大小扫描 |
 | `run_tier1.sh` | 上述四项按顺序跑一遍 |
 | `analyze_tier1.py` | 把四项结果渲染成表 T1–T4 |
+| `bi_bi_coverage.py` | BI 覆盖了哪些 aten 算子、tile 配置随 M 的扫描 |
+| `bi_matmul_shape.py` | 线性层单独跑：同一行在不同 M 下是否逐位相同 |
+| `bi_op_shape.py` | norm / silu / rotary / MoE 单独跑，含对齐对照 |
+| `bi_attn_shape.py` | 分页 decode attention 单独跑 |
+| `bi_pynccl_bench.py` | 用引擎自己的 pynccl 通信器重做 all-reduce 探针 |
+| `bi_layer_probe.py` | 引擎内逐层打点，驱动脚本 |
+| `bi_hook/sitecustomize.py` | 注入 worker 进程的模块级捕获 |
+| `analyze_layer_dump.py` | 两次打点按调用顺序比对 |
+| `extract_layer_map.py` | 把两次打点压成 步 × 层 的差异矩阵 |
+| `analyze_tier2.py` | 把第二档结果渲染成表 T5–T11 |
 | `analyze_extra.py` | 表 I–L、Q |
 | `analyze_online_extra.py` | 表 M–P |
 
@@ -176,6 +186,8 @@ python analyze_online_extra.py
 | `results/http/concurrency/analysis_tables.md` | 表 M–P |
 | `results/tier1/*.json` | 第 13 章四项机制检查的原始结果 |
 | `results/tier1/analysis_tables.md` | 表 T1、T1b、T2、T3、T4 |
+| `results/tier2/*.json` | 第 14 章的配置扫描、逐算子与逐层打点结果 |
+| `results/tier2/analysis_tables.md` | 表 T5–T11 |
 
 ### 文档
 
@@ -195,6 +207,7 @@ python analyze_online_extra.py
 | `docs/11_references.md` | 参考 |
 | `docs/12_sglang_results.md` | SGLang 复现 |
 | `docs/13_mechanism_checks.md` | 机制验证（第 13 章） |
+| `docs/14_kernel_checks.md` | 第二档：覆盖面、tile 扫描、逐层定位（第 14 章） |
 | `docs/appendix_a_logs.md` | 日志 |
 | `docs/appendix_b_precision.md` | 精度 |
 
@@ -313,7 +326,45 @@ all-reduce 探针的输出里 `n_diff` 是位模式不同的元素数，`total` 
 总数；`--tests` 可以只跑 `reshape`、`pad`、`threshold`、`sparse`、`pos` 中的
 某几项。
 
-## 10.12 生成 SHA256
+## 10.12 第二档（第 14 章）
+
+前五项不加载模型，最后一项要加载一次 30B：
+
+```bash
+cd BI-Empirical-Study
+export NCCL_IB_DISABLE=1 VLLM_USE_FLASHINFER_SAMPLER=0 TOKENIZERS_PARALLELISM=false
+PY=$HOME/miniconda3/envs/vllm_update/bin/python
+
+# 1. BI 覆盖与配置扫描
+$PY bi_bi_coverage.py --out results/tier2/bi_bi_coverage.json
+
+# 2. 线性层、其他算子、分页 attention
+$PY bi_matmul_shape.py --out results/tier2/bi_matmul_shape.json
+$PY bi_op_shape.py     --out results/tier2/bi_op_shape.json
+$PY bi_attn_shape.py   --out results/tier2/bi_attn_shape.json
+
+# 3. 引擎通信器：BI 环境 / tree + 8 通道 / NCCL 自动
+$PY -m torch.distributed.run --nproc_per_node=4 bi_pynccl_bench.py \
+  --out results/tier2/bi_pynccl_bi_env.json --tag bi_env
+$PY -m torch.distributed.run --nproc_per_node=4 bi_pynccl_bench.py --channels 8 \
+  --out results/tier2/bi_pynccl_ch8.json --tag ch8
+$PY -m torch.distributed.run --nproc_per_node=4 bi_pynccl_bench.py --no-bi-env \
+  --out results/tier2/bi_pynccl_auto.json --tag auto
+
+# 4. 逐层打点（需要 PYTHONPATH 指向 bi_hook，vLLM 的 worker 才会导入）
+export PYTHONPATH=$PWD/bi_hook
+$PY bi_layer_probe.py --out results/tier2/bi_layer_probe.json
+$PY extract_layer_map.py --dump $HOME/bi_layer_dump --a a256 --b a255 \
+  --out results/tier2/bi_layer_map.json
+
+python3 analyze_tier2.py results/tier2
+```
+
+`bi_layer_probe.py` 会清空并重建 `$HOME/bi_layer_dump`，每次 `generate()`
+写到 `<dump>/<tag>/rank0/` 下，一个模块调用一个 `.pt`。`analyze_layer_dump.py`
+按调用顺序比两份，`extract_layer_map.py` 只保留 DecoderLayer 的第 0 行。
+
+## 10.13 生成 SHA256
 
 ```bash
 cd bi_validation
@@ -321,4 +372,4 @@ find results -name '*.json' -print0 | sort -z | \
   xargs -0 sha256sum > results/SHA256SUMS
 ```
 
-结果哈希见 [appendix_b_precision.md](appendix_b_precision.md)。
+结果哈希见[附录 B](appendix_b_precision.md)。

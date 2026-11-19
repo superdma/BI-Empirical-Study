@@ -56,16 +56,17 @@ def main():
         arrow(ax, x0, x1, y + h / 2)
 
     # what BI fixes / leaves alone, hung under the kernel-selection stage
-    box(ax, 21.5, 16.6, 19.0, 5.0,
-        "BI 已经固定\naten::mm 等 matmul 的归约顺序", "#eaf4f2", C["pass"], size=6.3)
-    box(ax, 43.0, 16.6, 39.5, 5.0,
-        "BI 没有覆盖：attention 的 split 大小、MoE tile、\n"
-        "TP 的 all-reduce、编译产物（图捕获与融合）",
+    box(ax, 21.5, 16.6, 31.0, 5.0,
+        "BI 已经固定\nmatmul 归约顺序 · attention split · MoE tile",
+        "#eaf4f2", C["pass"], size=6.3)
+    box(ax, 54.5, 16.6, 30.0, 5.0,
+        "BI 没有覆盖\nTP all-reduce 的算法选择 · 编译产物",
         "#fbeae5", C["fail"], size=6.3)
     ax.plot([31.0, 31.0], [26.8, 24.4], color=C["muted"], linewidth=0.6)
-    ax.plot([31.0, 62.7], [24.4, 24.4], color=C["muted"], linewidth=0.6)
-    ax.plot([31.0, 31.0], [24.4, 21.8], color=C["pass"], linewidth=0.6)
-    ax.plot([62.7, 62.7], [24.4, 21.8], color=C["fail"], linewidth=0.6)
+    ax.plot([37.0, 69.5], [24.4, 24.4], color=C["muted"], linewidth=0.6)
+    ax.plot([31.0, 37.0], [24.4, 24.4], color=C["pass"], linewidth=0.6)
+    ax.plot([37.0, 37.0], [24.4, 21.8], color=C["pass"], linewidth=0.6)
+    ax.plot([69.5, 69.5], [24.4, 21.8], color=C["fail"], linewidth=0.6)
 
     # evidence row
     ax.text(1, 12.6, "支撑这一解释的观测（强度 A：都是重复过的现象）",
@@ -79,11 +80,11 @@ def main():
     for (x, w, text) in items:
         box(ax, x, 5.6, w, 5.6, text, "white", C["grid"], size=6.0)
 
-    ax.text(1, 2.8, "强度：现象为 A；kernel 级别的具体选择仍是推断（B），"
-            "哪一条启发式、哪一个 tile 参数尚未定位（C）。",
+    ax.text(1, 2.8, "强度：现象为 A；第 14 章逐项测过 tile 与 split 都没有变，"
+            "差异位置在某一层 norm 的输出（A），触发点尚未定位（C）。",
             fontsize=6.4, color=C["muted"])
-    ax.text(1, 0.7, "这一解释同时覆盖跨 attention 后端、跨 MoE/稠密模型、跨并行方式的失败，"
-            "比单因解释更贴合数据。", fontsize=6.4, color=C["muted"])
+    ax.text(1, 0.7, "这一链条同时覆盖跨 attention 后端、跨 MoE/稠密模型、跨并行方式的失败。",
+            fontsize=6.4, color=C["muted"])
     export(fig, "fig_mechanism", OUT, multipanel=False)
     plt.close(fig)
 

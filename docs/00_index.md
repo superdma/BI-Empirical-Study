@@ -114,7 +114,7 @@ compiled 的吞吐也更高：
 
 跨卡归约是分界点：同一个稠密小模型，TP=1 与 TP=2 通过，TP=4 失败，PP=4 通过。
 PP=4 的在线四类场景也是 96/96 一致，代价是长请求耗时从 7.9 s 涨到 17.6 s。
-细节见 [12_sglang_results.md](12_sglang_results.md)。
+细节见[第 12 章](12_sglang_results.md)。
 
 ### 7. 机制上的三个候选解释被排掉了
 
@@ -128,30 +128,45 @@ PP=4 的在线四类场景也是 96/96 一致，代价是长请求耗时从 7.9 
 | CUDA graph bucket 边界 | 32/64/128 两侧 compiled 与 eager 都没有台阶 |
 
 所以 255/256 那条边界既不是 NCCL 算法选的，也不是 graph 分桶造成的；剩下的
-候选仍然是模型侧 kernel 按形状选 tile/split。细节见
-[13_mechanism_checks.md](13_mechanism_checks.md)。
+候选仍然是模型侧 kernel 按形状选 tile/split。细节见[第 13 章](13_mechanism_checks.md)。
+
+### 8. 第二档：把这个候选也测掉了
+
+第 14 章把“模型侧 kernel 按形状选 tile”拆开逐项测：
+
+| 检查 | 结果 |
+|---|---|
+| BI 替换了哪些算子 | mm/addmm/matmul/linear 换成 Triton 常驻内核；softmax 与 mean 用几个 aten 算子拼 |
+| 线性层与 MoE 的 tile | M 从 1 到 512 只有一套配置；不开 BI 时 MoE 切换在 33/65/97/129/513，没有 256 |
+| 引擎自带的 pynccl（BI 环境） | b=1 到 300 一步都不改位；255 与 256 之间 0 个元素 |
+| 每个算子单独跑 | 线性层、两种 norm、silu、rotary、MoE、分页 attention 全部逐位相同 |
+| 引擎逐层打点 | 256 跑两遍完全一致；与 255 的差异从第 42 层 input_layernorm 开始 |
+
+所以 256 既不是 tile 边界，也不是归约；差异只在引擎里出现，位置固定、可重复，
+但起源还没定位到具体一次 kernel 启动。细节见[第 14 章](14_kernel_checks.md)。
 
 ---
 
 ## 文档地图
 
-| 文件 | 内容 |
+| 页面 | 内容 |
 |---|---|
-| [01_scope.md](01_scope.md) | BI 的定义、比较口径、能保证与不能保证什么 |
-| [02_environment.md](02_environment.md) | 硬件、软件、模型、环境坑与理论依据 |
-| [03_design.md](03_design.md) | 离线/在线测试设计，T1–T10、H1–H6、B1–B12 矩阵 |
-| [04_offline_results.md](04_offline_results.md) | v1 离线结果（target-only）及其适用范围 |
-| [05_online_results.md](05_online_results.md) | v1 在线 H1–H6 结果与“批量提交”口径 |
-| [06_boundary_results.md](06_boundary_results.md) | v2 新增：32-prompt、长度、并发、256 边界、re-feed |
-| [12_sglang_results.md](12_sglang_results.md) | SGLang 0.5.6 复现：TP=4 与 PP=4 的对照 |
-| [13_mechanism_checks.md](13_mechanism_checks.md) | 机制验证：归约、NCCL 算法、缓存 tail、graph 分桶 |
-| [07_findings.md](07_findings.md) | 发现 F1–F13：事实、解释、证据强度 |
-| [08_deployment.md](08_deployment.md) | 部署决策树、脚本、反模式、监控 |
-| [09_limitations.md](09_limitations.md) | 局限、未解释现象、后续工作 |
-| [10_reproduction.md](10_reproduction.md) | 复现命令、文件清单、SHA256 |
-| [11_references.md](11_references.md) | 官方文档、源码、模型卡与相关链接 |
-| [appendix_a_logs.md](appendix_a_logs.md) | 启动日志关键摘录 |
-| [appendix_b_precision.md](appendix_b_precision.md) | 位级比较与 HTTP 精度说明 |
+| [BI 定义与比较口径](01_scope.md) | BI 的定义、比较口径、能保证与不能保证什么 |
+| [环境与理论依据](02_environment.md) | 硬件、软件、模型、环境坑与理论依据 |
+| [测试设计](03_design.md) | 离线/在线测试设计，T1–T10、H1–H6、B1–B12 矩阵 |
+| [v1 离线结果](04_offline_results.md) | v1 离线结果（target-only）及其适用范围 |
+| [v1 在线结果](05_online_results.md) | v1 在线 H1–H6 结果与“批量提交”口径 |
+| [v2 边界结果](06_boundary_results.md) | v2 新增：32-prompt、长度、并发、256 边界、re-feed |
+| [SGLang 复现实验](12_sglang_results.md) | SGLang 0.5.6 复现：TP=4 与 PP=4 的对照 |
+| [机制验证](13_mechanism_checks.md) | 机制验证：归约、NCCL 算法、缓存 tail、graph 分桶 |
+| [算子与配置打点](14_kernel_checks.md) | 第二档：BI 覆盖面、tile 扫描、逐层定位 |
+| [关键发现](07_findings.md) | 发现 F1–F13：事实、解释、证据强度 |
+| [部署建议](08_deployment.md) | 部署决策树、脚本、反模式、监控 |
+| [局限与后续](09_limitations.md) | 局限、未解释现象、后续工作 |
+| [复现与文件清单](10_reproduction.md) | 复现命令、文件清单、SHA256 |
+| [参考资料](11_references.md) | 官方文档、源码、模型卡与相关链接 |
+| [启动日志摘录](appendix_a_logs.md) | 启动日志关键摘录 |
+| [精度与哈希](appendix_b_precision.md) | 位级比较与 HTTP 精度说明 |
 
 原始数据：
 
@@ -162,7 +177,8 @@ PP=4 的在线四类场景也是 96/96 一致，代价是长请求耗时从 7.9 
 - `results/extra/analysis_tables.md`、`results/http/concurrency/analysis_tables.md`：
   自动生成的汇总表；
 - `sglang/results/*.json`：SGLang 复现的原始数据，脚本在 `sglang/` 下；
-- `results/tier1/*.json`：第 13 章四项机制检查的原始数据。
+- `results/tier1/*.json`：第 13 章四项机制检查的原始数据；
+- `results/tier2/*.json`：第 14 章的配置扫描、逐算子与逐层打点数据。
 
 ---
 

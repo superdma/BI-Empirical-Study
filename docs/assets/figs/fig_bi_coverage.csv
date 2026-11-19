@@ -1,0 +1,7 @@
+panel,series,item,value
+a,MoE，BI 关,600,"[16, 32, 64, 128]"
+a,MoE，BI 开,600,[64]
+a,BI 线性层,10,[128]
+b,BI 环境：tree + 单通道,0,522240
+b,tree + 8 通道,0,522240
+b,NCCL 自动选择,1061,522240
