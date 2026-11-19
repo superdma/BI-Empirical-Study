@@ -236,7 +236,42 @@ python3 sglang/analyze_sglang.py sglang/results
 
 脚本里的路径都用 `$HOME`，换机器时只需保证模型与 venv 在同样的相对位置。
 
-## 10.10 生成 SHA256
+## 10.10 图表复现
+
+站内 9 张图都由 `scripts/figures/` 下的脚本从原始 JSON 现算，不复用表格里的
+手抄数字。
+
+```bash
+# 独立的绘图环境，不碰 vLLM / SGLang 的 venv
+uv venv .venv-figs --python 3.12
+uv pip install --python .venv-figs/bin/python -r requirements-figs.txt
+
+for f in scripts/figures/fig_*.py; do
+  .venv-figs/bin/python "$f"
+done
+```
+
+| 脚本 | 图 | 数据来源 |
+|---|---|---|
+| `fig_overview.py` | 图 1（首页） | `results/http/concurrency/*.json`、`sglang/results/*.json` |
+| `fig_method.py` | 图 2（第 1 章） | `results/extra/bi_batchall_offline_eager.json`、`bi_diag_bs256_pc0.json` |
+| `fig_env.py` | 图 3（第 2 章） | 第 2、12 章的版本表 |
+| `fig_v1_matrix.py` | 图 4（第 4 章） | `results/bi_*.json` |
+| `fig_v1_online.py` | 图 5（第 5 章） | `results/http/bi_http_*.json` |
+| `fig_boundary.py` | 图 6（第 6 章） | `results/extra/bi_diag_*.json`、`bi_refeed_*.json`、`results/http/concurrency/bi_http_len_*.json` |
+| `fig_mechanism.py` | 图 7（第 7 章） | 第 4–6、12 章的结论 |
+| `fig_sgl_offline.py` | 图 8（第 12 章） | `sglang/results/*batchall*.json` |
+| `fig_sgl_online.py` | 图 9（第 12 章） | `sglang/results/*_http_http.json` |
+
+`figstyle.py` 统一了字号、配色与导出流程：每张图同时写出 SVG、PDF 与
+600 dpi PNG，多面板图在导出前跑一遍面板对齐检查，导出后对 PDF 跑文字与线段
+碰撞检查。检查产物写到 `scripts/figures/qa/`，不进站点。站点用 PNG 显示，
+因为 PNG 已把中文字体栅格化，读者机器上不需要安装对应字体；SVG 与 PDF 留在
+`docs/assets/figs/` 里备打印用。
+
+每张图旁边的 CSV 是画图时取用的数值，方便核对图与表是否一致。
+
+## 10.11 生成 SHA256
 
 ```bash
 cd bi_validation

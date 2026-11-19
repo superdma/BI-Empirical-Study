@@ -3,6 +3,14 @@
 本章的表由 `analyze_extra.py` 与
 `analyze_online_extra.py` 从原始 JSON 自动生成；表号沿用 I–Q（Q 为离线 32-prompt 复核）。
 
+<figure class="bi-figure" markdown="span">
+  ![三块边界：批大小、批内 prefill 形状、re-feed 长度](assets/figs/fig_boundary.png)
+  <figcaption>图 6　本章三块边界的全貌。a：eager 的 decode 批大小扫描，255 与
+  256 之间有干净的分界；b：批内 prefill 形状，横轴是总 token 数，纵轴是 32 条
+  请求中通过的比例（compiled 全过）；c：把生成的 token 拼回 prompt 后的不一致
+  比例，eager 与 compiled 都随长度上升。分别对应表 I、表 N、表 O。</figcaption>
+</figure>
+
 ## 6.1 批大小扫描（target-only，eager，PC=0）
 
 配置：eager，FLASH_ATTN，PC=0，chunk=8192，greedy，32 token。比较对象是

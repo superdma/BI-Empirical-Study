@@ -1,0 +1,12 @@
+panel,series,pass,total
+a,TP=4，确定性,7,32
+a,TP=4，关 CUDA graph,7,32
+a,TP=4，关 custom all-reduce,7,32
+a,TP=4，+ triton attention,15,32
+a,TP=4，关闭确定性,0,32
+a,PP=4，确定性,32,32
+b,TP=1,32,32
+b,TP=2,32,32
+b,TP=4,0,32
+b,TP=4，+ triton,0,32
+b,PP=4,32,32

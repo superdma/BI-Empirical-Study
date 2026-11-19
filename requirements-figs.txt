@@ -1,0 +1,4 @@
+matplotlib>=3.11,<4
+numpy>=2.3,<3
+# used by the figure QA scripts (panel alignment, PDF collision audit)
+pymupdf>=1.24

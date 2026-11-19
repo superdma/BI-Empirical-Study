@@ -41,6 +41,13 @@ description: Qwen3-30B-A3B 在 4×RTX A6000 上的批次不变性实测
 
 </div>
 
+<figure class="bi-figure" markdown="span">
+  ![四个配置在离线与在线口径下的位级一致条数](assets/figs/fig_overview.png)
+  <figcaption>图 1　四个配置在两种口径下的位级一致条数。左：离线 32 条 prompt
+  单独跑与同批跑的比较；右：在线 32 路并发与顺序基线的比较。条内绿色为一致
+  条数，灰色为不一致条数。数据来自第 4、5、12 章的原始 JSON。</figcaption>
+</figure>
+
 ## 先看结论
 
 **在这套硬件上，compiled 模式（`torch.compile` + CUDA Graphs，不加

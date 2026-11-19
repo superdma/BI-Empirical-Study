@@ -142,7 +142,7 @@ Qwen3-0.6B 做了一组同样的测试（其余参数相同，确定性开，CUD
 | TP=1 | 32/32 | 0 | 0.0 ✅ | 32/32 |
 | TP=2 | 32/32 | 0 | 0.0 ✅ | 32/32 |
 | TP=4 | 0/32 | 6 | 1.347e+00 ❌ | 0/32 |
-| TP=4，triton attention | 0/32 | 9 | 3.070e+00 ❌ | 0/32 |
+| TP=4，triton attention | 0/32 | 9 | 6.868e-01 ❌ | 0/32 |
 | PP=4 | 32/32 | 0 | 0.0 ✅ | 32/32 |
 
 稠密模型排除了 MoE 的影响：它在 TP=4 上同样是 0/32。TP=1 与 TP=2 通过、TP=4 失败，
@@ -152,6 +152,13 @@ Qwen3-0.6B 做了一组同样的测试（其余参数相同，确定性开，CUD
 TP=1 不可行；TP=2 时每卡约 30.5 GB 权重，留给 KV cache 的只有约 17 GB，
 长上下文的几组测试跑不完，所以 30B 只测了 TP=4 与 PP=4。稠密小模型的 TP=2
 结果用来说明趋势：分界不在 TP>1，而在 TP 规模更大的情形。
+
+<figure class="bi-figure" markdown="span">
+  ![SGLang 各配置的 32 条 prompt 位级一致数](assets/figs/fig_sgl_offline.png)
+  <figcaption>图 8　表 S1 与表 S3 的对照。a：30B 上三组 TP=4 配置的条数完全相同
+  （7/32），换 triton attention 只到 15/32，换 PP=4 才是 32/32；b：稠密 0.6B
+  上 TP=1、TP=2、PP=4 通过，TP=4 失败，排除 MoE 的影响。</figcaption>
+</figure>
 
 ## 12.4 在线结果
 
@@ -172,6 +179,13 @@ PP=4 的 96 次比较全部为 0.0，没有一条 token id 变化。也就是说
 代价是速度。同样一条 400 token 的长请求，TP=4 用 7.94 s，PP=4 用 17.63 s，
 慢了约一倍多；32 条并发的墙钟时间从 0.91 s 变成 2.22 s。流水线并行在
 解码阶段天然有气泡，这个代价符合预期。
+
+<figure class="bi-figure" markdown="span">
+  ![SGLang 在线三场景通过数与长请求耗时](assets/figs/fig_sgl_online.png)
+  <figcaption>图 9　在线结果的两面。a：三场景各 32 条比较中位级一致的条数，
+  PP=4 全部为 32，TP=4 分别为 4、0、7；b：同一条 400-token 请求的墙钟时间，
+  PP=4 约为 TP=4 的两倍多，这是流水线并行在解码阶段的气泡代价。</figcaption>
+</figure>
 
 ## 12.5 decode vs re-feed
 

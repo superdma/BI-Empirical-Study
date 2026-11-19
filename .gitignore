@@ -12,3 +12,7 @@ dist/
 
 # private working notes: kept local, never published or pushed
 notes/
+
+# local plotting environment and QA artefacts
+.venv-figs/
+scripts/figures/qa/

@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="455.976203pt" height="152.485222pt" viewBox="0 0 455.976203 152.485222" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-19T10:24:15.461388</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 152.485222 
+L 455.976203 152.485222 
+L 455.976203 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 57.39751 125.08282 
+L 243.922543 125.08282 
+L 243.922543 16.97482 
+L 57.39751 16.97482 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 57.39751 125.08282 
+L 57.39751 16.97482 
+" clip-path="url(#pb4b49e3e8e)" style="fill: none; stroke: #e3e6ea; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2">
+      <defs>
+       <path id="m9062b0c353" d="M 0 0 
+L 0 3.5 
+" style="stroke: #6b7280; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m9062b0c353" x="57.39751" y="125.08282" style="fill: #6b7280; stroke: #6b7280; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 7px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #6b7280" x="57.39751" y="137.438777" transform="rotate(-0 57.39751 137.438777)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 98.847517 125.08282 
+L 98.847517 16.97482 
+" clip-path="url(#pb4b49e3e8e)" style="fill: none; stroke: #e3e6ea; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m9062b0c353" x="98.847517" y="125.08282" style="fill: #6b7280; stroke: #6b7280; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 7px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #6b7280" x="98.847517" y="137.438777" transform="rotate(-0 98.847517 137.438777)">8</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 140.297525 125.08282 
+L 140.297525 16.97482 
+" clip-path="url(#pb4b49e3e8e)" style="fill: none; stroke: #e3e6ea; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m9062b0c353" x="140.297525" y="125.08282" style="fill: #6b7280; stroke: #6b7280; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 7px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #6b7280" x="140.297525" y="137.438777" transform="rotate(-0 140.297525 137.438777)">16</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 181.747532 125.08282 
+L 181.747532 16.97482 
+" clip-path="url(#pb4b49e3e8e)" style="fill: none; stroke: #e3e6ea; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m9062b0c353" x="181.747532" y="125.08282" style="fill: #6b7280; stroke: #6b7280; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 7px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #6b7280" x="181.747532" y="137.438777" transform="rotate(-0 181.747532 137.438777)">24</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 223.19754 125.08282 
+L 223.19754 16.97482 
+" clip-path="url(#pb4b49e3e8e)" style="fill: none; stroke: #e3e6ea; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m9062b0c353" x="223.19754" y="125.08282" style="fill: #6b7280; stroke: #6b7280; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 7px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #6b7280" x="223.19754" y="137.438777" transform="rotate(-0 223.19754 137.438777)">32</text>
+     </g>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 7.5px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="150.660027" y="149.243464" transform="rotate(-0 150.660027 149.243464)">位级一致的请求数</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_11">
+      <defs>
+       <path id="m32e2560520" d="M 0 0 
+L -3.5 0 
+" style="stroke: #6b7280; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m32e2560520" x="57.39751" y="30.305063" style="fill: #6b7280; stroke: #6b7280; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 7px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: end; fill: #6b7280" x="50.39751" y="32.983041" transform="rotate(-0 50.39751 32.983041)">vLLM compiled</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m32e2560520" x="57.39751" y="57.454234" style="fill: #6b7280; stroke: #6b7280; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 7px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: end; fill: #6b7280" x="50.39751" y="60.132213" transform="rotate(-0 50.39751 60.132213)">vLLM eager</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_13">
+      <g>
+       <use xlink:href="#m32e2560520" x="57.39751" y="84.603405" style="fill: #6b7280; stroke: #6b7280; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 7px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: end; fill: #6b7280" x="50.39751" y="87.281384" transform="rotate(-0 50.39751 87.281384)">SGLang TP=4</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#m32e2560520" x="57.39751" y="111.752577" style="fill: #6b7280; stroke: #6b7280; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 7px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: end; fill: #6b7280" x="50.39751" y="114.430555" transform="rotate(-0 50.39751 114.430555)">SGLang PP=4</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 57.39751 21.88882 
+L 223.19754 21.88882 
+L 223.19754 38.721306 
+L 57.39751 38.721306 
+z
+" clip-path="url(#pb4b49e3e8e)" style="fill: #b8c0c8"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 57.39751 49.037991 
+L 223.19754 49.037991 
+L 223.19754 65.870477 
+L 57.39751 65.870477 
+z
+" clip-path="url(#pb4b49e3e8e)" style="fill: #b8c0c8"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 57.39751 76.187162 
+L 223.19754 76.187162 
+L 223.19754 93.019649 
+L 57.39751 93.019649 
+z
+" clip-path="url(#pb4b49e3e8e)" style="fill: #b8c0c8"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 57.39751 103.336334 
+L 223.19754 103.336334 
+L 223.19754 120.16882 
+L 57.39751 120.16882 
+z
+" clip-path="url(#pb4b49e3e8e)" style="fill: #b8c0c8"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 57.39751 21.88882 
+L 223.19754 21.88882 
+L 223.19754 38.721306 
+L 57.39751 38.721306 
+z
+" clip-path="url(#pb4b49e3e8e)" style="fill: #4a5aa8"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 57.39751 49.037991 
+L 62.578761 49.037991 
+L 62.578761 65.870477 
+L 57.39751 65.870477 
+z
+" clip-path="url(#pb4b49e3e8e)" style="fill: #9aa5cf"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 57.39751 76.187162 
+L 93.666267 76.187162 
+L 93.666267 93.019649 
+L 57.39751 93.019649 
+z
+" clip-path="url(#pb4b49e3e8e)" style="fill: #94c4bd"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 57.39751 103.336334 
+L 223.19754 103.336334 
+L 223.19754 120.16882 
+L 57.39751 120.16882 
+z
+" clip-path="url(#pb4b49e3e8e)" style="fill: #2f8f83"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 57.39751 125.08282 
+L 57.39751 16.97482 
+" style="fill: none; stroke: #6b7280; stroke-width: 0.7; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 57.39751 125.08282 
+L 243.922543 125.08282 
+" style="fill: none; stroke: #6b7280; stroke-width: 0.7; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 7.5px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: start; fill: #1f2933" x="226.30629" y="32.273447" transform="rotate(-0 226.30629 32.273447)">32/32</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 7.5px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: start; fill: #1f2933" x="226.30629" y="59.422618" transform="rotate(-0 226.30629 59.422618)">1/32</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 7.5px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: start; fill: #1f2933" x="226.30629" y="86.571789" transform="rotate(-0 226.30629 86.571789)">7/32</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 7.5px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: start; fill: #1f2933" x="226.30629" y="113.720961" transform="rotate(-0 226.30629 113.720961)">32/32</text>
+   </g>
+   <g id="text_15">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: start; fill: #1f2933" x="1.44" y="8.32623" transform="rotate(-0 1.44 8.32623)">a</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 8.5px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: start; fill: #1f2933" x="57.39751" y="10.97482" transform="rotate(-0 57.39751 10.97482)">离线：32 条 prompt，单独 vs 批内</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_13">
+    <path d="M 266.305547 125.08282 
+L 452.830581 125.08282 
+L 452.830581 16.97482 
+L 266.305547 16.97482 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_6">
+     <g id="line2d_15">
+      <path d="M 266.305547 125.08282 
+L 266.305547 16.97482 
+" clip-path="url(#pc07870ecee)" style="fill: none; stroke: #e3e6ea; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#m9062b0c353" x="266.305547" y="125.08282" style="fill: #6b7280; stroke: #6b7280; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_17">
+      <text style="font-size: 7px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #6b7280" x="266.305547" y="137.438777" transform="rotate(-0 266.305547 137.438777)">0</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_17">
+      <path d="M 307.755555 125.08282 
+L 307.755555 16.97482 
+" clip-path="url(#pc07870ecee)" style="fill: none; stroke: #e3e6ea; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#m9062b0c353" x="307.755555" y="125.08282" style="fill: #6b7280; stroke: #6b7280; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_18">
+      <text style="font-size: 7px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #6b7280" x="307.755555" y="137.438777" transform="rotate(-0 307.755555 137.438777)">8</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_19">
+      <path d="M 349.205562 125.08282 
+L 349.205562 16.97482 
+" clip-path="url(#pc07870ecee)" style="fill: none; stroke: #e3e6ea; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_20">
+      <g>
+       <use xlink:href="#m9062b0c353" x="349.205562" y="125.08282" style="fill: #6b7280; stroke: #6b7280; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_19">
+      <text style="font-size: 7px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #6b7280" x="349.205562" y="137.438777" transform="rotate(-0 349.205562 137.438777)">16</text>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_21">
+      <path d="M 390.65557 125.08282 
+L 390.65557 16.97482 
+" clip-path="url(#pc07870ecee)" style="fill: none; stroke: #e3e6ea; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_22">
+      <g>
+       <use xlink:href="#m9062b0c353" x="390.65557" y="125.08282" style="fill: #6b7280; stroke: #6b7280; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_20">
+      <text style="font-size: 7px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #6b7280" x="390.65557" y="137.438777" transform="rotate(-0 390.65557 137.438777)">24</text>
+     </g>
+    </g>
+    <g id="xtick_10">
+     <g id="line2d_23">
+      <path d="M 432.105577 125.08282 
+L 432.105577 16.97482 
+" clip-path="url(#pc07870ecee)" style="fill: none; stroke: #e3e6ea; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_24">
+      <g>
+       <use xlink:href="#m9062b0c353" x="432.105577" y="125.08282" style="fill: #6b7280; stroke: #6b7280; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_21">
+      <text style="font-size: 7px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #6b7280" x="432.105577" y="137.438777" transform="rotate(-0 432.105577 137.438777)">32</text>
+     </g>
+    </g>
+    <g id="text_22">
+     <text style="font-size: 7.5px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="359.568064" y="149.243464" transform="rotate(-0 359.568064 149.243464)">位级一致的请求数</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_5">
+     <g id="line2d_25">
+      <g>
+       <use xlink:href="#m32e2560520" x="266.305547" y="30.305063" style="fill: #6b7280; stroke: #6b7280; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_26">
+      <g>
+       <use xlink:href="#m32e2560520" x="266.305547" y="57.454234" style="fill: #6b7280; stroke: #6b7280; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_27">
+      <g>
+       <use xlink:href="#m32e2560520" x="266.305547" y="84.603405" style="fill: #6b7280; stroke: #6b7280; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_28">
+      <g>
+       <use xlink:href="#m32e2560520" x="266.305547" y="111.752577" style="fill: #6b7280; stroke: #6b7280; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+   </g>
+   <g id="patch_14">
+    <path d="M 266.305547 21.88882 
+L 432.105577 21.88882 
+L 432.105577 38.721306 
+L 266.305547 38.721306 
+z
+" clip-path="url(#pc07870ecee)" style="fill: #b8c0c8"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 266.305547 49.037991 
+L 432.105577 49.037991 
+L 432.105577 65.870477 
+L 266.305547 65.870477 
+z
+" clip-path="url(#pc07870ecee)" style="fill: #b8c0c8"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 266.305547 76.187162 
+L 432.105577 76.187162 
+L 432.105577 93.019649 
+L 266.305547 93.019649 
+z
+" clip-path="url(#pc07870ecee)" style="fill: #b8c0c8"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 266.305547 103.336334 
+L 432.105577 103.336334 
+L 432.105577 120.16882 
+L 266.305547 120.16882 
+z
+" clip-path="url(#pc07870ecee)" style="fill: #b8c0c8"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 266.305547 21.88882 
+L 432.105577 21.88882 
+L 432.105577 38.721306 
+L 266.305547 38.721306 
+z
+" clip-path="url(#pc07870ecee)" style="fill: #4a5aa8"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 266.305547 49.037991 
+L 271.486798 49.037991 
+L 271.486798 65.870477 
+L 266.305547 65.870477 
+z
+" clip-path="url(#pc07870ecee)" style="fill: #9aa5cf"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 266.305547 76.187162 
+L 287.030551 76.187162 
+L 287.030551 93.019649 
+L 266.305547 93.019649 
+z
+" clip-path="url(#pc07870ecee)" style="fill: #94c4bd"/>
+   </g>
+   <g id="patch_21">
+    <path d="M 266.305547 103.336334 
+L 432.105577 103.336334 
+L 432.105577 120.16882 
+L 266.305547 120.16882 
+z
+" clip-path="url(#pc07870ecee)" style="fill: #2f8f83"/>
+   </g>
+   <g id="patch_22">
+    <path d="M 266.305547 125.08282 
+L 266.305547 16.97482 
+" style="fill: none; stroke: #6b7280; stroke-width: 0.7; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_23">
+    <path d="M 266.305547 125.08282 
+L 452.830581 125.08282 
+" style="fill: none; stroke: #6b7280; stroke-width: 0.7; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 7.5px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: start; fill: #1f2933" x="435.214328" y="32.273447" transform="rotate(-0 435.214328 32.273447)">32/32</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 7.5px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: start; fill: #1f2933" x="435.214328" y="59.422618" transform="rotate(-0 435.214328 59.422618)">1/32</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 7.5px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: start; fill: #1f2933" x="435.214328" y="86.571789" transform="rotate(-0 435.214328 86.571789)">4/32</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 7.5px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: start; fill: #1f2933" x="435.214328" y="113.720961" transform="rotate(-0 435.214328 113.720961)">32/32</text>
+   </g>
+   <g id="text_27">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: start; fill: #1f2933" x="247.653044" y="8.32623" transform="rotate(-0 247.653044 8.32623)">b</text>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 8.5px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: start; fill: #1f2933" x="266.305547" y="10.97482" transform="rotate(-0 266.305547 10.97482)">在线：32 路并发 vs 顺序基线</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pb4b49e3e8e">
+   <rect x="57.39751" y="16.97482" width="186.525033" height="108.108"/>
+  </clipPath>
+  <clipPath id="pc07870ecee">
+   <rect x="266.305547" y="16.97482" width="186.525033" height="108.108"/>
+  </clipPath>
+ </defs>
+</svg>

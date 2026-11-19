@@ -103,6 +103,68 @@
 }
 
 /* ---------------------------------------------------------------------------
+   Figures
+   --------------------------------------------------------------------------- */
+
+.md-typeset .bi-figure {
+  width: 100%;
+  max-width: 100%;
+  margin: 1.8rem 0 2.2rem;
+  padding: 0;
+  text-align: left;
+}
+
+.md-typeset .bi-figure img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+  border: 1px solid var(--bi-line);
+  border-radius: 0.4rem;
+  background: #fff;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .bi-figure img {
+  padding: 0.4rem;
+  background: #f7f8fa;
+}
+
+.md-typeset .bi-figure figcaption {
+  max-width: none;
+  margin: 0.7rem 0 0;
+  font-style: normal;
+  text-align: left;
+  padding-left: 0.15rem;
+  font-size: 0.70rem;
+  line-height: 1.7;
+  color: var(--bi-muted);
+}
+
+/* Narrow screens: keep figure text legible, scroll horizontally instead of
+   shrinking a 180 mm-wide panel down to a thumbnail. */
+@media screen and (max-width: 44.9em) {
+  .md-typeset .bi-figure {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+  }
+
+  .md-typeset .bi-figure img {
+    min-width: 34rem;
+  }
+}
+
+@media print {
+  .md-typeset .bi-figure {
+    break-inside: avoid;
+  }
+
+  .md-typeset .bi-figure img {
+    border: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
    Landing hero
    --------------------------------------------------------------------------- */
 

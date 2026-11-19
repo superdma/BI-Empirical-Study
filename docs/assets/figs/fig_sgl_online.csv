@@ -1,0 +1,13 @@
+panel,configuration,item,value,total
+a,TP=4，确定性,顺序 vs 并发,4,32
+a,TP=4，关闭确定性,顺序 vs 并发,0,32
+a,PP=4，确定性,顺序 vs 并发,32,32
+a,TP=4，确定性,相同 prompt 并发,0,32
+a,TP=4，关闭确定性,相同 prompt 并发,0,32
+a,PP=4，确定性,相同 prompt 并发,32,32
+a,TP=4，确定性,顺序 vs 突发,7,32
+a,TP=4，关闭确定性,顺序 vs 突发,0,32
+a,PP=4，确定性,顺序 vs 突发,32,32
+b,TP=4，确定性,long_sec,7.94,
+b,TP=4，关闭确定性,long_sec,3.31,
+b,PP=4，确定性,long_sec,17.63,

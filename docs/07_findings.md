@@ -267,6 +267,13 @@ BI 的边界，这一节在 SGLang 上给出了第二组证据。
 跨 MoE/稠密模型的失败，也比单因解释更符合证据；256 阈值又像一个
 matmul tile 的边界。
 
+<figure class="bi-figure" markdown="span">
+  ![机制推断的因果链](assets/figs/fig_mechanism.png)
+  <figcaption>图 7　上面这段解释的结构。两处标注分开说清 BI 覆盖了什么
+  （matmul 的归约顺序）与没覆盖什么（attention 的 split、MoE tile、TP 的
+  all-reduce、编译产物）；底部四个观测分别来自第 4–6 章与第 12 章。</figcaption>
+</figure>
+
 尚未证明的部分：具体是哪一个 kernel、哪一条启发式、哪一个 tile 参数。要回答
 需要 Nsight/逐 kernel 打点，或修改 vLLM 源码打印 `matmul_kernel_persistent`
 的配置选择，超出本次范围。

@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="507.402196pt" height="184.010172pt" viewBox="0 0 507.402196 184.010172" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-19T12:28:50.381577</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 184.010172 
+L 507.402196 184.010172 
+L 507.402196 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 110.529125 167.595828 
+L 505.962196 167.595828 
+L 505.962196 12.363828 
+L 110.529125 12.363828 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g clip-path="url(#pdcf52577de)">
+    <image xlink:href="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAiUAAADXCAYAAADFqCHQAAAD7UlEQVR4nO3YoQ3DQBBFwXMUbJIa0n8pLiDEwNQkDTgtmN2LNFPBZ/u0y3bs1wAAmOwxewAAwBiiBACIECUAQIIoAQASRAkAkCBKAIAEUQIAJIgSACBBlAAACaIEAEgQJQBAgigBABJECQCQIEoAgARRAgAkiBIAIEGUAAAJogQASHi+v+fsDcCf+6yv2ROIc2u4w6cEAEgQJQBAgigBABJECQCQIEoAgARRAgAkiBIAIEGUAAAJogQASBAlAECCKAEAEkQJAJAgSgCABFECACSIEgAgQZQAAAmiBABIECUAQIIoAQASlu3Yr9kjAAB8SgCABFECACSIEgAgQZQAAAmiBABIECUAQIIoAQASRAkAkCBKAIAEUQIAJIgSACBBlAAACaIEAEgQJQBAgigBABJECQCQIEoAgARRAgAkiBIAIEGUAAAJogQASBAlAECCKAEAEkQJAJAgSgCABFECACSIEgAgQZQAAAmiBABIECUAQIIoAQASRAkAkCBKAIAEUQIAJIgSACBBlAAACaIEAEgQJQBAgigBABJECQCQIEoAgARRAgAkiBIAIEGUAAAJogQASBAlAECCKAEAEkQJAJAgSgCABFECACSIEgAgQZQAAAmiBABIECUAQIIoAQASRAkAkCBKAIAEUQIAJIgSACBBlAAACaIEAEgQJQBAgigBABJECQCQIEoAgARRAgAkiBIAIEGUAAAJogQASBAlAECCKAEAEkQJAJAgSgCABFECACSIEgAgQZQAAAmiBABIECUAQIIoAQASRAkAkCBKAIAEUQIAJIgSACBBlAAACaIEAEgQJQBAgigBABJECQCQIEoAgARRAgAkiBIAIEGUAAAJogQASBAlAECCKAEAEkQJAJAgSgCABFECACSIEgAgQZQAAAmiBABIECUAQIIoAQASRAkAkCBKAIAEUQIAJIgSACBBlAAACaIEAEgQJQBAgigBABJECQCQIEoAgARRAgAkiBIAIEGUAAAJogQASBAlAECCKAEAEkQJAJAgSgCABFECACSIEgAgQZQAAAmiBABIECUAQIIoAQASRAkAkCBKAIAEUQIAJIgSACBBlAAACaIEAEgQJQBAgigBABJECQCQIEoAgARRAgAkiBIAIEGUAAAJogQASBAlAECCKAEAEkQJAJAgSgCABFECACSIEgAgQZQAAAmiBABIECUAQIIoAQASRAkAkCBKAIAEUQIAJIgSACBBlAAACaIEAEgQJQBAgigBABJECQCQIEoAgARRAgAkiBIAIEGUAAAJogQASBAlAECCKAEAEkQJAJAgSgCABFECACSIEgAgQZQAAAmiBABIECUAQIIoAQASfvPQDddSxCRUAAAAAElFTkSuQmCC" id="imaged36da2381a" transform="scale(1 -1) translate(0 -154.8)" x="110.88" y="-12.650172" width="395.28" height="154.8"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1"/>
+     <g id="text_1">
+      <text style="font-size: 7px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #6b7280" x="159.958259" y="7.182187" transform="rotate(-0 159.958259 7.182187)">bs=1 vs bs=32</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2"/>
+     <g id="text_2">
+      <text style="font-size: 7px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #6b7280" x="258.816527" y="7.182187" transform="rotate(-0 258.816527 7.182187)">逆序</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3"/>
+     <g id="text_3">
+      <text style="font-size: 7px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #6b7280" x="357.674794" y="7.182187" transform="rotate(-0 357.674794 7.182187)">前缀缓存命中</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4"/>
+     <g id="text_4">
+      <text style="font-size: 7px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #6b7280" x="456.533062" y="7.182187" transform="rotate(-0 456.533062 7.182187)">decode vs re-feed</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <path d="M 110.529125 167.595828 
+L 110.529125 12.363828 
+" clip-path="url(#pdcf52577de)" style="fill: none; stroke: #ffffff; stroke-width: 1.4; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6"/>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_7">
+      <path d="M 209.387393 167.595828 
+L 209.387393 12.363828 
+" clip-path="url(#pdcf52577de)" style="fill: none; stroke: #ffffff; stroke-width: 1.4; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8"/>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_9">
+      <path d="M 308.24566 167.595828 
+L 308.24566 12.363828 
+" clip-path="url(#pdcf52577de)" style="fill: none; stroke: #ffffff; stroke-width: 1.4; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10"/>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_11">
+      <path d="M 407.103928 167.595828 
+L 407.103928 12.363828 
+" clip-path="url(#pdcf52577de)" style="fill: none; stroke: #ffffff; stroke-width: 1.4; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12"/>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_13">
+      <path d="M 505.962196 167.595828 
+L 505.962196 12.363828 
+" clip-path="url(#pdcf52577de)" style="fill: none; stroke: #ffffff; stroke-width: 1.4; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14"/>
+    </g>
+    <g id="text_5">
+     <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #6b7280" x="308.24566" y="180.984109" transform="rotate(-0 308.24566 180.984109)">绿色：logprob 逐位相同；浅红：给出最大 |Δlogprob|</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_15"/>
+     <g id="text_6">
+      <text style="font-size: 6.8px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: end; fill: #6b7280" x="107.029125" y="22.169047" transform="rotate(-0 107.029125 22.169047)">compiled 8192 / PC1（冷）</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_16"/>
+     <g id="text_7">
+      <text style="font-size: 6.8px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: end; fill: #6b7280" x="107.029125" y="36.133293" transform="rotate(-0 107.029125 36.133293)">compiled 8192 / PC1（warm #2）</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_17"/>
+     <g id="text_8">
+      <text style="font-size: 6.8px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: end; fill: #6b7280" x="107.029125" y="50.245293" transform="rotate(-0 107.029125 50.245293)">compiled 8192 / PC1（warm #3）</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_18"/>
+     <g id="text_9">
+      <text style="font-size: 6.8px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: end; fill: #6b7280" x="107.029125" y="64.505047" transform="rotate(-0 107.029125 64.505047)">compiled 2048 / PC1（冷）</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_19"/>
+     <g id="text_10">
+      <text style="font-size: 6.8px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: end; fill: #6b7280" x="107.029125" y="78.617047" transform="rotate(-0 107.029125 78.617047)">compiled 8192 / PC0（冷）</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_20"/>
+     <g id="text_11">
+      <text style="font-size: 6.8px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: end; fill: #6b7280" x="107.029125" y="92.581293" transform="rotate(-0 107.029125 92.581293)">eager 8192 / PC1 #1</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_21"/>
+     <g id="text_12">
+      <text style="font-size: 6.8px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: end; fill: #6b7280" x="107.029125" y="106.693293" transform="rotate(-0 107.029125 106.693293)">eager 8192 / PC1 #2</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_22"/>
+     <g id="text_13">
+      <text style="font-size: 6.8px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: end; fill: #6b7280" x="107.029125" y="120.805293" transform="rotate(-0 107.029125 120.805293)">eager 2048 / PC1</text>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_23"/>
+     <g id="text_14">
+      <text style="font-size: 6.8px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: end; fill: #6b7280" x="107.029125" y="134.917293" transform="rotate(-0 107.029125 134.917293)">eager 8192 / PC0</text>
+     </g>
+    </g>
+    <g id="ytick_10">
+     <g id="line2d_24"/>
+     <g id="text_15">
+      <text style="font-size: 6.8px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: end; fill: #6b7280" x="107.029125" y="149.177047" transform="rotate(-0 107.029125 149.177047)">BI=0 对照（compiled 8192 / PC1）</text>
+     </g>
+    </g>
+    <g id="ytick_11">
+     <g id="line2d_25"/>
+     <g id="text_16">
+      <text style="font-size: 6.8px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: end; fill: #6b7280" x="107.029125" y="163.289047" transform="rotate(-0 107.029125 163.289047)">TP=1 Qwen3-0.6B 冒烟</text>
+     </g>
+    </g>
+    <g id="ytick_12">
+     <g id="line2d_26">
+      <path d="M 110.529125 12.363828 
+L 505.962196 12.363828 
+" clip-path="url(#pdcf52577de)" style="fill: none; stroke: #ffffff; stroke-width: 1.4; stroke-linecap: square"/>
+     </g>
+    </g>
+    <g id="ytick_13">
+     <g id="line2d_27">
+      <path d="M 110.529125 26.475828 
+L 505.962196 26.475828 
+" clip-path="url(#pdcf52577de)" style="fill: none; stroke: #ffffff; stroke-width: 1.4; stroke-linecap: square"/>
+     </g>
+    </g>
+    <g id="ytick_14">
+     <g id="line2d_28">
+      <path d="M 110.529125 40.587828 
+L 505.962196 40.587828 
+" clip-path="url(#pdcf52577de)" style="fill: none; stroke: #ffffff; stroke-width: 1.4; stroke-linecap: square"/>
+     </g>
+    </g>
+    <g id="ytick_15">
+     <g id="line2d_29">
+      <path d="M 110.529125 54.699828 
+L 505.962196 54.699828 
+" clip-path="url(#pdcf52577de)" style="fill: none; stroke: #ffffff; stroke-width: 1.4; stroke-linecap: square"/>
+     </g>
+    </g>
+    <g id="ytick_16">
+     <g id="line2d_30">
+      <path d="M 110.529125 68.811828 
+L 505.962196 68.811828 
+" clip-path="url(#pdcf52577de)" style="fill: none; stroke: #ffffff; stroke-width: 1.4; stroke-linecap: square"/>
+     </g>
+    </g>
+    <g id="ytick_17">
+     <g id="line2d_31">
+      <path d="M 110.529125 82.923828 
+L 505.962196 82.923828 
+" clip-path="url(#pdcf52577de)" style="fill: none; stroke: #ffffff; stroke-width: 1.4; stroke-linecap: square"/>
+     </g>
+    </g>
+    <g id="ytick_18">
+     <g id="line2d_32">
+      <path d="M 110.529125 97.035828 
+L 505.962196 97.035828 
+" clip-path="url(#pdcf52577de)" style="fill: none; stroke: #ffffff; stroke-width: 1.4; stroke-linecap: square"/>
+     </g>
+    </g>
+    <g id="ytick_19">
+     <g id="line2d_33">
+      <path d="M 110.529125 111.147828 
+L 505.962196 111.147828 
+" clip-path="url(#pdcf52577de)" style="fill: none; stroke: #ffffff; stroke-width: 1.4; stroke-linecap: square"/>
+     </g>
+    </g>
+    <g id="ytick_20">
+     <g id="line2d_34">
+      <path d="M 110.529125 125.259828 
+L 505.962196 125.259828 
+" clip-path="url(#pdcf52577de)" style="fill: none; stroke: #ffffff; stroke-width: 1.4; stroke-linecap: square"/>
+     </g>
+    </g>
+    <g id="ytick_21">
+     <g id="line2d_35">
+      <path d="M 110.529125 139.371828 
+L 505.962196 139.371828 
+" clip-path="url(#pdcf52577de)" style="fill: none; stroke: #ffffff; stroke-width: 1.4; stroke-linecap: square"/>
+     </g>
+    </g>
+    <g id="ytick_22">
+     <g id="line2d_36">
+      <path d="M 110.529125 153.483828 
+L 505.962196 153.483828 
+" clip-path="url(#pdcf52577de)" style="fill: none; stroke: #ffffff; stroke-width: 1.4; stroke-linecap: square"/>
+     </g>
+    </g>
+    <g id="ytick_23">
+     <g id="line2d_37">
+      <path d="M 110.529125 167.595828 
+L 505.962196 167.595828 
+" clip-path="url(#pdcf52577de)" style="fill: none; stroke: #ffffff; stroke-width: 1.4; stroke-linecap: square"/>
+     </g>
+    </g>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="159.958259" y="21.152006" transform="rotate(-0 159.958259 21.152006)">0.0</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="258.816527" y="21.152006" transform="rotate(-0 258.816527 21.152006)">0.0</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="357.674794" y="21.152006" transform="rotate(-0 357.674794 21.152006)">0.0</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="456.533062" y="21.152006" transform="rotate(-0 456.533062 21.152006)">0.0</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="159.958259" y="35.264006" transform="rotate(-0 159.958259 35.264006)">0.0</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="258.816527" y="35.264006" transform="rotate(-0 258.816527 35.264006)">0.0</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="357.674794" y="35.264006" transform="rotate(-0 357.674794 35.264006)">0.0</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="456.533062" y="35.264006" transform="rotate(-0 456.533062 35.264006)">0.0</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="159.958259" y="49.376006" transform="rotate(-0 159.958259 49.376006)">0.0</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="258.816527" y="49.376006" transform="rotate(-0 258.816527 49.376006)">0.0</text>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="357.674794" y="49.376006" transform="rotate(-0 357.674794 49.376006)">0.0</text>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="456.533062" y="49.376006" transform="rotate(-0 456.533062 49.376006)">0.0</text>
+   </g>
+   <g id="text_29">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="159.958259" y="63.488006" transform="rotate(-0 159.958259 63.488006)">0.0</text>
+   </g>
+   <g id="text_30">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="258.816527" y="63.488006" transform="rotate(-0 258.816527 63.488006)">0.0</text>
+   </g>
+   <g id="text_31">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="357.674794" y="63.488006" transform="rotate(-0 357.674794 63.488006)">0.0</text>
+   </g>
+   <g id="text_32">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="456.533062" y="63.488006" transform="rotate(-0 456.533062 63.488006)">0.0</text>
+   </g>
+   <g id="text_33">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="159.958259" y="77.600006" transform="rotate(-0 159.958259 77.600006)">0.0</text>
+   </g>
+   <g id="text_34">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="258.816527" y="77.600006" transform="rotate(-0 258.816527 77.600006)">0.0</text>
+   </g>
+   <g id="text_35">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="357.674794" y="77.600006" transform="rotate(-0 357.674794 77.600006)">0.0</text>
+   </g>
+   <g id="text_36">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="456.533062" y="77.600006" transform="rotate(-0 456.533062 77.600006)">0.0</text>
+   </g>
+   <g id="text_37">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="159.958259" y="91.712006" transform="rotate(-0 159.958259 91.712006)">0.0</text>
+   </g>
+   <g id="text_38">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="258.816527" y="91.712006" transform="rotate(-0 258.816527 91.712006)">0.0</text>
+   </g>
+   <g id="text_39">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="357.674794" y="91.712006" transform="rotate(-0 357.674794 91.712006)">0.0</text>
+   </g>
+   <g id="text_40">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="456.533062" y="91.712006" transform="rotate(-0 456.533062 91.712006)">0.0</text>
+   </g>
+   <g id="text_41">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="159.958259" y="105.824006" transform="rotate(-0 159.958259 105.824006)">0.0</text>
+   </g>
+   <g id="text_42">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="258.816527" y="105.824006" transform="rotate(-0 258.816527 105.824006)">0.0</text>
+   </g>
+   <g id="text_43">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="357.674794" y="105.824006" transform="rotate(-0 357.674794 105.824006)">0.0</text>
+   </g>
+   <g id="text_44">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="456.533062" y="105.824006" transform="rotate(-0 456.533062 105.824006)">0.0</text>
+   </g>
+   <g id="text_45">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="159.958259" y="119.936006" transform="rotate(-0 159.958259 119.936006)">0.0</text>
+   </g>
+   <g id="text_46">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="258.816527" y="119.936006" transform="rotate(-0 258.816527 119.936006)">0.0</text>
+   </g>
+   <g id="text_47">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="357.674794" y="119.936006" transform="rotate(-0 357.674794 119.936006)">0.0</text>
+   </g>
+   <g id="text_48">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="456.533062" y="119.936006" transform="rotate(-0 456.533062 119.936006)">0.0</text>
+   </g>
+   <g id="text_49">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="159.958259" y="134.048006" transform="rotate(-0 159.958259 134.048006)">0.0</text>
+   </g>
+   <g id="text_50">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="258.816527" y="134.048006" transform="rotate(-0 258.816527 134.048006)">0.0</text>
+   </g>
+   <g id="text_51">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="357.674794" y="134.048006" transform="rotate(-0 357.674794 134.048006)">0.0</text>
+   </g>
+   <g id="text_52">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="456.533062" y="134.048006" transform="rotate(-0 456.533062 134.048006)">0.0</text>
+   </g>
+   <g id="text_53">
+    <text style="font-weight: 700; font-size: 6.2px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #c0563f" x="159.958259" y="148.055025" transform="rotate(-0 159.958259 148.055025)">6.042e-02</text>
+   </g>
+   <g id="text_54">
+    <text style="font-weight: 700; font-size: 6.2px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #c0563f" x="258.816527" y="148.055025" transform="rotate(-0 258.816527 148.055025)">7.360e-02</text>
+   </g>
+   <g id="text_55">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="357.674794" y="148.160006" transform="rotate(-0 357.674794 148.160006)">0.0</text>
+   </g>
+   <g id="text_56">
+    <text style="font-weight: 700; font-size: 6.2px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #c0563f" x="456.533062" y="148.055025" transform="rotate(-0 456.533062 148.055025)">4.201e-02</text>
+   </g>
+   <g id="text_57">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="159.958259" y="162.272006" transform="rotate(-0 159.958259 162.272006)">0.0</text>
+   </g>
+   <g id="text_58">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="258.816527" y="162.272006" transform="rotate(-0 258.816527 162.272006)">0.0</text>
+   </g>
+   <g id="text_59">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="357.674794" y="162.272006" transform="rotate(-0 357.674794 162.272006)">0.0</text>
+   </g>
+   <g id="text_60">
+    <text style="font-size: 6.6px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="456.533062" y="162.272006" transform="rotate(-0 456.533062 162.272006)">0.0</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pdcf52577de">
+   <rect x="110.529125" y="12.363828" width="395.433071" height="155.232"/>
+  </clipPath>
+ </defs>
+</svg>

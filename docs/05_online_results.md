@@ -33,6 +33,13 @@ HTTP 层没有改写 prompt。
 - BI=0 对照出现 1.273 的差异，测试灵敏度足够；
 - compiled 的长 prompt 缓存命中也 0.0。
 
+<figure class="bi-figure" markdown="span">
+  ![在线 6 项比较的通过数量](assets/figs/fig_v1_online.png)
+  <figcaption>图 5　表 E 的六项比较按配置汇总。绿色为通过项数，红色为失败项数，
+  右侧给出失败项的最大 \|Δlogprob\|。eager 有一项长 prompt 缓存命中的
+  2.384e-07，BI=0 对照失败五项，compiled 全过。</figcaption>
+</figure>
+
 ## 5.3 表 F：跨进程 / 跨配置
 
 | 比较 | 短 token | 短 logprob | 短最大差 | 长 token | 长 logprob | 长最大差 |

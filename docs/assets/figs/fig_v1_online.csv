@@ -1,0 +1,7 @@
+configuration,bs=1 vs bs=32,逆序,短 prompt 缓存,长 prompt bs=1 vs 4,长 prompt 缓存命中,decode vs re-feed
+eager 8192 / PC1 #1,pass,pass,pass,pass,2.384e-07,pass
+eager 8192 / PC1 #2,pass,pass,pass,pass,2.384e-07,pass
+eager 2048 / PC1,pass,pass,pass,pass,2.384e-07,pass
+eager 8192 / PC0,pass,pass,pass,pass,pass,pass
+BI=0（eager 8192 / PC1）,1.273e+00,1.307e-01,pass,3.576e-07,3.576e-07,1.311e-01
+compiled 8192 / PC1,pass,pass,pass,pass,pass,pass

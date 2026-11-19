@@ -29,6 +29,13 @@
 对这条 5-token target，BI 开启后所有配置在进程内都是 0.0；BI 关闭时出现
 10⁻² 量级差异，说明测试能检测到非 BI 行为。
 
+<figure class="bi-figure" markdown="span">
+  ![表 A 的 10 个配置 × 4 项比较矩阵](assets/figs/fig_v1_matrix.png)
+  <figcaption>图 4　表 A 的另一种读法。行是表 A 的全部 11 个配置，列是比较项；绿色格子表示
+  logprob 逐位相同，浅红格子给出该格的最大 \|Δlogprob\|。只有 BI=0 那一行
+  失败，说明在这条 5-token target 上，开关本身是有效的。</figcaption>
+</figure>
+
 ## 4.2 表 B：跨进程 / 跨配置
 
 | 比较 | single token | single logprob | 首个差异 | 最大差 | long token | long logprob | 首个差异 | 最大差 |

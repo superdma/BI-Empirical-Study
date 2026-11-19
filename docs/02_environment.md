@@ -24,6 +24,13 @@ A6000 是 SM86，不是 Hopper/Blackwell。它没有 TMA、没有 FP8 tensor cor
 | Python | 3.12 |
 | 环境 | `$HOME/miniconda3/envs/vllm_update` |
 
+<figure class="bi-figure" markdown="span">
+  ![vLLM 与 SGLang 两套环境的分层对照](assets/figs/fig_env.png)
+  <figcaption>图 3　同一台机器上的两套环境。引擎、框架与 CUDA 版本互不覆盖，
+  驱动与硬件共用；底部是决定 kernel 路径的硬件条件。第 12 章的 SGLang 实验
+  就装在这套并行的环境里。</figcaption>
+</figure>
+
 ## 2.3 模型
 
 - `Qwen/Qwen3-30B-A3B`

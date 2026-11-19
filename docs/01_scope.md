@@ -32,6 +32,14 @@ struct.pack(">d", float(x)).hex()
 
 两个数的位模式完全相同才算相等；打印到 6 位小数相同不算。
 
+<figure class="bi-figure" markdown="span">
+  ![两条执行路径的 logprob 位模式比较](assets/figs/fig_method.png)
+  <figcaption>图 2　位级比较的对象。上半：prompt #0 在 bs=1 与 bs=32 下，前两个
+  生成 token 的 logprob 转成 64 位模式后完全相同。下半：bs=256 时另一条 prompt
+  从第 6 个生成 token（i=5）起位模式不同，即使 token id 没变也判为不一致。
+  数值取自 eager 模式的两次实测。</figcaption>
+</figure>
+
 ### 三类比较
 
 | 记号 | 含义 | 典型用途 |

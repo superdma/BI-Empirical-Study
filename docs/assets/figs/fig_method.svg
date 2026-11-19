@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="513.11622pt" height="146.88pt" viewBox="0 0 513.11622 146.88" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-19T10:24:16.492996</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 146.88 
+L 513.11622 146.88 
+L 513.11622 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 6.695433 35.136 
+L 88.027087 35.136 
+Q 88.282205 35.136 88.282205 34.896 
+L 88.282205 21.744 
+Q 88.282205 21.504 88.027087 21.504 
+L 6.695433 21.504 
+Q 6.440315 21.504 6.440315 21.744 
+L 6.440315 34.896 
+Q 6.440315 35.136 6.695433 35.136 
+z
+" clip-path="url(#pcc16e5cdb2)" style="fill: #f2f4f6; stroke: #6b7280; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 108.742677 26.016 
+L 182.420787 26.016 
+Q 182.675906 26.016 182.675906 25.776 
+L 182.675906 14.064 
+Q 182.675906 13.824 182.420787 13.824 
+L 108.742677 13.824 
+Q 108.487559 13.824 108.487559 14.064 
+L 108.487559 25.776 
+Q 108.487559 26.016 108.742677 26.016 
+z
+" clip-path="url(#pcc16e5cdb2)" style="fill: #ffffff; stroke: #4a5aa8; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 108.742677 43.776 
+L 182.420787 43.776 
+Q 182.675906 43.776 182.675906 43.536 
+L 182.675906 31.824 
+Q 182.675906 31.584 182.420787 31.584 
+L 108.742677 31.584 
+Q 108.487559 31.584 108.487559 31.824 
+L 108.487559 43.536 
+Q 108.487559 43.776 108.742677 43.776 
+z
+" clip-path="url(#pcc16e5cdb2)" style="fill: #ffffff; stroke: #2f8f83; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 90.129295 26.985586 
+Q 98.129111 23.760263 105.403076 20.827585 
+" clip-path="url(#pcc16e5cdb2)" style="fill: none; stroke: #6b7280; stroke-width: 0.7; stroke-linecap: round"/>
+    <path d="M 102.282695 20.576141 
+L 105.403076 20.827585 
+L 103.329692 23.173023 
+z
+" clip-path="url(#pcc16e5cdb2)" style="fill: #6b7280; stroke: #6b7280; stroke-width: 0.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 90.111855 30.176367 
+Q 98.132324 33.84117 105.44096 37.180714 
+" clip-path="url(#pcc16e5cdb2)" style="fill: none; stroke: #6b7280; stroke-width: 0.7; stroke-linecap: round"/>
+    <path d="M 103.476069 34.743666 
+L 105.44096 37.180714 
+L 102.312387 37.290399 
+z
+" clip-path="url(#pcc16e5cdb2)" style="fill: #6b7280; stroke: #6b7280; stroke-width: 0.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 198.034016 26.016 
+L 260.997165 26.016 
+Q 261.252283 26.016 261.252283 25.776 
+L 261.252283 13.584 
+Q 261.252283 13.344 260.997165 13.344 
+L 198.034016 13.344 
+Q 197.778898 13.344 197.778898 13.584 
+L 197.778898 25.776 
+Q 197.778898 26.016 198.034016 26.016 
+z
+" clip-path="url(#pcc16e5cdb2)" style="fill: #ffffff; stroke: #6b7280; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 198.034016 43.776 
+L 260.997165 43.776 
+Q 261.252283 43.776 261.252283 43.536 
+L 261.252283 31.344 
+Q 261.252283 31.104 260.997165 31.104 
+L 198.034016 31.104 
+Q 197.778898 31.104 197.778898 31.344 
+L 197.778898 43.536 
+Q 197.778898 43.776 198.034016 43.776 
+z
+" clip-path="url(#pcc16e5cdb2)" style="fill: #ffffff; stroke: #6b7280; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 264.364724 26.016 
+L 327.327874 26.016 
+Q 327.582992 26.016 327.582992 25.776 
+L 327.582992 13.584 
+Q 327.582992 13.344 327.327874 13.344 
+L 264.364724 13.344 
+Q 264.109606 13.344 264.109606 13.584 
+L 264.109606 25.776 
+Q 264.109606 26.016 264.364724 26.016 
+z
+" clip-path="url(#pcc16e5cdb2)" style="fill: #ffffff; stroke: #6b7280; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 264.364724 43.776 
+L 327.327874 43.776 
+Q 327.582992 43.776 327.582992 43.536 
+L 327.582992 31.344 
+Q 327.582992 31.104 327.327874 31.104 
+L 264.364724 31.104 
+Q 264.109606 31.104 264.109606 31.344 
+L 264.109606 43.536 
+Q 264.109606 43.776 264.364724 43.776 
+z
+" clip-path="url(#pcc16e5cdb2)" style="fill: #ffffff; stroke: #6b7280; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 164.868661 83.136 
+L 237.016063 83.136 
+Q 237.271181 83.136 237.271181 82.896 
+L 237.271181 70.224 
+Q 237.271181 69.984 237.016063 69.984 
+L 164.868661 69.984 
+Q 164.613543 69.984 164.613543 70.224 
+L 164.613543 82.896 
+Q 164.613543 83.136 164.868661 83.136 
+z
+" clip-path="url(#pcc16e5cdb2)" style="fill: #ffffff; stroke: #6b7280; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 242.424567 83.136 
+L 314.571969 83.136 
+Q 314.827087 83.136 314.827087 82.896 
+L 314.827087 70.224 
+Q 314.827087 69.984 314.571969 69.984 
+L 242.424567 69.984 
+Q 242.169449 69.984 242.169449 70.224 
+L 242.169449 82.896 
+Q 242.169449 83.136 242.424567 83.136 
+z
+" clip-path="url(#pcc16e5cdb2)" style="fill: #fbe9e4; stroke: #c0563f; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 319.980472 83.136 
+L 392.127874 83.136 
+Q 392.382992 83.136 392.382992 82.896 
+L 392.382992 70.224 
+Q 392.382992 69.984 392.127874 69.984 
+L 319.980472 69.984 
+Q 319.725354 69.984 319.725354 70.224 
+L 319.725354 82.896 
+Q 319.725354 83.136 319.980472 83.136 
+z
+" clip-path="url(#pcc16e5cdb2)" style="fill: #fbe9e4; stroke: #c0563f; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 164.868661 103.296 
+L 237.016063 103.296 
+Q 237.271181 103.296 237.271181 103.056 
+L 237.271181 90.384 
+Q 237.271181 90.144 237.016063 90.144 
+L 164.868661 90.144 
+Q 164.613543 90.144 164.613543 90.384 
+L 164.613543 103.056 
+Q 164.613543 103.296 164.868661 103.296 
+z
+" clip-path="url(#pcc16e5cdb2)" style="fill: #ffffff; stroke: #6b7280; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 242.424567 103.296 
+L 314.571969 103.296 
+Q 314.827087 103.296 314.827087 103.056 
+L 314.827087 90.384 
+Q 314.827087 90.144 314.571969 90.144 
+L 242.424567 90.144 
+Q 242.169449 90.144 242.169449 90.384 
+L 242.169449 103.056 
+Q 242.169449 103.296 242.424567 103.296 
+z
+" clip-path="url(#pcc16e5cdb2)" style="fill: #fbe9e4; stroke: #c0563f; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 319.980472 103.296 
+L 392.127874 103.296 
+Q 392.382992 103.296 392.382992 103.056 
+L 392.382992 90.384 
+Q 392.382992 90.144 392.127874 90.144 
+L 319.980472 90.144 
+Q 319.725354 90.144 319.725354 90.384 
+L 319.725354 103.056 
+Q 319.725354 103.296 319.980472 103.296 
+z
+" clip-path="url(#pcc16e5cdb2)" style="fill: #fbe9e4; stroke: #c0563f; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 6.542362 56.16 
+L 368.810079 56.16 
+" clip-path="url(#pcc16e5cdb2)" style="fill: none; stroke: #e3e6ea; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 8.4px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: start; fill: #1f2933" x="6.542362" y="9.12" transform="rotate(-0 6.542362 9.12)">同一个 prompt，两条执行路径，逐位比较 logprob</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 6.1px; font-family: 'WenQuanYi Micro Hei', sans-serif; fill: #1f2933" transform="translate(32.601166 26.657512)">prompt #0</text>
+    <text style="font-size: 6.1px; font-family: 'WenQuanYi Micro Hei', sans-serif; fill: #1f2933" transform="translate(21.956666 33.183916)">（5-token target）</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 6.3px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="145.581732" y="21.734941" transform="rotate(-0 145.581732 21.734941)">单独请求 bs=1</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 6.3px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: middle; fill: #1f2933" x="145.581732" y="39.494941" transform="rotate(-0 145.581732 39.494941)">批内请求 bs=32</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 5.7px; font-family: 'WenQuanYi Micro Hei', sans-serif; fill: #1f2933" transform="translate(219.985903 18.126917)">-0.2558</text>
+    <text style="font-size: 5.7px; font-family: 'WenQuanYi Micro Hei', sans-serif; fill: #1f2933" transform="translate(209.524176 24.225026)">bfd05f5f8000…</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 5.7px; font-family: 'WenQuanYi Micro Hei', sans-serif; fill: #1f2933" transform="translate(219.985903 35.886917)">-0.2558</text>
+    <text style="font-size: 5.7px; font-family: 'WenQuanYi Micro Hei', sans-serif; fill: #1f2933" transform="translate(209.524176 41.985026)">bfd05f5f8000…</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 5.7px; font-family: 'WenQuanYi Micro Hei', sans-serif; fill: #1f2933" transform="translate(286.316612 18.126917)">-0.5215</text>
+    <text style="font-size: 5.7px; font-family: 'WenQuanYi Micro Hei', sans-serif; fill: #1f2933" transform="translate(274.885885 24.225026)">bfe0b056c000…</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 5.7px; font-family: 'WenQuanYi Micro Hei', sans-serif; fill: #1f2933" transform="translate(286.316612 35.886917)">-0.5215</text>
+    <text style="font-size: 5.7px; font-family: 'WenQuanYi Micro Hei', sans-serif; fill: #1f2933" transform="translate(274.885885 41.985026)">bfe0b056c000…</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 6.3px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: start; fill: #2f7f77" x="333.093543" y="19.68" transform="rotate(-0 333.093543 19.68)">64 位模式相同</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 6.3px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: start; fill: #2f7f77" x="333.093543" y="37.44" transform="rotate(-0 333.093543 37.44)">判为一致</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 7px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: start; fill: #6b7280" x="6.542362" y="63.36" transform="rotate(-0 6.542362 63.36)">eager bs=256：前 5 个 logprob 位级相同，从第 6 个（i=5）开始不同</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 6.3px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: end; fill: #1f2933" x="154.510866" y="78.374941" transform="rotate(-0 154.510866 78.374941)">单独</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 5.4px; font-family: 'WenQuanYi Micro Hei', sans-serif; fill: #1f2933" transform="translate(183.864018 75.088658)">i=4  -0.002262</text>
+    <text style="font-size: 5.4px; font-family: 'WenQuanYi Micro Hei', sans-serif; fill: #1f2933" transform="translate(177.694518 80.865814)">bf6287e160000000</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 5.4px; font-family: 'WenQuanYi Micro Hei', sans-serif; fill: #c0563f" transform="translate(261.419924 75.088658)">i=5  -1.012633</text>
+    <text style="font-size: 5.4px; font-family: 'WenQuanYi Micro Hei', sans-serif; fill: #c0563f" transform="translate(255.79633 80.865814)">bff033bee0000000</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 5.4px; font-family: 'WenQuanYi Micro Hei', sans-serif; fill: #c0563f" transform="translate(338.975829 75.088658)">i=6  -0.238343</text>
+    <text style="font-size: 5.4px; font-family: 'WenQuanYi Micro Hei', sans-serif; fill: #c0563f" transform="translate(333.280517 80.865814)">bfce8209c0000000</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 6.3px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: end; fill: #1f2933" x="154.510866" y="98.522637" transform="rotate(-0 154.510866 98.522637)">批内</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 5.4px; font-family: 'WenQuanYi Micro Hei', sans-serif; fill: #1f2933" transform="translate(183.864018 95.248658)">i=4  -0.002262</text>
+    <text style="font-size: 5.4px; font-family: 'WenQuanYi Micro Hei', sans-serif; fill: #1f2933" transform="translate(177.694518 101.025814)">bf6287e160000000</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 5.4px; font-family: 'WenQuanYi Micro Hei', sans-serif; fill: #c0563f" transform="translate(261.419924 95.248658)">i=5  -1.100679</text>
+    <text style="font-size: 5.4px; font-family: 'WenQuanYi Micro Hei', sans-serif; fill: #c0563f" transform="translate(256.043971 101.025814)">bff19c6120000000</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 5.4px; font-family: 'WenQuanYi Micro Hei', sans-serif; fill: #c0563f" transform="translate(338.975829 95.248658)">i=6  -0.222502</text>
+    <text style="font-size: 5.4px; font-family: 'WenQuanYi Micro Hei', sans-serif; fill: #c0563f" transform="translate(333.376704 101.025814)">bfcc7aee00000000</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 6.3px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: start; fill: #2f7f77" x="407.077795" y="90.72" transform="rotate(-0 407.077795 90.72)">i=4 相同</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 6.3px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: start; fill: #c0563f" x="407.077795" y="100.32" transform="rotate(-0 407.077795 100.32)">i=5、6 位模式不同</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 6.3px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: start; fill: #c0563f" x="407.077795" y="109.92" transform="rotate(-0 407.077795 109.92)">判为不一致</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 6.4px; font-family: 'WenQuanYi Micro Hei', sans-serif; text-anchor: start; fill: #6b7280" x="6.542362" y="133.92" transform="rotate(-0 6.542362 133.92)">口径：32 个生成 token 的 logprob 逐个转成 IEEE-754 位模式比较；token id 相同但 logprob 不同，同样算失败。</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pcc16e5cdb2">
+   <rect x="1.44" y="1.44" width="510.23622" height="144"/>
+  </clipPath>
+ </defs>
+</svg>
