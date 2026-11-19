@@ -155,6 +155,12 @@ python analyze_online_extra.py
 | `bi_http_len.py` | 批内长度扫描 |
 | `run_len.sh` / `run_len_compiled.sh` | 长度扫描 |
 | `bi_batchall_offline.py` | 离线 32-prompt 复核 |
+| `bi_allreduce_bench.py` | 不加载模型的 NCCL all-reduce 形状探针 |
+| `run_nccl_sweep.sh` | 固定 `NCCL_ALGO` 重跑 32-prompt |
+| `bi_tail_scan.py` | 前缀缓存命中 vs fresh 的 tail 长度扫描 |
+| `bi_bucket_scan.py` | CUDA graph bucket 边界的批大小扫描 |
+| `run_tier1.sh` | 上述四项按顺序跑一遍 |
+| `analyze_tier1.py` | 把四项结果渲染成表 T1–T4 |
 | `analyze_extra.py` | 表 I–L、Q |
 | `analyze_online_extra.py` | 表 M–P |
 
@@ -168,6 +174,8 @@ python analyze_online_extra.py
 | `results/http/concurrency/*.json` | 32-prompt、并发、突发、混合、长度 |
 | `results/extra/analysis_tables.md` | 表 I–L、Q |
 | `results/http/concurrency/analysis_tables.md` | 表 M–P |
+| `results/tier1/*.json` | 第 13 章四项机制检查的原始结果 |
+| `results/tier1/analysis_tables.md` | 表 T1、T1b、T2、T3、T4 |
 
 ### 文档
 
@@ -186,6 +194,7 @@ python analyze_online_extra.py
 | `docs/10_reproduction.md` | 本文 |
 | `docs/11_references.md` | 参考 |
 | `docs/12_sglang_results.md` | SGLang 复现 |
+| `docs/13_mechanism_checks.md` | 机制验证（第 13 章） |
 | `docs/appendix_a_logs.md` | 日志 |
 | `docs/appendix_b_precision.md` | 精度 |
 
@@ -271,7 +280,40 @@ done
 
 每张图旁边的 CSV 是画图时取用的数值，方便核对图与表是否一致。
 
-## 10.11 生成 SHA256
+## 10.11 机制验证（第 13 章）
+
+四项检查按顺序跑，前两项不需要模型，后两项各需要一次 30B 加载：
+
+```bash
+cd BI-Empirical-Study
+bash run_tier1.sh          # all-reduce 探针 → NCCL 算法 → tail → bucket
+python3 analyze_tier1.py results/tier1
+```
+
+单独跑其中一项也可以：
+
+```bash
+export NCCL_IB_DISABLE=1 H=2048 MAX_BS=300
+
+# 1. 不加载模型，4 卡 all-reduce
+python -m torch.distributed.run --nproc_per_node=4 bi_allreduce_bench.py \
+  --out results/tier1/bi_ar_thresh_w4.json --tag default
+
+# 2. 钉死 NCCL 算法后的 32 条 prompt
+bash run_nccl_sweep.sh
+
+# 3. tail 长度扫描（eager，PC=1）
+OUT=results/tier1/bi_tail_scan.json python bi_tail_scan.py
+
+# 4. bucket 边界扫描（把 EAGER=1 换成 eager 对照）
+OUT=results/tier1/bi_bucket_scan.json python bi_bucket_scan.py
+```
+
+all-reduce 探针的输出里 `n_diff` 是位模式不同的元素数，`total` 是比较的元素
+总数；`--tests` 可以只跑 `reshape`、`pad`、`threshold`、`sparse`、`pos` 中的
+某几项。
+
+## 10.12 生成 SHA256
 
 ```bash
 cd bi_validation

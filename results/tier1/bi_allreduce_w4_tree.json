@@ -1,0 +1,400 @@
+{
+ "tag": "allreduce:tree",
+ "world": 4,
+ "algo_env": "allreduce:tree",
+ "hidden": 2048,
+ "proto_env": "",
+ "device_name": "NVIDIA RTX A6000",
+ "rows": [
+  {
+   "n_diff": 0,
+   "total": 524288,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "shape": [
+    256,
+    2048
+   ],
+   "dtype": "bfloat16",
+   "world": 4
+  },
+  {
+   "n_diff": 0,
+   "total": 524288,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "shape": [
+    128,
+    4096
+   ],
+   "dtype": "bfloat16",
+   "world": 4
+  },
+  {
+   "n_diff": 0,
+   "total": 524288,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "shape": [
+    512,
+    1024
+   ],
+   "dtype": "bfloat16",
+   "world": 4
+  },
+  {
+   "n_diff": 0,
+   "total": 524288,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "shape": [
+    1024,
+    512
+   ],
+   "dtype": "bfloat16",
+   "world": 4
+  },
+  {
+   "n_diff": 0,
+   "total": 524288,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "shape": [
+    2048,
+    256
+   ],
+   "dtype": "bfloat16",
+   "world": 4
+  },
+  {
+   "n_diff": 0,
+   "total": 524288,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "shape": [
+    256,
+    2048
+   ],
+   "dtype": "float32",
+   "world": 4
+  },
+  {
+   "n_diff": 0,
+   "total": 524288,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "shape": [
+    128,
+    4096
+   ],
+   "dtype": "float32",
+   "world": 4
+  },
+  {
+   "n_diff": 0,
+   "total": 524288,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "shape": [
+    512,
+    1024
+   ],
+   "dtype": "float32",
+   "world": 4
+  },
+  {
+   "n_diff": 0,
+   "total": 524288,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "shape": [
+    1024,
+    512
+   ],
+   "dtype": "float32",
+   "world": 4
+  },
+  {
+   "n_diff": 0,
+   "total": 524288,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "shape": [
+    2048,
+    256
+   ],
+   "dtype": "float32",
+   "world": 4
+  },
+  {
+   "n_diff": 0,
+   "total": 129024,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 4,
+   "pair": [
+    63,
+    64
+   ],
+   "test": "pad"
+  },
+  {
+   "n_diff": 10071,
+   "total": 131072,
+   "max_abs": 0.03125,
+   "bitwise": false,
+   "dtype": "bfloat16",
+   "world": 4,
+   "pair": [
+    64,
+    65
+   ],
+   "test": "pad"
+  },
+  {
+   "n_diff": 0,
+   "total": 260096,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 4,
+   "pair": [
+    127,
+    128
+   ],
+   "test": "pad"
+  },
+  {
+   "n_diff": 10065,
+   "total": 262144,
+   "max_abs": 0.03125,
+   "bitwise": false,
+   "dtype": "bfloat16",
+   "world": 4,
+   "pair": [
+    128,
+    129
+   ],
+   "test": "pad"
+  },
+  {
+   "n_diff": 0,
+   "total": 522240,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 4,
+   "pair": [
+    255,
+    256
+   ],
+   "test": "pad"
+  },
+  {
+   "n_diff": 10252,
+   "total": 524288,
+   "max_abs": 0.03125,
+   "bitwise": false,
+   "dtype": "bfloat16",
+   "world": 4,
+   "pair": [
+    256,
+    257
+   ],
+   "test": "pad"
+  },
+  {
+   "n_diff": 0,
+   "total": 1046528,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 4,
+   "pair": [
+    511,
+    512
+   ],
+   "test": "pad"
+  },
+  {
+   "n_diff": 0,
+   "total": 129024,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "float32",
+   "world": 4,
+   "pair": [
+    63,
+    64
+   ],
+   "test": "pad"
+  },
+  {
+   "n_diff": 4861,
+   "total": 131072,
+   "max_abs": 4.76837158203125e-07,
+   "bitwise": false,
+   "dtype": "float32",
+   "world": 4,
+   "pair": [
+    64,
+    65
+   ],
+   "test": "pad"
+  },
+  {
+   "n_diff": 0,
+   "total": 260096,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "float32",
+   "world": 4,
+   "pair": [
+    127,
+    128
+   ],
+   "test": "pad"
+  },
+  {
+   "n_diff": 4791,
+   "total": 262144,
+   "max_abs": 4.76837158203125e-07,
+   "bitwise": false,
+   "dtype": "float32",
+   "world": 4,
+   "pair": [
+    128,
+    129
+   ],
+   "test": "pad"
+  },
+  {
+   "n_diff": 0,
+   "total": 522240,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "float32",
+   "world": 4,
+   "pair": [
+    255,
+    256
+   ],
+   "test": "pad"
+  },
+  {
+   "n_diff": 4912,
+   "total": 524288,
+   "max_abs": 4.76837158203125e-07,
+   "bitwise": false,
+   "dtype": "float32",
+   "world": 4,
+   "pair": [
+    256,
+    257
+   ],
+   "test": "pad"
+  },
+  {
+   "n_diff": 0,
+   "total": 1046528,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "float32",
+   "world": 4,
+   "pair": [
+    511,
+    512
+   ],
+   "test": "pad"
+  },
+  {
+   "n_diff": 157281,
+   "total": 524288,
+   "max_abs": 0.015625,
+   "bitwise": false,
+   "dtype": "bfloat16",
+   "world": 4,
+   "against": "exact_fp64",
+   "test": "order"
+  },
+  {
+   "n_diff": 167354,
+   "total": 524288,
+   "max_abs": 0.03125,
+   "bitwise": false,
+   "dtype": "bfloat16",
+   "world": 4,
+   "against": "rank_order",
+   "test": "order"
+  },
+  {
+   "n_diff": 108024,
+   "total": 524288,
+   "max_abs": 0.03125,
+   "bitwise": false,
+   "dtype": "bfloat16",
+   "world": 4,
+   "against": "reverse_order",
+   "test": "order"
+  },
+  {
+   "n_diff": 157739,
+   "total": 524288,
+   "max_abs": 2.384185791015625e-07,
+   "bitwise": false,
+   "dtype": "float32",
+   "world": 4,
+   "against": "exact_fp64",
+   "test": "order"
+  },
+  {
+   "n_diff": 167574,
+   "total": 524288,
+   "max_abs": 4.76837158203125e-07,
+   "bitwise": false,
+   "dtype": "float32",
+   "world": 4,
+   "against": "rank_order",
+   "test": "order"
+  },
+  {
+   "n_diff": 104535,
+   "total": 524288,
+   "max_abs": 4.76837158203125e-07,
+   "bitwise": false,
+   "dtype": "float32",
+   "world": 4,
+   "against": "reverse_order",
+   "test": "order"
+  }
+ ],
+ "algo": [
+  {
+   "tag": 0,
+   "dtype": "bfloat16",
+   "world": 4,
+   "checksum": 5301.0205078125,
+   "first8": [
+    2.921875,
+    2.921875,
+    2.921875,
+    2.921875,
+    2.921875,
+    2.9375,
+    2.9375,
+    2.9375
+   ],
+   "bits_first8": [
+    16443,
+    16443,
+    16443,
+    16443,
+    16443,
+    16444,
+    16444,
+    16444
+   ]
+  }
+ ]
+}

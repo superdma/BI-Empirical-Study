@@ -111,6 +111,15 @@ F1–F13：每条发现都给出事实、证据与解释强度。
 </div>
 
 <div class="card" markdown>
+<p class="card-title" markdown>:material-magnify: 要弄清原因</p>
+
+第 13 章的四项检查：跨卡归约确实随消息大小变位，但 NCCL 算法与 graph 分桶
+都不是那条 256 边界。
+
+[打开机制验证 →](13_mechanism_checks.md){ .card-link }
+</div>
+
+<div class="card" markdown>
 <p class="card-title" markdown>:material-rocket-launch-outline: 要直接上线</p>
 
 推荐配置、固定编译产物、发布前逐 prompt 验证清单。

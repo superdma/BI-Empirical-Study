@@ -32,6 +32,9 @@ prefill 中走了不同的 query tile 路径；但没有逐 kernel 验证。
 7600-token 饱和 prompt 有 2.384e-07，7584-token 开放结尾翻转首 token，8180
 却全 0。说明“长 prompt 必坏”不成立，tail/chunk 对齐影响结果；具体几何未建模。
 
+第 13 章把 tail 长度从 1 扫到 512，只有 256 与 448 分叉，320/384/512 又一致，
+把“越长越坏”这个读法排掉了。剩下的解释仍然是 chunk 形状，但没有闭式模型。
+
 ### compiled 为什么通过
 
 可能是 Inductor 融合、CUDA Graph 的固定形状、attention 后端选择，或几者
@@ -67,7 +70,9 @@ v1 的以下结论被 v2 修正：
 
 1. **逐 kernel 定位 256 边界**：优先在 vLLM 中打印 BI 覆盖后的
    `matmul_kernel_persistent` 的 tile 配置，其次打印 FlashAttention/TRITON
-   attention 与 fused_moe 的 tile/split 选择，确认哪个 kernel 在 256 附近换配置；
+   attention 与 fused_moe 的 tile/split 选择，确认哪个 kernel 在 256 附近换配置。
+   第 13 章已经排掉 NCCL 算法选择与 CUDA graph 分桶两个候选，这一项的优先级
+   因此更高；
 2. **扩大 prompt 分布**：中文、代码、chat template、长系统提示、不同长度；
 3. **扩大并发**：128/256 路真实 HTTP，观察失败率与批形状的关系；
 4. **KV 压力**：把 gpu_memory_utilization 拉高、制造抢占，测试 BI 是否仍成立；

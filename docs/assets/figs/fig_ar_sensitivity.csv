@@ -1,0 +1,7 @@
+panel,series,steps,steps_with_diff
+a,TP=4，自动选择,299,299
+a,TP=4，allreduce:tree,299,46
+a,TP=2，allreduce:ring,299,0
+b,TP=4，自动选择,17,17
+b,TP=4，allreduce:tree,17,0
+b,TP=4，自动选择，全正数据,11,11

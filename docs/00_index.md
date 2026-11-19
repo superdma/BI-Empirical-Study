@@ -116,6 +116,21 @@ compiled 的吞吐也更高：
 PP=4 的在线四类场景也是 96/96 一致，代价是长请求耗时从 7.9 s 涨到 17.6 s。
 细节见 [12_sglang_results.md](12_sglang_results.md)。
 
+### 7. 机制上的三个候选解释被排掉了
+
+第 13 章做了四项不需要改 vLLM 源码的检查：
+
+| 检查 | 结果 |
+|---|---|
+| 不加载模型的 all-reduce 探针 | TP=4 时批大小每加 1 都改位（299/299 步），TP=2 一步都不改 |
+| 把 NCCL 算法钉死 | vLLM eager 从 1/32 变成 2/32，失败没有消失 |
+| 缓存命中的 tail 扫描 | 只有 256 与 448 分叉，320/384/512 一致，不单调 |
+| CUDA graph bucket 边界 | 32/64/128 两侧 compiled 与 eager 都没有台阶 |
+
+所以 255/256 那条边界既不是 NCCL 算法选的，也不是 graph 分桶造成的；剩下的
+候选仍然是模型侧 kernel 按形状选 tile/split。细节见
+[13_mechanism_checks.md](13_mechanism_checks.md)。
+
 ---
 
 ## 文档地图
@@ -129,6 +144,7 @@ PP=4 的在线四类场景也是 96/96 一致，代价是长请求耗时从 7.9 
 | [05_online_results.md](05_online_results.md) | v1 在线 H1–H6 结果与“批量提交”口径 |
 | [06_boundary_results.md](06_boundary_results.md) | v2 新增：32-prompt、长度、并发、256 边界、re-feed |
 | [12_sglang_results.md](12_sglang_results.md) | SGLang 0.5.6 复现：TP=4 与 PP=4 的对照 |
+| [13_mechanism_checks.md](13_mechanism_checks.md) | 机制验证：归约、NCCL 算法、缓存 tail、graph 分桶 |
 | [07_findings.md](07_findings.md) | 发现 F1–F13：事实、解释、证据强度 |
 | [08_deployment.md](08_deployment.md) | 部署决策树、脚本、反模式、监控 |
 | [09_limitations.md](09_limitations.md) | 局限、未解释现象、后续工作 |
@@ -145,7 +161,8 @@ PP=4 的在线四类场景也是 96/96 一致，代价是长请求耗时从 7.9 
 - `results/http/concurrency/*.json`：32-prompt、并发、突发、长度扫描；
 - `results/extra/analysis_tables.md`、`results/http/concurrency/analysis_tables.md`：
   自动生成的汇总表；
-- `sglang/results/*.json`：SGLang 复现的原始数据，脚本在 `sglang/` 下。
+- `sglang/results/*.json`：SGLang 复现的原始数据，脚本在 `sglang/` 下；
+- `results/tier1/*.json`：第 13 章四项机制检查的原始数据。
 
 ---
 

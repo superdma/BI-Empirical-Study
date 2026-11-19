@@ -25,6 +25,11 @@ attention 的 tile/split 配置；MoE 的 `fused_moe_kernel` 也按 expert token
 A6000 是 Ampere（SM86），名义上满足 CC≥8.0，但不在 tuned 路径里。这解释了
 为什么“官方 tested model + 官方支持 CC”仍会在本机出现形状相关的失败。
 
+[第 13 章](13_mechanism_checks.md)用三个独立实验缩小了候选范围：把 NCCL
+算法钉死（`allreduce:ring` / `allreduce:tree`）不改变失败数量，CUDA graph
+的分桶边界（32/64/128）上 eager 也没有台阶，因此这两条解释被排除，剩下的
+是模型侧 kernel 按形状选配置。
+
 **强度**：A（现象）；B（机制，尚未逐 kernel 打点确认）。
 
 ---
@@ -74,7 +79,11 @@ eager/compiled 都是 0.0；把 PC 关掉不能修复 32-prompt 的 31/32 失败
 
 **解释**：缓存命中后只剩一个很短的 tail 需要 prefill；tail 的 chunk 形状与
 full prefill 不同，attention 的 tile/split 选择随之不同。是否分叉取决于
-tail 长度与 block 对齐，因此 7600 坏、8180 好。
+tail 长度落在哪种 chunk 形状上，因此 7600 坏、8180 好。
+
+第 13 章把 tail 长度从 1 扫到 512：只有 256 与 448 分叉，320、384、512 又
+回到 0.0。所以这条不能读成“tail 越长越容易坏”，只能读成“某些 tail 长度会
+命中不同的 chunk 形状”。分叉幅度 10⁻⁷ 到 10⁻⁶，token id 一次都没变。
 
 **强度**：A（现象）；B（几何解释）。
 
@@ -241,8 +250,13 @@ tail 长度与 block 对齐，因此 7600 坏、8180 好。
 PP 只传激活、不做归约，所以不受影响。F11 从 vLLM 的数据里看到并行切分是
 BI 的边界，这一节在 SGLang 上给出了第二组证据。
 
-**强度**：B。分界点清楚，但具体是 NCCL 算法选择还是某一层的归约实现，没有
-再往下定位。
+[第 13 章](13_mechanism_checks.md)的不加载模型探针补上了第三组证据：同一台
+机器上，TP=4 的 all-reduce 在批大小从 1 走到 300 的过程中，299 步每一步都会
+改变本该不动的那些行；TP=2 一步都不变。把算法钉成 `allreduce:tree` 之后，
+bf16 的归约对批大小不再敏感，这正是 SGLang 确定性模式在做的事。
+
+**强度**：B。分界点清楚，归约层面的形状敏感已经独立测到，但具体是哪一层、
+哪一次归约造成引擎里的失败，还没有定位。
 
 ---
 
@@ -273,6 +287,11 @@ matmul tile 的边界。
   （matmul 的归约顺序）与没覆盖什么（attention 的 split、MoE tile、TP 的
   all-reduce、编译产物）；底部四个观测分别来自第 4–6 章与第 12 章。</figcaption>
 </figure>
+
+第 13 章排掉了三个替代解释：NCCL 的算法选择（钉死后失败照旧）、CUDA graph
+的分桶（边界两侧 compiled 都是 0.0）、tail 长度单调（只有 256 与 448 分叉）。
+同一章也测到跨卡归约本身确实随消息大小改变结果，只是它不是 eager 这条
+255/256 边界的来源。
 
 尚未证明的部分：具体是哪一个 kernel、哪一条启发式、哪一个 tile 参数。要回答
 需要 Nsight/逐 kernel 打点，或修改 vLLM 源码打印 `matmul_kernel_persistent`

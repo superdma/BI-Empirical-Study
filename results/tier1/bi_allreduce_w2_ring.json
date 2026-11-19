@@ -1,0 +1,400 @@
+{
+ "tag": "allreduce:ring",
+ "world": 2,
+ "algo_env": "allreduce:ring",
+ "hidden": 2048,
+ "proto_env": "",
+ "device_name": "NVIDIA RTX A6000",
+ "rows": [
+  {
+   "n_diff": 0,
+   "total": 524288,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "shape": [
+    256,
+    2048
+   ],
+   "dtype": "bfloat16",
+   "world": 2
+  },
+  {
+   "n_diff": 0,
+   "total": 524288,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "shape": [
+    128,
+    4096
+   ],
+   "dtype": "bfloat16",
+   "world": 2
+  },
+  {
+   "n_diff": 0,
+   "total": 524288,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "shape": [
+    512,
+    1024
+   ],
+   "dtype": "bfloat16",
+   "world": 2
+  },
+  {
+   "n_diff": 0,
+   "total": 524288,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "shape": [
+    1024,
+    512
+   ],
+   "dtype": "bfloat16",
+   "world": 2
+  },
+  {
+   "n_diff": 0,
+   "total": 524288,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "shape": [
+    2048,
+    256
+   ],
+   "dtype": "bfloat16",
+   "world": 2
+  },
+  {
+   "n_diff": 0,
+   "total": 524288,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "shape": [
+    256,
+    2048
+   ],
+   "dtype": "float32",
+   "world": 2
+  },
+  {
+   "n_diff": 0,
+   "total": 524288,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "shape": [
+    128,
+    4096
+   ],
+   "dtype": "float32",
+   "world": 2
+  },
+  {
+   "n_diff": 0,
+   "total": 524288,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "shape": [
+    512,
+    1024
+   ],
+   "dtype": "float32",
+   "world": 2
+  },
+  {
+   "n_diff": 0,
+   "total": 524288,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "shape": [
+    1024,
+    512
+   ],
+   "dtype": "float32",
+   "world": 2
+  },
+  {
+   "n_diff": 0,
+   "total": 524288,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "shape": [
+    2048,
+    256
+   ],
+   "dtype": "float32",
+   "world": 2
+  },
+  {
+   "n_diff": 0,
+   "total": 129024,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 2,
+   "pair": [
+    63,
+    64
+   ],
+   "test": "pad"
+  },
+  {
+   "n_diff": 0,
+   "total": 131072,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 2,
+   "pair": [
+    64,
+    65
+   ],
+   "test": "pad"
+  },
+  {
+   "n_diff": 0,
+   "total": 260096,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 2,
+   "pair": [
+    127,
+    128
+   ],
+   "test": "pad"
+  },
+  {
+   "n_diff": 0,
+   "total": 262144,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 2,
+   "pair": [
+    128,
+    129
+   ],
+   "test": "pad"
+  },
+  {
+   "n_diff": 0,
+   "total": 522240,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 2,
+   "pair": [
+    255,
+    256
+   ],
+   "test": "pad"
+  },
+  {
+   "n_diff": 0,
+   "total": 524288,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 2,
+   "pair": [
+    256,
+    257
+   ],
+   "test": "pad"
+  },
+  {
+   "n_diff": 0,
+   "total": 1046528,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 2,
+   "pair": [
+    511,
+    512
+   ],
+   "test": "pad"
+  },
+  {
+   "n_diff": 0,
+   "total": 129024,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "float32",
+   "world": 2,
+   "pair": [
+    63,
+    64
+   ],
+   "test": "pad"
+  },
+  {
+   "n_diff": 0,
+   "total": 131072,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "float32",
+   "world": 2,
+   "pair": [
+    64,
+    65
+   ],
+   "test": "pad"
+  },
+  {
+   "n_diff": 0,
+   "total": 260096,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "float32",
+   "world": 2,
+   "pair": [
+    127,
+    128
+   ],
+   "test": "pad"
+  },
+  {
+   "n_diff": 0,
+   "total": 262144,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "float32",
+   "world": 2,
+   "pair": [
+    128,
+    129
+   ],
+   "test": "pad"
+  },
+  {
+   "n_diff": 0,
+   "total": 522240,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "float32",
+   "world": 2,
+   "pair": [
+    255,
+    256
+   ],
+   "test": "pad"
+  },
+  {
+   "n_diff": 0,
+   "total": 524288,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "float32",
+   "world": 2,
+   "pair": [
+    256,
+    257
+   ],
+   "test": "pad"
+  },
+  {
+   "n_diff": 0,
+   "total": 1046528,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "float32",
+   "world": 2,
+   "pair": [
+    511,
+    512
+   ],
+   "test": "pad"
+  },
+  {
+   "n_diff": 0,
+   "total": 524288,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 2,
+   "against": "exact_fp64",
+   "test": "order"
+  },
+  {
+   "n_diff": 0,
+   "total": 524288,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 2,
+   "against": "rank_order",
+   "test": "order"
+  },
+  {
+   "n_diff": 0,
+   "total": 524288,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 2,
+   "against": "reverse_order",
+   "test": "order"
+  },
+  {
+   "n_diff": 0,
+   "total": 524288,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "float32",
+   "world": 2,
+   "against": "exact_fp64",
+   "test": "order"
+  },
+  {
+   "n_diff": 0,
+   "total": 524288,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "float32",
+   "world": 2,
+   "against": "rank_order",
+   "test": "order"
+  },
+  {
+   "n_diff": 0,
+   "total": 524288,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "float32",
+   "world": 2,
+   "against": "reverse_order",
+   "test": "order"
+  }
+ ],
+ "algo": [
+  {
+   "tag": 0,
+   "dtype": "bfloat16",
+   "world": 2,
+   "checksum": 3599.81494140625,
+   "first8": [
+    1.0390625,
+    1.0390625,
+    1.0390625,
+    1.0390625,
+    1.0390625,
+    1.046875,
+    1.046875,
+    1.046875
+   ],
+   "bits_first8": [
+    16261,
+    16261,
+    16261,
+    16261,
+    16261,
+    16262,
+    16262,
+    16262
+   ]
+  }
+ ]
+}

@@ -1,0 +1,486 @@
+{
+ "tag": "allreduce:tree",
+ "world": 4,
+ "algo_env": "allreduce:tree",
+ "hidden": 2048,
+ "proto_env": "",
+ "device_name": "NVIDIA RTX A6000",
+ "rows": [
+  {
+   "n_diff": 0,
+   "total": 2048,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    2
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 0,
+   "total": 2048,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    4
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 0,
+   "total": 2048,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    8
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 0,
+   "total": 2048,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    16
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 0,
+   "total": 2048,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    32
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 0,
+   "total": 2048,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    64
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 0,
+   "total": 2048,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    96
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 0,
+   "total": 2048,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    128
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 0,
+   "total": 2048,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    160
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 0,
+   "total": 2048,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    192
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 0,
+   "total": 2048,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    224
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 0,
+   "total": 2048,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    240
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 0,
+   "total": 2048,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    255
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 0,
+   "total": 2048,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    256
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 0,
+   "total": 2048,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    257
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 0,
+   "total": 2048,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    288
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 0,
+   "total": 2048,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "bfloat16",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    300
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 0,
+   "total": 2048,
+   "max_abs": 0.0,
+   "bitwise": true,
+   "dtype": "float32",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    2
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 349,
+   "total": 2048,
+   "max_abs": 4.76837158203125e-07,
+   "bitwise": false,
+   "dtype": "float32",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    4
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 349,
+   "total": 2048,
+   "max_abs": 4.76837158203125e-07,
+   "bitwise": false,
+   "dtype": "float32",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    8
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 349,
+   "total": 2048,
+   "max_abs": 4.76837158203125e-07,
+   "bitwise": false,
+   "dtype": "float32",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    16
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 349,
+   "total": 2048,
+   "max_abs": 4.76837158203125e-07,
+   "bitwise": false,
+   "dtype": "float32",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    32
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 349,
+   "total": 2048,
+   "max_abs": 4.76837158203125e-07,
+   "bitwise": false,
+   "dtype": "float32",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    64
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 349,
+   "total": 2048,
+   "max_abs": 4.76837158203125e-07,
+   "bitwise": false,
+   "dtype": "float32",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    96
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 349,
+   "total": 2048,
+   "max_abs": 4.76837158203125e-07,
+   "bitwise": false,
+   "dtype": "float32",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    128
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 349,
+   "total": 2048,
+   "max_abs": 4.76837158203125e-07,
+   "bitwise": false,
+   "dtype": "float32",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    160
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 349,
+   "total": 2048,
+   "max_abs": 4.76837158203125e-07,
+   "bitwise": false,
+   "dtype": "float32",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    192
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 349,
+   "total": 2048,
+   "max_abs": 4.76837158203125e-07,
+   "bitwise": false,
+   "dtype": "float32",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    224
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 349,
+   "total": 2048,
+   "max_abs": 4.76837158203125e-07,
+   "bitwise": false,
+   "dtype": "float32",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    240
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 349,
+   "total": 2048,
+   "max_abs": 4.76837158203125e-07,
+   "bitwise": false,
+   "dtype": "float32",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    255
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 349,
+   "total": 2048,
+   "max_abs": 4.76837158203125e-07,
+   "bitwise": false,
+   "dtype": "float32",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    256
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 349,
+   "total": 2048,
+   "max_abs": 4.76837158203125e-07,
+   "bitwise": false,
+   "dtype": "float32",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    257
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 349,
+   "total": 2048,
+   "max_abs": 4.76837158203125e-07,
+   "bitwise": false,
+   "dtype": "float32",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    288
+   ],
+   "hidden": 2048
+  },
+  {
+   "n_diff": 349,
+   "total": 2048,
+   "max_abs": 4.76837158203125e-07,
+   "bitwise": false,
+   "dtype": "float32",
+   "world": 4,
+   "test": "sparse",
+   "pair": [
+    1,
+    300
+   ],
+   "hidden": 2048
+  }
+ ]
+}
