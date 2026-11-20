@@ -333,17 +333,17 @@ python3 scripts/experiments/tier1/analyze_tier1.py results/tier1
 export NCCL_IB_DISABLE=1 H=2048 MAX_BS=300
 
 # 1. 不加载模型，4 卡 all-reduce
-python -m torch.distributed.run --nproc_per_node=4 bi_allreduce_bench.py \
+python -m torch.distributed.run --nproc_per_node=4 scripts/experiments/tier1/bi_allreduce_bench.py \
   --out results/tier1/bi_ar_thresh_w4.json --tag default
 
 # 2. 钉死 NCCL 算法后的 32 条 prompt
 bash scripts/runners/run_nccl_sweep.sh
 
 # 3. tail 长度扫描（eager，PC=1）
-OUT=results/tier1/bi_tail_scan.json python bi_tail_scan.py
+OUT=results/tier1/bi_tail_scan.json python scripts/experiments/tier1/bi_tail_scan.py
 
 # 4. bucket 边界扫描（把 EAGER=1 换成 eager 对照）
-OUT=results/tier1/bi_bucket_scan.json python bi_bucket_scan.py
+OUT=results/tier1/bi_bucket_scan.json python scripts/experiments/tier1/bi_bucket_scan.py
 ```
 
 all-reduce 探针的输出里 `n_diff` 是位模式不同的元素数，`total` 是比较的元素
@@ -368,11 +368,11 @@ $PY scripts/experiments/tier2/bi_op_shape.py     --out results/tier2/bi_op_shape
 $PY scripts/experiments/tier2/bi_attn_shape.py   --out results/tier2/bi_attn_shape.json
 
 # 3. 引擎通信器：BI 环境 / tree + 8 通道 / NCCL 自动
-$PY -m torch.distributed.run --nproc_per_node=4 bi_pynccl_bench.py \
+$PY -m torch.distributed.run --nproc_per_node=4 scripts/experiments/tier1/bi_pynccl_bench.py \
   --out results/tier2/bi_pynccl_bi_env.json --tag bi_env
-$PY -m torch.distributed.run --nproc_per_node=4 bi_pynccl_bench.py --channels 8 \
+$PY -m torch.distributed.run --nproc_per_node=4 scripts/experiments/tier1/bi_pynccl_bench.py --channels 8 \
   --out results/tier2/bi_pynccl_ch8.json --tag ch8
-$PY -m torch.distributed.run --nproc_per_node=4 bi_pynccl_bench.py --no-bi-env \
+$PY -m torch.distributed.run --nproc_per_node=4 scripts/experiments/tier1/bi_pynccl_bench.py --no-bi-env \
   --out results/tier2/bi_pynccl_auto.json --tag auto
 
 # 4. 逐层打点（需要 PYTHONPATH 指向 bi_hook，vLLM 的 worker 才会导入）
