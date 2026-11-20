@@ -20,7 +20,7 @@
 
 ## 7.1 环境
 
-SGLang 装在独立的 venv 里，与 vLLM 的 conda 环境互不干扰。
+SGLang 装在独立的 conda 环境 `sglang054` 里，与 vLLM 的 `vllm_update` 互不干扰。
 
 | 组件 | 版本 |
 |---|---|
@@ -109,11 +109,11 @@ FlashInfer 的 JIT 需要两样东西：`ninja` 在 `PATH` 里，以及 nvcc ≥
 - TP=4 下，25 条 prompt 的 logprob 不同，其中 7 条连生成的 token 都变了，
   文本会从这些位置分叉。vLLM 的 eager 模式在同样 32 条 prompt 上是 31 条
   logprob 不同、10 条 token 变化，两个引擎的失败量级接近。
-- 关掉确定性开关后，ids 变化从 7 条涨到 13 条，最大差也翻倍，说明这个开关
-  确实起了作用，只是不完整。
-- 换 attention 后端、关 custom all-reduce、关 CUDA graph，都没有改变 25/32
-  这个数字中的任何一个，三组配置的数值完全一样（4.083e-02）。能改变结果的
-  只有并行方式。
+- 关掉确定性开关后，ids 变化从 7 条涨到 13 条，最大差从 4.083e-02 涨到
+  2.187e-01（约五倍），说明这个开关确实起了作用，只是不完整。
+- 关 custom all-reduce、关 CUDA graph 都没有改变失败的条数（仍是 25 条），
+  数值也完全一样（4.083e-02）；换 triton attention 只把失败从 25 条降到 17 条
+  （15/32 通过），仍然远不到可用。能真正改变结果的是并行方式。
 
 ### 表 S2：批大小扫描（target-only）
 

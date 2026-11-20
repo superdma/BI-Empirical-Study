@@ -22,7 +22,8 @@ TP = int(os.environ.get("TP", "4"))
 DET = os.environ.get("DET", "1") == "1"
 CUDAGRAPH = os.environ.get("CUDAGRAPH", "1") == "1"
 RADIX = os.environ.get("RADIX", "1") == "1"
-OUTDIR = os.environ.get("OUTDIR", os.path.expanduser("~/sgl_results"))
+OUTDIR = os.environ.get("OUTDIR") or os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "results")
 TAG = os.environ.get("TAG", "sgl")
 
 TARGET = "The capital of France is"

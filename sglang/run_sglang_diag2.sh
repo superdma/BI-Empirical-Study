@@ -1,14 +1,15 @@
 #!/bin/bash
 # Second diagnostic round: narrow down the tensor-parallel effect on a dense model.
 # Launch detached:
-#   setsid nohup bash ~/sgl_suite/run_sglang_diag2.sh > ~/sgl_results/run_diag2.log 2>&1 &
+#   setsid nohup bash sglang/run_sglang_diag2.sh > sglang/results/run_diag2.log 2>&1 &
 set -u
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 export CUDA_HOME=$HOME/miniconda3/envs/sglang
 export PATH=$CUDA_HOME/bin:$PATH
-PY=$HOME/venvs/sglang054/bin/python
-OFF=$HOME/sgl_suite/bi_sgl_offline_suite.py
-export OUTDIR=$HOME/sgl_results
+PY="${PY:-$HOME/miniconda3/envs/sglang054/bin/python}"
+OFF="$HERE/bi_sgl_offline_suite.py"
+export OUTDIR="${OUTDIR:-$HERE/results}"
 export DET=1
 export CUDAGRAPH=0
 export MODEL=$HOME/models/Qwen3-0.6B

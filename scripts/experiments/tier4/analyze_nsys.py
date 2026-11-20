@@ -7,7 +7,7 @@ compares between the 255 and the 256 run.
 
 Usage:
     python analyze_nsys.py --a p255.sqlite --b p256.sqlite \
-      --out results/tier3/bi_nsys_diff.json
+      --out results/tier4/bi_nsys_diff.json
 """
 import argparse
 import json

@@ -1,6 +1,6 @@
 # 15. 参考资料
 
-以下链接均为公开可访问的官方文档、源码或模型卡；版本以 2026-11-17 为准。
+以下链接均为公开可访问的官方文档、源码或模型卡；版本以 2026-11-20 为准。
 
 ## 15.1 vLLM 官方
 
@@ -68,6 +68,8 @@
 | 并发/长度 JSON | `../results/http/concurrency/*.json` |
 | 第 8 章机制检查 JSON | `../results/tier1/*.json` |
 | 第 9 章算子与打点 JSON | `../results/tier2/*.json` |
+| 第 10 章组成、回放与 TP=2 JSON | `../results/tier3/*.json` |
+| 第 10 章边界、回放与形状矩阵 JSON | `../results/tier4/*.json` |
 | SGLang 原始结果 | `../sglang/results/*.json` |
 
 ## 15.5 引用说明

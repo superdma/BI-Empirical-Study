@@ -5,7 +5,7 @@
 | 目标 | 推荐 | 原因 |
 |---|---|---|
 | 在线服务，要求不同并发/到达方式下同一请求输出一致 | **compiled + 固定编译产物** | 本次唯一通过 32/32、并发、256 边界、re-feed 的模式 |
-| 离线 RL rollout / 打分，批次形状固定且很小 | eager 可作为候选，但必须逐 prompt 验证 | 小步（≤16 条、总 token ≤253）通过；一旦跨形状就失败 |
+| 离线 RL rollout / 打分，批次形状固定且很小 | eager 可作为候选，但必须逐 prompt 验证 | 实测通过的小形状：N=32 总 160/253、N=8 总 285；一旦跨形状就失败 |
 | 跨进程/跨机器严格一致 | compiled + 固定版本/缓存/配置；或固定 eager + 固定 prompt 集并验证 | compiled 跨 warm-cache 进程稳定，但 cold/warm 与 chunk 会变 |
 | 只追求吞吐，不要求 BI | 默认 compiled（不要开 `--enforce-eager`） | 本次 compiled 还快 2–3 倍 |
 
@@ -49,7 +49,7 @@ exec $HOME/miniconda3/envs/vllm_update/bin/vllm serve "$MODEL" \
 - 建议 PC off：compiled 在本次长 prompt 诊断中 fresh/hit 一致，但关掉可以
   少一个变量；如果吞吐需要 PC，请用长 prompt 场景单独验证。
 
-对应的本地脚本：`serve_bi_compiled.sh`。
+对应的本地脚本：`scripts/runners/serve_bi_compiled.sh`。
 
 ## 12.3 固定编译产物
 
@@ -74,7 +74,7 @@ compiled 的 BI 只在**同一份编译产物**内成立。v1 观察到：
 
 ```bash
 BASE=http://127.0.0.1:8000 N=32 \
-  python bi_http_batchall.py
+  python scripts/experiments/online/bi_http_batchall.py
 ```
 
 判定：`solo_vs_batch_bad == 0` 且 `batch_repeat_bad == 0`。
@@ -92,7 +92,7 @@ BASE=http://127.0.0.1:8000 N=32 \
 
 ```bash
 BASE=http://127.0.0.1:8000 N=32 \
-  python bi_http_concurrent.py
+  python scripts/experiments/online/bi_http_concurrent.py
 ```
 
 判定：所有 `prompt*_seq_vs_concurrent` 的 `ids` 与 `bitwise` 都为 true。
@@ -106,7 +106,7 @@ BASE=http://127.0.0.1:8000 N=32 \
 
 ```bash
 BASE=http://127.0.0.1:8000 N=32 L=9 \
-  python bi_http_len.py
+  python scripts/experiments/online/bi_http_len.py
 ```
 
 判定：`bad == 0`。`L=9`、N=32 时总 prefill 约 284 token，是 eager 的失败区；
@@ -114,12 +114,13 @@ compiled 应通过。
 
 ### 4）decode vs re-feed
 
-生成长度 ≥256 时，用 `bi_refeed_diag.py` 检查 `n_mismatch == 0`。
+生成长度 ≥256 时，用 `scripts/experiments/v1/bi_refeed_diag.py` 检查
+`n_mismatch == 0`。
 
 ### 5）长 prompt / 缓存
 
-如果开 PC，用 `bi_long_diag2.py` 检查 fresh vs hit；eager 下 7584-token 开放
-结尾会翻转首 token。
+如果开 PC，用 `scripts/experiments/v1/bi_long_diag2.py` 检查 fresh vs hit；
+eager 下 7584-token 开放结尾会翻转首 token。
 
 ## 12.5 配置 B：eager（仅限小步、同步、已验证的 prompt 集）
 
@@ -148,7 +149,7 @@ exec $HOME/miniconda3/envs/vllm_update/bin/vllm serve "$MODEL" \
   保证 32 条 prompt 的 prefill 失败消失；它只是把并发波次变小；
 - eager 跨进程对同一个（已验证的）prompt 是稳定的（表 B），适合“固定小批、固定 prompt 集”
   的离线任务；
-- 必须用 12.4 的 32-prompt 验证你的实际 prompt 集；如果 1/32，不要用 eager。
+- 必须用 12.4 的 32-prompt 验证你的实际 prompt 集；如果通过率接近 0，不要用 eager。
 
 ## 12.6 反模式
 

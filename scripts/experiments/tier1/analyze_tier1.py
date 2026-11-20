@@ -106,7 +106,7 @@ def tail_table(path):
 def bucket_table(path):
     d = load(path)
     mode = "eager" if d["env"]["eager"] else "compiled"
-    lines = [f"### 表 T4：{mode} 模式在 CUDA graph bucket 边界附近的批大小扫描", "",
+    lines = [f"### 表 T4（{mode}）：CUDA graph bucket 边界附近的批大小扫描", "",
              r"| 批大小 | 位级一致 | 首个不一致 | 最大 \|Δlogprob\| | 该批耗时 |",
              "|---|---|---|---|---|"]
     for row in d["rows"]:

@@ -70,8 +70,8 @@ b626cd1a5241075e6b45af988d1d8a92bec240caddaebc89a4606e35fce3f352  results/extra/
 生成全部哈希：
 
 ```bash
-find results -name '*.json' | sort | while read -r r; do sha256sum "$r" \
-  done > results/SHA256SUMS
+find results -name '*.json' | sort | while read -r r; do sha256sum "$r"; done \
+  > results/SHA256SUMS
 ```
 
 ## B.7 表中的“0.0”不等于“没有比较”

@@ -4,14 +4,15 @@
 #   B. MoE model, custom all-reduce off -> isolates the all-reduce kernel choice
 #   C. MoE model, triton attention  -> isolates the attention backend
 # Launch detached:
-#   setsid nohup bash ~/sgl_suite/run_sglang_diag.sh > ~/sgl_results/run_diag.log 2>&1 &
+#   setsid nohup bash sglang/run_sglang_diag.sh > sglang/results/run_diag.log 2>&1 &
 set -u
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 export CUDA_HOME=$HOME/miniconda3/envs/sglang
 export PATH=$CUDA_HOME/bin:$PATH
-PY=$HOME/venvs/sglang054/bin/python
-OFF=$HOME/sgl_suite/bi_sgl_offline_suite.py
-export OUTDIR=$HOME/sgl_results
+PY="${PY:-$HOME/miniconda3/envs/sglang054/bin/python}"
+OFF="$HERE/bi_sgl_offline_suite.py"
+export OUTDIR="${OUTDIR:-$HERE/results}"
 export DET=1
 export CUDAGRAPH=0
 

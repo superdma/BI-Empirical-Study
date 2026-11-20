@@ -83,7 +83,8 @@ eager/compiled 都是 0.0；把 PC 关掉不能修复 32-prompt 的 31/32 失败
 **事实**：
 
 - 7600-token 饱和 prompt：fresh vs hit 最大 2.384e-07（TP4）/4.768e-07（TP2）；
-- 7584-token 开放结尾 prompt：首个生成 token 的 logprob 差 0.597，token 翻转；
+- 7584-token 开放结尾 prompt：fresh 与 hit 的第一个生成 token 就不同，序列内
+  最大差 0.597，生成的 token 序列从第一个 token 起分叉；
 - 8180-token 近最大上下文：PC0/PC1 都恰好 0.0。
 
 **证据**：v1 表 E/H；v2 表 K；三次重复。
@@ -105,7 +106,7 @@ tail 长度落在哪种 chunk 形状上，因此 7600 坏、8180 好。
 **事实**：compiled（不加 `--enforce-eager`）在以下测试全部 0.0：
 
 - 32 条 prompt 单独 vs 批内；
-- N=8/16/32（含总 prefill 160/253/284/455）；
+- N=8/16/32（含总 prefill 160/253/284/285/455）；
 - bs=256，含 256-token 生成；
 - 256-token decode vs re-feed；
 - 32 路独立并发、突发、背景解码、混合插入；
@@ -256,7 +257,7 @@ tail 长度落在哪种 chunk 形状上，因此 7600 坏、8180 好。
 **事实**：
 
 - SGLang 0.5.6 的 `--enable-deterministic-inference` 在 TP=4 下只有 7/32 条
-  prompt 位级一致，其中 7 条连 token id 都变了；
+  prompt 位级一致；其余 25 条 logprob 不同，其中 7 条连 token id 都变了；
 - 关掉 custom all-reduce、关掉 CUDA graph、把 attention 换成 triton，得到的
   数字分别是 25/32、25/32、17/32（不一致数），前两项与默认完全一样；
 - 稠密 Qwen3-0.6B 上，TP=1 与 TP=2 都是 32/32，TP=4 是 0/32，PP=4 是 32/32；
@@ -293,7 +294,7 @@ bf16 的归约对批大小不再敏感，这正是 SGLang 确定性模式在做�
 - 引擎进程内现场回放，256 与 255 两次运行都与引擎输出逐位相同（全量 0 个不同）；
 - 257 到 512 的批大小停在同一个失败水平（约 85/255 条）；
 - compiled 在 255/256/448/512 上全部一致；关掉 breakable CUDA graph 对 eager
-  没有影响；eager 的 32 条失败率随 prompt 集从 1/32 变到 24/32。
+  没有影响；eager 的 32 条通过数随 prompt 集在 1–2/32 与 24/32 之间变化。
 
 **证据**：第 10 章表 T12–T20，图 13、图 14。
 
@@ -337,7 +338,7 @@ bf16 的归约对批大小不再敏感，这正是 SGLang 确定性模式在做�
   ![机制推断的因果链](assets/figs/fig_mechanism.png)
   <figcaption>图 15　上面这段解释的结构。两处标注分开说清 BI 覆盖了什么
   （matmul 的归约顺序、attention 的 split、MoE 的配置）与没覆盖什么（TP 的
-  all-reduce、编译产物）；底部四个观测分别来自第 4–6 章与第 7 章。第 9 章
+  all-reduce、编译产物）；底部四个观测分别来自第 4–7 章。第 9 章
   测过了“没覆盖”里最能解释 256 的那一格，结论写在该章 9.8。</figcaption>
 </figure>
 

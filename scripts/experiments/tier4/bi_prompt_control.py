@@ -7,7 +7,7 @@ runs both prompt sets at both lengths in one process and reports the same
 solo-vs-batch comparison for each.
 
 Usage:
-    python bi_prompt_control.py --out results/tier3/bi_prompt_control.json
+    python bi_prompt_control.py --out results/tier4/bi_prompt_control.json
 """
 import argparse
 import json

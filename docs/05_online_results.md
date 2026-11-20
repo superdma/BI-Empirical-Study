@@ -98,6 +98,6 @@ freshA、hit1、hit2、freshB、hit3 的首发 logprob 全部为 `-1.927184`，t
 ## 5.7 在线测试的工程结论
 
 1. HTTP 层没有引入额外的非确定性（同样的批量提交可重复）；
-2. eager + 长 prompt + 缓存命中在在线服务中同样改变结果；
+2. eager + 长 prompt + 缓存命中，在在线服务中同样改变结果；
 3. `--no-enable-prefix-caching` 能消除该风险；
 4. 但“短 prompt 全 0”只对 target 成立，不能作为一般性结论。

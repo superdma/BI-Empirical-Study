@@ -6,7 +6,7 @@ compares each run with the 255 baseline, so the boundary shows up as a curve
 instead of a single step.
 
 Usage:
-    python bi_boundary_sweep.py --out results/tier3/bi_boundary_sweep.json
+    python bi_boundary_sweep.py --out results/tier4/bi_boundary_sweep.json
 """
 import argparse
 import json

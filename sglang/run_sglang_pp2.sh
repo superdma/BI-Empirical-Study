@@ -1,16 +1,17 @@
 #!/bin/bash
 # PP follow-ups: CUDA-graph variant offline, then the online suite.
 # Launch detached:
-#   setsid nohup bash ~/sgl_suite/run_sglang_pp2.sh > ~/sgl_results/run_pp2.log 2>&1 &
+#   setsid nohup bash sglang/run_sglang_pp2.sh > sglang/results/run_pp2.log 2>&1 &
 set -u
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 export CUDA_HOME=$HOME/miniconda3/envs/sglang
 export PATH=$CUDA_HOME/bin:$PATH
-PY=$HOME/venvs/sglang054/bin/python
-OFF=$HOME/sgl_suite/bi_sgl_offline_suite.py
-HTTP=$HOME/sgl_suite/bi_sgl_http_suite.py
+PY="${PY:-$HOME/miniconda3/envs/sglang054/bin/python}"
+OFF="$HERE/bi_sgl_offline_suite.py"
+HTTP="$HERE/bi_sgl_http_suite.py"
 MODEL=$HOME/models/Qwen3-30B-A3B
-export OUTDIR=$HOME/sgl_results
+export OUTDIR="${OUTDIR:-$HERE/results}"
 export TP=1
 export RADIX=1
 

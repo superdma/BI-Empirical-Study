@@ -29,7 +29,9 @@ cd /path/to/BI-Empirical-Study
 bash scripts/runners/run_all_bi.sh
 ```
 
-产出：`results/bi_*.json`，以及 `results/analysis_tables.md`（表 A–D）。各启动脚本默认写到 `results/` 下对应目录，日志写到 `logs/`；`RESULTS=`、`LOGS=` 可以改到别处。
+产出：`results/bi_*.json`。`results/analysis_tables.md`（表 A–D）是整理时从
+`compare_bi.py` 的输出手工汇总的，重跑脚本不会重写它。各启动脚本默认写到
+`results/` 下对应目录，日志写到 `logs/`；`RESULTS=`、`LOGS=` 可以改到别处。
 
 eager fallback 复现（仅限已验证的小批）：
 
@@ -49,8 +51,8 @@ bash scripts/runners/run_http_matrix.sh
 六个配置依次启停：eager 8192/PC1 ×2、eager 2048/PC1、eager 8192/PC0、
 BI=0、compiled 8192/PC1。
 
-产出：`results/http/bi_http_*.json` 与
-`results/http/analysis_tables.md`（表 E–H）。
+产出：`results/http/bi_http_*.json`。`results/http/analysis_tables.md`（表
+E–H）同样是手工汇总，重跑不会重写。
 
 ## 14.4 v1：长 prompt 缓存命中诊断
 
@@ -139,36 +141,36 @@ python3 scripts/experiments/online/analyze_online_extra.py
 |---|---|
 | `scripts/experiments/v1/bi_test_qwen3_30b.py` | v1 离线 BI harness |
 | `scripts/experiments/v1/compare_bi.py` | 两份离线 JSON 的位级比较 |
-| `run_all_bi.sh` | v1 离线矩阵 |
-| `serve_bi_eager.sh` | eager 服务（小批 fallback，默认 MNS=128） |
-| `serve_bi_compiled.sh` | 推荐的通用 BI 服务 |
+| `scripts/runners/run_all_bi.sh` | v1 离线矩阵 |
+| `scripts/runners/serve_bi_eager.sh` | eager 服务（小批 fallback，默认 MNS=128） |
+| `scripts/runners/serve_bi_compiled.sh` | 推荐的通用 BI 服务 |
 | `scripts/experiments/online/bi_http_test.py` | v1 在线 H1–H6 |
-| `run_http_matrix.sh` | v1 在线矩阵 |
+| `scripts/runners/run_http_matrix.sh` | v1 在线矩阵 |
 | `scripts/experiments/v1/bi_long_diag.py` / `bi_long_diag2.py` | 长 prompt 缓存诊断 |
-| `run_diag.sh` / `run_diag2.sh` / `run_diag3.sh` | 上述诊断的启动脚本 |
+| `scripts/runners/run_diag.sh` / `scripts/runners/run_diag2.sh` / `scripts/runners/run_diag3.sh` | 上述诊断的启动脚本 |
 | `scripts/experiments/v1/bi_extra_qwen3_30b.py` | v2 批大小/TP/attention 矩阵 |
 | `scripts/experiments/v1/bi_extra_diag.py` | v2 bs256 条件隔离 |
-| `run_extra_matrix.sh` | v2 12 配置矩阵 |
-| `run_diag_bs256.sh` / `b` / `c` | v2 bs256 诊断 |
+| `scripts/runners/run_extra_matrix.sh` | v2 12 配置矩阵 |
+| `scripts/runners/run_diag_bs256.sh` / `run_diag_bs256b.sh` / `run_diag_bs256c.sh` | v2 bs256 诊断 |
 | `scripts/experiments/v1/bi_refeed_diag.py` | decode vs re-feed 长度扫描 |
-| `run_refeed_b.sh` | 上述扫描的启动脚本 |
+| `scripts/runners/run_refeed_b.sh` | 上述扫描的启动脚本 |
 | `scripts/experiments/online/bi_http_concurrent.py` | 32 路独立并发 |
-| `run_concurrency.sh` | 并发矩阵 |
+| `scripts/runners/run_concurrency.sh` | 并发矩阵 |
 | `scripts/experiments/online/bi_http_mixed.py` | 单请求插入解码 |
-| `run_mixed.sh` | 混合矩阵 |
+| `scripts/runners/run_mixed.sh` | 混合矩阵 |
 | `scripts/experiments/online/bi_http_burst.py` | 突发 32 请求 |
-| `run_burst.sh` | 突发矩阵 |
+| `scripts/runners/run_burst.sh` | 突发矩阵 |
 | `scripts/experiments/online/bi_http_batchall.py` | 32-prompt 单独 vs 批内 |
-| `run_batchall.sh` / `run_batchall2.sh` | 批量与后端对照 |
+| `scripts/runners/run_batchall.sh` / `scripts/runners/run_batchall2.sh` | 批量与后端对照 |
 | `scripts/experiments/online/bi_http_len.py` | 批内长度扫描 |
-| `run_len.sh` / `run_len_compiled.sh` | 长度扫描 |
+| `scripts/runners/run_len.sh` / `scripts/runners/run_len_compiled.sh` | 长度扫描 |
 | `scripts/experiments/v1/bi_batchall_offline.py` | 离线 32-prompt 复核 |
 | `scripts/experiments/tier1/bi_allreduce_bench.py` | 不加载模型的 NCCL all-reduce 形状探针 |
-| `run_nccl_sweep.sh` | 固定 `NCCL_ALGO` 重跑 32-prompt |
+| `scripts/runners/run_nccl_sweep.sh` | 固定 `NCCL_ALGO` 重跑 32-prompt |
 | `scripts/experiments/tier1/bi_tail_scan.py` | 前缀缓存命中 vs fresh 的 tail 长度扫描 |
 | `scripts/experiments/tier1/bi_bucket_scan.py` | CUDA graph bucket 边界的批大小扫描 |
-| `run_tier1.sh` | 上述四项按顺序跑一遍 |
-| `scripts/experiments/tier1/analyze_tier1.py` | 把四项结果渲染成表 T1–T4 |
+| `scripts/runners/run_tier1.sh` | 上述四项按顺序跑一遍 |
+| `scripts/experiments/tier1/analyze_tier1.py` | 把四项结果渲染成表 T1–T4（T4 分 compiled / eager 两张） |
 | `scripts/experiments/tier2/bi_bi_coverage.py` | BI 覆盖了哪些 aten 算子、tile 配置随 M 的扫描 |
 | `scripts/experiments/tier2/bi_matmul_shape.py` | 线性层单独跑：同一行在不同 M 下是否逐位相同 |
 | `scripts/experiments/tier2/bi_op_shape.py` | norm / silu / rotary / MoE 单独跑，含对齐对照 |
@@ -200,13 +202,15 @@ python3 scripts/experiments/online/analyze_online_extra.py
 | 路径 | 内容 |
 |---|---|
 | `results/*.json` | v1 离线 |
+| `results/analysis_tables.md` | 表 A–D（手工汇总） |
 | `results/http/*.json` | v1 在线、长 prompt 诊断 |
+| `results/http/analysis_tables.md` | 表 E–H（手工汇总） |
 | `results/extra/*.json` | 批大小、TP、attention、re-feed、离线 32-prompt |
 | `results/http/concurrency/*.json` | 32-prompt、并发、突发、混合、长度 |
 | `results/extra/analysis_tables.md` | 表 I–L、Q |
 | `results/http/concurrency/analysis_tables.md` | 表 M–P |
 | `results/tier1/*.json` | 第 8 章四项机制检查的原始结果 |
-| `results/tier1/analysis_tables.md` | 表 T1、T1b、T2、T3、T4 |
+| `results/tier1/analysis_tables.md` | 表 T1、T1b、T2、T3、T4（compiled / eager 两节） |
 | `results/tier2/*.json` | 第 9 章的配置扫描、逐算子与逐层打点结果 |
 | `results/tier2/analysis_tables.md` | 表 T5–T11 |
 | `results/tier3/*.json` | 第 10 章的组成、回放、启动参数、TP=2 结果 |
@@ -239,14 +243,14 @@ python3 scripts/experiments/online/analyze_online_extra.py
 
 ## 14.9 SGLang 复现
 
-SGLang 装在独立 venv 里，不覆盖 vLLM 环境。
+SGLang 装在独立的 conda 环境 `sglang054` 里，不覆盖 vLLM 的 `vllm_update`。
 
 ```bash
-# 依赖 nvcc >= 12.4：用 conda 环境里的 cuda-nvcc 12.8
+# 依赖 nvcc >= 12.4：借用 sglang 环境里的 cuda-nvcc 12.8
 export CUDA_HOME=$HOME/miniconda3/envs/sglang
 export PATH=$CUDA_HOME/bin:$PATH
 
-~/venvs/sglang054/bin/pip install -i https://pypi.tuna.tsinghua.edu.cn/simple \
+$HOME/miniconda3/envs/sglang054/bin/pip install -i https://pypi.tuna.tsinghua.edu.cn/simple \
   --pre 'sglang[all]==0.5.6'
 ```
 
@@ -254,7 +258,8 @@ export PATH=$CUDA_HOME/bin:$PATH
 两组在线（TP=4 确定性、TP=4 关闭确定性）：
 
 ```bash
-setsid nohup bash sglang/run_sglang_30b.sh > $HOME/sgl_results/run_30b.log 2>&1 &
+mkdir -p sglang/results
+setsid nohup bash sglang/run_sglang_30b.sh > sglang/results/run_30b.log 2>&1 &
 ```
 
 消融与并行方式对照：
@@ -304,8 +309,8 @@ done
 | `scripts/figures/fig_overview.py` | 图 1（首页） | `results/http/concurrency/*.json`、`sglang/results/*.json` |
 | `scripts/figures/fig_method.py` | 图 2（第 1 章） | `results/extra/bi_batchall_offline_eager.json`、`bi_diag_bs256_pc0.json` |
 | `scripts/figures/fig_env.py` | 图 3（第 2 章） | 第 2、7 章的版本表 |
-| `fig_v1_matrix.py` | 图 4（第 4 章） | `results/bi_*.json` |
-| `fig_v1_online.py` | 图 5（第 5 章） | `results/http/bi_http_*.json` |
+| `scripts/figures/fig_v1_matrix.py` | 图 4（第 4 章） | `results/bi_*.json` |
+| `scripts/figures/fig_v1_online.py` | 图 5（第 5 章） | `results/http/bi_http_*.json` |
 | `scripts/figures/fig_boundary.py` | 图 6（第 6 章） | `results/extra/bi_diag_*.json`、`bi_refeed_*.json`、`results/http/concurrency/bi_http_len_*.json` |
 | `scripts/figures/fig_sgl_offline.py` | 图 7（第 7 章） | `sglang/results/*batchall*.json` |
 | `scripts/figures/fig_sgl_online.py` | 图 8（第 7 章） | `sglang/results/*_http_http.json` |
@@ -313,9 +318,9 @@ done
 | `scripts/figures/fig_engine_checks.py` | 图 10（第 8 章） | `results/tier1/bi_nccl_*.json`、`bi_tail_scan.json`、`bi_bucket_scan*.json` |
 | `scripts/figures/fig_bi_coverage.py` | 图 11（第 9 章） | `results/tier2/bi_bi_coverage.json`、`bi_pynccl_*.json` |
 | `scripts/figures/fig_layer_probe.py` | 图 12（第 9 章） | `results/tier2/bi_layer_map.json` |
-| `fig_tier3_composition.py` | 图 13（第 10 章） | `results/tier3/bi_composition.json`、`bi_launch_blocks.json`、`bi_block_probe.json` |
-| `fig_tier4_replay.py` | 图 14（第 10 章） | `results/tier4/probe_bi0.json`、`probe_bi1.json`、`bi_boundary_sweep.json` |
-| `scripts/figures/fig_mechanism.py` | 图 15（第 11 章） | 第 4–6、7 章的结论 |
+| `scripts/figures/fig_tier3_composition.py` | 图 13（第 10 章） | `results/tier3/bi_composition.json`、`bi_launch_blocks.json`、`bi_block_probe.json` |
+| `scripts/figures/fig_tier4_replay.py` | 图 14（第 10 章） | `results/tier4/probe_bi0.json`、`probe_bi1.json`、`bi_boundary_sweep.json` |
+| `scripts/figures/fig_mechanism.py` | 图 15（第 11 章） | 第 4–7 章的结论 |
 
 `figstyle.py` 统一了字号、配色与导出流程：每张图同时写出 SVG、PDF 与
 600 dpi PNG，多面板图在导出前跑一遍面板对齐检查，导出后对 PDF 跑文字与线段
@@ -323,11 +328,12 @@ done
 因为 PNG 已把中文字体栅格化，读者机器上不需要安装对应字体；SVG 与 PDF 留在
 `docs/assets/figs/` 里备打印用。
 
-每张图旁边的 CSV 是画图时取用的数值，方便核对图与表是否一致。
+有数据来源的图旁边还留一份 CSV，记录画图时取用的数值，方便核对图与表是否一致；
+图 2、3、15 是示意/版本对照，没有 CSV。
 
 ## 14.11 机制验证（第 8 章）
 
-四项检查按顺序跑，前两项不需要模型，后两项各需要一次 30B 加载：
+四项检查按顺序跑，第一项不需要模型，后三项各需要一次 30B 加载：
 
 ```bash
 cd /path/to/BI-Empirical-Study

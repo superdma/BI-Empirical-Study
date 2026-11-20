@@ -6,9 +6,9 @@ the mode itself; `--compiled` drops `enforce_eager`, and the launcher sets
 `VLLM_USE_BREAKABLE_CUDAGRAPH` when it wants that control.
 
 Usage:
-    python bi_shape_matrix.py --label eager --out results/tier3/bi_shapes_eager.json
+    python bi_shape_matrix.py --label eager --out results/tier4/bi_shapes_eager.json
     python bi_shape_matrix.py --label compiled --compiled \
-      --out results/tier3/bi_shapes_compiled.json
+      --out results/tier4/bi_shapes_compiled.json
 """
 import argparse
 import json

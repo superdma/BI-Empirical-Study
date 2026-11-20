@@ -24,7 +24,8 @@ BASE = os.environ.get("BASE", "http://127.0.0.1:30000")
 N = int(os.environ.get("N", "32"))
 MT = int(os.environ.get("MT", "16"))
 TAG = os.environ.get("TAG", "sgl_http")
-OUTDIR = os.environ.get("OUTDIR", os.path.expanduser("~/sgl_results"))
+OUTDIR = os.environ.get("OUTDIR") or os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "results")
 DELAY = float(os.environ.get("DELAY", "1.0"))
 B_TOKENS = int(os.environ.get("B_TOKENS", "400"))
 

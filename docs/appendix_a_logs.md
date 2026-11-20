@@ -65,7 +65,7 @@ Capturing CUDA graphs (FULL): 100%|...| 35/35
 ```
 
 warm 启动时会显示从 cache 直接加载编译图；cold 启动会重新编译。v1 观察到
-cold vs warm 的输出可能不同（见 07_F7）。
+cold vs warm 的输出可能不同（见第 11 章 F7）。
 
 ## A.6 MoE 后端启动失败（SM86）
 

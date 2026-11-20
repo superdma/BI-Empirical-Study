@@ -29,7 +29,8 @@
 | 引擎通信器探针 | `bi_pynccl_bench.py` | 否 | 每配置 1 分钟 |
 | 逐层打点 | `bi_layer_probe.py` + `scripts/bi_hook/sitecustomize.py` | 是 | 4 分钟 |
 
-汇总：`python3 analyze_tier2.py results/tier2`，原始 JSON 在同一目录。
+汇总：`python3 scripts/experiments/tier2/analyze_tier2.py results/tier2`，原始
+JSON 在同一目录。
 
 逐层打点用了一个不常见的做法：把 `sitecustomize.py` 放进 `PYTHONPATH`，vLLM
 spawn 出来的四个 worker 在启动时都会导入它，于是 `nn.Module.__call__` 在 worker
@@ -185,8 +186,8 @@ storage offset（0/1/2/4/8 个元素），行 0 仍然逐位相同；这说明�
 <figure class="bi-figure" markdown="span">
   ![逐层打点：差异从哪一步、哪一层开始](assets/figs/fig_layer_probe.png)
   <figcaption>图 12　a：行 0 在第几步、第几层开始出现位差（灰为 0，颜色越深
-  改位的元素越多）；b：每一步里已有差异的层数。数据来自四个 worker 进程里
-  的逐层捕获，比较对象是同一组 prompt 在 256 条与 255 条下的运行。</figcaption>
+  改位的元素越多）；b：每一步里已有差异的层数。数据在四个 worker 进程里捕获，
+  比较取 rank 0 的第 0 行；对象是同一组 prompt 在 256 条与 255 条下的运行。</figcaption>
 </figure>
 
 更细的一层：这一处 norm 的输入逐位相同（第 0 行 0 处不同），输出有 25 个

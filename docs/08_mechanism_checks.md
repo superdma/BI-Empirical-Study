@@ -24,8 +24,8 @@ tail 扫描。四项都不需要改 vLLM 源码，加起来不到十分钟 GPU �
 | tail 长度扫描 | `bi_tail_scan.py` | 是（30B TP=4 eager） | 40 秒 |
 | bucket 边界扫描 | `bi_bucket_scan.py` | 是（30B TP=4） | 77 秒 ×2 |
 
-汇总：`python3 analyze_tier1.py results/tier1`，原始 JSON 在
-`results/tier1/`。
+汇总：`python3 scripts/experiments/tier1/analyze_tier1.py results/tier1`，原始
+JSON 在 `results/tier1/`。
 
 all-reduce 探针有三个设计上的注意点：
 
@@ -158,15 +158,17 @@ compiled 的一致性来自桶内 padding 把形状钉死，eager 应当在同�
 | NCCL 按消息大小换归约路径，导致 eager 的 255/256 边界 | 排除：钉死算法后失败照旧 |
 | CUDA graph 的分桶形状决定了 compiled 的通过 | 排除：bucket 边界两侧 compiled 都是 0.0 |
 | tail 越长，缓存命中越容易分叉 | 排除：只有 256 与 448 分叉，320/384/512 一致 |
-| 模型侧 kernel 按形状选 tile/split | 仍然站得住，且是唯一还没被直接测量的 |
+| 模型侧 kernel 按形状选 tile/split | 当时站得住，且是唯一还没被直接测量的；第 9 章测量后否掉（见 9.3） |
 
 跨卡归约这条线仍然有用：它解释了 TP=2 在这台机器上为什么安全（8.2 里
 TP=2 的所有比较都是 0），也和第 7 章的两件事对得上：SGLang 要把 TP=4 换成
 PP=4 才通过，要把算法钉成 `allreduce:tree` 才让 bf16 归约稳定。
 
 下一步该做的是第二档实验：把 BI 覆盖后的 `matmul_kernel_persistent` 与
-attention/MoE kernel 的 tile 配置打印出来，直接看 256 前后换了什么。那需要
-改 vLLM 源码或加日志，不在本章范围内。
+attention/MoE kernel 的 tile 配置打印出来，直接看 256 前后换了什么。第 9 章
+做了这一步（不改源码，用 profiler 读启动参数）：线性层与 MoE 的配置在
+1–512 上都是常量，tile 不是 256 的原因；差异只在引擎里出现，第 10 章继续追到
+一次 kernel 启动。
 
 ## 8.7 本章的局限
 
