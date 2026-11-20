@@ -287,7 +287,7 @@ python3 sglang/analyze_sglang.py sglang/results
 | `sglang/run_sglang_pp2.sh` | PP=4 的 CUDA graph 与在线复现 |
 | `sglang/results/*.json` | 原始结果 |
 
-脚本里的路径都用 `$HOME`，换机器时只需保证模型与 venv 在同样的相对位置。
+脚本里的路径都用 `$HOME`，换机器时只需保证模型与 Python 环境在同样的相对位置。
 
 ## 14.10 图表复现
 

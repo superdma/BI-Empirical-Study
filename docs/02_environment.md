@@ -8,7 +8,7 @@
 | 架构 | Ampere，SM86，CC 8.6 |
 | 驱动 | 550.120 |
 | 互联 | PCIe；本机无 InfiniBand |
-| 主机内存 | 约 484 GiB 可用 |
+| 主机内存 | 约 503 GiB，可用约 486 GiB |
 
 A6000 是 SM86，不是 Hopper/Blackwell。它没有 TMA、没有 FP8 tensor core，也
 没有 NVLink 交换机；这些都会影响 vLLM 选择哪条 kernel 路径。
