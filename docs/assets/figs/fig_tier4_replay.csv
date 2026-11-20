@@ -1,0 +1,21 @@
+panel,series,item,value
+a,BI 关 · 对 255,x256,0
+a,BI 关 · 对 255,x255,0
+a,BI 关 · 对 255,xfill256,0
+a,BI 关 · 对 256,x256,25
+a,BI 关 · 对 256,x255,25
+a,BI 关 · 对 256,xfill256,25
+a,BI 开 · 对 255,x256,25
+a,BI 开 · 对 255,x255,0
+a,BI 开 · 对 255,xfill256,25
+a,BI 开 · 对 256,x256,0
+a,BI 开 · 对 256,x255,25
+a,BI 开 · 对 256,xfill256,0
+b,changed,255,0
+b,changed,256,69
+b,changed,257,86
+b,changed,288,85
+b,changed,320,85
+b,changed,384,86
+b,changed,448,85
+b,changed,512,85

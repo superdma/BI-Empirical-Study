@@ -1,0 +1,48 @@
+{
+ "env": {
+  "model": "$HOME/models/Qwen3-30B-A3B",
+  "tp": 4,
+  "compiled": false,
+  "breakable_cudagraph": "0",
+  "max_tokens": 8,
+  "label": "eager_no_bcg"
+ },
+ "comp": {
+  "solo_vs_batch_32": {
+   "n": 32,
+   "bitwise_equal": 24,
+   "changed": 8,
+   "first_token_bad": 8,
+   "max_abs": 1.3330593444406986
+  },
+  "decode_255_vs_255": {
+   "n": 255,
+   "bitwise_equal": 255,
+   "changed": 0,
+   "first_token_bad": 0,
+   "max_abs": 0.0
+  },
+  "decode_256_vs_255": {
+   "n": 255,
+   "bitwise_equal": 186,
+   "changed": 69,
+   "first_token_bad": 17,
+   "max_abs": 0.7490588575601578
+  },
+  "decode_448_vs_255": {
+   "n": 255,
+   "bitwise_equal": 169,
+   "changed": 86,
+   "first_token_bad": 17,
+   "max_abs": 0.7490588575601578
+  },
+  "decode_512_vs_255": {
+   "n": 255,
+   "bitwise_equal": 168,
+   "changed": 87,
+   "first_token_bad": 18,
+   "max_abs": 0.7490588575601578
+  }
+ },
+ "total_sec": 43.60670232772827
+}

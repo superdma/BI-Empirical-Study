@@ -79,10 +79,14 @@ BASE=http://127.0.0.1:8000 N=32 \
 
 判定：`solo_vs_batch_bad == 0` 且 `batch_repeat_bad == 0`。
 
-本机结果：
+本机结果（target + 31 条 filler，16 token）：
 
 - eager：1/32；
 - compiled：32/32。
+
+这组 prompt 的 1/32 不通用：同样的流程换成 32 条普通问答 prompt，eager 是
+24/32（第 10 章表 T20）。判定标准仍然是 `solo_vs_batch_bad == 0`，不能用别人
+的数字替代自己的验证。
 
 ### 2）真实并发
 

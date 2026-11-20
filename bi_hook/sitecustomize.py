@@ -20,6 +20,8 @@ NAMES = {"Qwen3MoeDecoderLayer", "Qwen3MoeAttention",
 LIMIT = int(os.environ.get("BI_DUMP_LIMIT", "6000"))
 META = os.environ.get("BI_NORM_META") == "1"
 FULL = os.environ.get("BI_FULL_RANGE", "")
+INPROC_SEQ = os.environ.get("BI_INPROC_SEQ", "")
+INPROC_OUT = os.environ.get("BI_INPROC_OUT", "")
 
 
 def _in_full(seq):
@@ -81,6 +83,7 @@ if torch is not None:
         if tag != _state["tag"]:
             _state["tag"] = tag
             _state["seq"] = 0
+            _state["inproc"] = False
         if _state["seq"] >= LIMIT:
             return
         first = out[0] if isinstance(out, tuple) else out
@@ -143,6 +146,58 @@ if torch is not None:
         except Exception:
             pass
 
+
+    def _bits_view(t):
+        return t.view(torch.int16) if t.dtype == torch.bfloat16 else t.view(torch.int32)
+
+    def _inproc_replay(module, pre, out, seq):
+        """Repeat the norm call at one sequence index, inside the worker.
+
+        The standalone replay already showed that the engine's own tensors
+        produce the 255 result in a fresh process. Repeating the call here
+        says whether the engine process itself is what differs.
+        """
+        if _state["rank"] != 0 or not INPROC_OUT:
+            return
+        # The clones were taken before the module ran: fused_add_rms_norm
+        # updates its arguments in place, so reading them afterwards would
+        # feed the result back in.
+        x, residual, _ = pre
+        from vllm import _custom_ops as ops
+        weight = module.weight
+        eps = float(module.variance_epsilon)
+        fused = residual is not None
+        if fused:
+            xx, rr = x, residual
+            ops.fused_add_rms_norm(xx, rr, weight, eps)
+            ref = out[0] if isinstance(out, tuple) else out
+            ref_r = out[1] if isinstance(out, tuple) and len(out) > 1 else None
+        else:
+            xx = torch.empty_like(x)
+            ops.rms_norm(xx, x, weight, eps)
+            rr = ref_r = None
+            ref = out
+        rec = {
+            "tag": _state["tag"], "seq": seq, "rank": _state["rank"],
+            "rows": int(x.shape[0]), "fused": fused, "pid": os.getpid(),
+            "x_row0_vs_engine_row0": int((_bits_view(x)[0] != _bits_view(ref)[0]).sum()),
+            "replay_vs_engine_row0": int((_bits_view(xx)[0] != _bits_view(ref)[0]).sum()),
+            "replay_vs_engine_all": int((_bits_view(xx) != _bits_view(ref)).sum()),
+        }
+        if ref_r is not None and rr is not None:
+            rec["replay_vs_engine_res_row0"] = int((_bits_view(rr)[0] != _bits_view(ref_r)[0]).sum())
+        folder = os.path.dirname(INPROC_OUT) or "."
+        os.makedirs(folder, exist_ok=True)
+        with open(INPROC_OUT, "a") as h:
+            h.write(json.dumps(rec) + "\n")
+        stem = os.path.join(folder, f"{_state['tag']}_{seq}_{os.getpid()}")
+        torch.save({"x_row0": x[0].detach().to("cpu", copy=True),
+                    "engine_row0": ref[0].detach().to("cpu", copy=True),
+                    "replay_row0": xx[0].detach().to("cpu", copy=True),
+                    "engine_res_row0": None if ref_r is None else ref_r[0].detach().to("cpu", copy=True),
+                    "replay_res_row0": None if rr is None else rr[0].detach().to("cpu", copy=True)},
+                   stem + ".pt")
+
     def __call__(self, *args, **kwargs):
         snapshot = None
         xin = None
@@ -163,6 +218,18 @@ if torch is not None:
                         full1 = args[1].detach().to("cpu", copy=True)
             except Exception:
                 full = full1 = None
+        pre = None
+        if INPROC_SEQ and not _state.get("inproc") and type(self).__name__ == "RMSNorm":
+            try:
+                if _current_tag() and _state["seq"] == int(INPROC_SEQ):
+                    a0 = args[0] if args else None
+                    if isinstance(a0, torch.Tensor):
+                        a1 = args[1] if len(args) > 1 else None
+                        pre = (a0.clone(),
+                               a1.clone() if isinstance(a1, torch.Tensor) else None,
+                               _state["seq"])
+            except Exception:
+                pre = None
         out = _orig_call(self, *args, **kwargs)
         try:
             seq = _dump(self, out, snapshot, full, full1)
@@ -173,6 +240,12 @@ if torch is not None:
                 _meta(self, xin, seq, out)
             except Exception:
                 pass
+        if pre is not None and seq is not None and seq == pre[2]:
+            try:
+                _state["inproc"] = True
+                _inproc_replay(self, pre, out, seq)
+            except Exception:
+                _state["inproc"] = True
         return out
 
     nn.Module.__call__ = __call__

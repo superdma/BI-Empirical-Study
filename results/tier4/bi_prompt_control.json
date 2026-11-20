@@ -1,0 +1,75 @@
+{
+ "env": {
+  "model": "$HOME/models/Qwen3-30B-A3B",
+  "tp": 4,
+  "eager": true
+ },
+ "runs": {
+  "old_prompts_16": {
+   "n": 32,
+   "max_tokens": 16,
+   "ignore_eos": false,
+   "bitwise_equal": 2,
+   "changed": 30,
+   "first_token_bad": 30,
+   "max_abs": 2.7229115664958954,
+   "bad_index": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+   ]
+  },
+  "new_prompts_16": {
+   "n": 32,
+   "max_tokens": 16,
+   "ignore_eos": true,
+   "bitwise_equal": 24,
+   "changed": 8,
+   "first_token_bad": 8,
+   "max_abs": 1.3330593444406986,
+   "bad_index": [
+    4,
+    9,
+    11,
+    14,
+    18,
+    23,
+    29,
+    31
+   ]
+  },
+  "old_prompts_8": {
+   "n": 32,
+   "max_tokens": 8,
+   "ignore_eos": true,
+   "bitwise_equal": 1,
+   "changed": 31,
+   "first_token_bad": 31,
+   "max_abs": 2.3606607913970947,
+   "bad_index": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ]
+  }
+ },
+ "total_sec": 111.54555130004883
+}

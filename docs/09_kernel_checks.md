@@ -237,4 +237,5 @@ storage offset（0/1/2/4/8 个元素），行 0 仍然逐位相同；这说明�
 下一步要定位到具体一行，得抓 kernel 启动参数而不是张量：把每个 kernel 的
 grid/block/共享内存用量在 255 与 256 两边的序列对齐，看不一致出现在哪一次
 launch 上。[第 10 章](10_launch_isolation.md)用 torch profiler 做了这一步：
-边界上唯一变化的启动参数是 fused add+norm 的 block（1024 → 256）。
+边界上唯一变化的启动参数是 fused add+norm 的 block（1024 → 256），而这一步
+落在 BI 打开的标量实例上；同一份输入在独立进程里、BI 打开时能逐位复现。

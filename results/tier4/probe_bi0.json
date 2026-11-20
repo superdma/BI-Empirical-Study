@@ -1,0 +1,80 @@
+{
+ "bi": "0",
+ "torch": "2.11.0+cu129",
+ "vllm_bi_env": null,
+ "seq": 2548,
+ "cases": [
+  {
+   "label": "x256",
+   "rows": 256,
+   "vs_engine256": 25,
+   "vs_engine255": 0,
+   "vs_other_input": 2044,
+   "launches": [
+    {
+     "name": "std::enable_if<(((8)>(0)))&&vllm::_typeConvert<c10::BFloat16>::exists, void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 8>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+     "grid": [
+      256,
+      1,
+      1
+     ],
+     "block": [
+      256,
+      1,
+      1
+     ],
+     "shared": 168,
+     "regs": 23
+    }
+   ]
+  },
+  {
+   "label": "x255",
+   "rows": 255,
+   "vs_engine256": 25,
+   "vs_engine255": 0,
+   "vs_other_input": 2044,
+   "launches": [
+    {
+     "name": "std::enable_if<(((8)>(0)))&&vllm::_typeConvert<c10::BFloat16>::exists, void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 8>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+     "grid": [
+      255,
+      1,
+      1
+     ],
+     "block": [
+      1024,
+      1,
+      1
+     ],
+     "shared": 168,
+     "regs": 23
+    }
+   ]
+  },
+  {
+   "label": "xfill256",
+   "rows": 256,
+   "vs_engine256": 25,
+   "vs_engine255": 0,
+   "vs_other_input": 2044,
+   "launches": [
+    {
+     "name": "std::enable_if<(((8)>(0)))&&vllm::_typeConvert<c10::BFloat16>::exists, void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 8>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+     "grid": [
+      256,
+      1,
+      1
+     ],
+     "block": [
+      256,
+      1,
+      1
+     ],
+     "shared": 168,
+     "regs": 23
+    }
+   ]
+  }
+ ]
+}

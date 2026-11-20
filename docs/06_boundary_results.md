@@ -166,6 +166,14 @@
 
 同一批请求重复运行时 eager 也会失败：32 条中有 1 条不一致。
 
+!!! note "这个比例取决于 prompt 集"
+
+    表 P 的 32 条是 target + 31 条 filler（"describe the number i"）。第 10 章
+    用同一套流程换了 32 条普通问答 prompt：同一台机器、同一个进程，eager 是
+    24/32 一致，只坏 8 条；换回 filler 那组仍是 1–2/32。所以“32 条只过 1 条”
+    是那组 prompt 的性质，不是 eager 的固定失败率。部署时应按自己的 prompt
+    集验证（表 T20）。
+
 ## 6.6 批内 prompt 长度扫描：256-token 边界
 
 ### 表 N（eager）

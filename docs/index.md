@@ -132,8 +132,8 @@ SGLang 0.5.6 的复现：为什么 TP=4 不够、PP=4 才成立。
 <div class="card" markdown>
 <p class="card-title" markdown>:material-cog-play-outline: 要看到 kernel 启动</p>
 
-第 10 章：边界只认活跃序列数；同样的输入回放不出 256 的结果；block 在 256 行处
-从 1024 切成 256。
+第 10 章：边界只认活跃序列数；BI 下标量内核的 block 在 256 行处从 1024 切成
+256，归约树随之改变；compiled 到 512 仍全部一致。
 
 [打开 kernel 启动定位 →](10_launch_isolation.md){ .card-link }
 </div>

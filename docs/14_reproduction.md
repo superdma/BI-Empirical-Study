@@ -177,6 +177,13 @@ python analyze_online_extra.py
 | `extract_launch_blocks.py` | 从 trace 里汇总 fused add+norm 的 grid/block |
 | `bi_tp2_matrix.py` | TP=2 的 32-prompt、255/256 与重复批 |
 | `analyze_tier3.py` | 把第三档结果渲染成表 T12–T16 |
+| `bi_inproc_replay.py` | 在 worker 进程里现场重算第 2548 次 norm 调用 |
+| `bi_replay_probe.py` | 独立进程回放，记录 BI 开/关各自启动的内核实例与 grid/block |
+| `bi_boundary_sweep.py` | decode 批大小 255–512 的边界扫描 |
+| `bi_shape_matrix.py` | 32 条与 255/256/448/512 的形状矩阵（eager / compiled） |
+| `bi_prompt_control.py` | 两组 prompt 集在两种生成长度下的单独 vs 批内 |
+| `bi_nsys_capture.py` / `analyze_nsys.py` | Nsight Systems 采集与对比（本机组合未跑通，保留脚本） |
+| `analyze_tier4.py` | 把第四档结果渲染成表 T17–T20 |
 | `analyze_extra.py` | 表 I–L、Q |
 | `analyze_online_extra.py` | 表 M–P |
 
@@ -196,6 +203,8 @@ python analyze_online_extra.py
 | `results/tier2/analysis_tables.md` | 表 T5–T11 |
 | `results/tier3/*.json` | 第 10 章的组成、回放、启动参数、TP=2 结果 |
 | `results/tier3/analysis_tables.md` | 表 T12–T16 |
+| `results/tier4/*.json` | 第 10 章的进程内回放、BI 开/关回放、边界扫描与形状矩阵 |
+| `results/tier4/analysis_tables.md` | 表 T17–T20 |
 
 ### 文档
 
@@ -297,7 +306,7 @@ done
 | `fig_bi_coverage.py` | 图 11（第 9 章） | `results/tier2/bi_bi_coverage.json`、`bi_pynccl_*.json` |
 | `fig_layer_probe.py` | 图 12（第 9 章） | `results/tier2/bi_layer_map.json` |
 | `fig_tier3_composition.py` | 图 13（第 10 章） | `results/tier3/bi_composition.json`、`bi_launch_blocks.json`、`bi_block_probe.json` |
-| `fig_tier3_replay.py` | 图 14（第 10 章） | `results/tier3/bi_replay_rmsnorm.json`、`bi_tp2_matrix.json` |
+| `fig_tier4_replay.py` | 图 14（第 10 章） | `results/tier4/probe_bi0.json`、`probe_bi1.json`、`bi_boundary_sweep.json` |
 | `fig_mechanism.py` | 图 15（第 11 章） | 第 4–6、7 章的结论 |
 
 `figstyle.py` 统一了字号、配色与导出流程：每张图同时写出 SVG、PDF 与
@@ -418,7 +427,50 @@ c256 与 c255 两个 tag 写盘。`BI_FULL_RANGE` 指定保存全量张量的调
 窗口按第 9 章的分叉位置选。`extract_launch_blocks.py` 的 `--traces` 支持多个
 `tag=path`，这里只取 rank 0。
 
-## 14.14 生成 SHA256
+## 14.14 第四档（第 10 章的更正与补充）
+
+回放与探针不需要加载模型，其余四项各加载一次。全部命令在 `~/bi_tier4` 下执行：
+
+```bash
+cd bi_tier4
+export NCCL_IB_DISABLE=1 VLLM_USE_FLASHINFER_SAMPLER=0 TOKENIZERS_PARALLELISM=false
+export VLLM_BATCH_INVARIANT=1
+PY=$HOME/miniconda3/envs/vllm_update/bin/python
+
+# 1. 进程内回放（两次运行，worker 在 seq 2548 现场重算）
+export PYTHONPATH=$PWD/bi_hook BI_DUMP=$HOME/bi_inproc_dump
+export BI_INPROC_SEQ=2548 BI_INPROC_OUT=$HOME/bi_inproc/rec.jsonl
+$PY bi_inproc_replay.py --out out/bi_inproc_replay.json
+unset PYTHONPATH BI_DUMP BI_INPROC_SEQ BI_INPROC_OUT
+
+# 2. 独立进程回放，BI 开与关各一遍（不加载模型）
+$PY bi_replay_probe.py --bi 0 --out out/probe_bi0.json
+$PY bi_replay_probe.py --bi 1 --out out/probe_bi1.json
+
+# 3. 边界扫描
+$PY bi_boundary_sweep.py --out out/bi_boundary_sweep.json
+
+# 4. 形状矩阵：eager 基线、关 breakable graph、compiled
+$PY bi_shape_matrix.py --label eager_default --out out/bi_shapes_eager.json
+VLLM_USE_BREAKABLE_CUDAGRAPH=0 $PY bi_shape_matrix.py --label eager_no_bcg   --out out/bi_shapes_no_bcg.json
+$PY bi_shape_matrix.py --label compiled --compiled --out out/bi_shapes_compiled.json
+
+# 5. prompt 集对照
+$PY bi_prompt_control.py --out out/bi_prompt_control.json
+
+cd ..
+python3 analyze_tier4.py results/tier4
+```
+
+`bi_replay_probe.py` 在导入 vLLM 之前决定 `VLLM_BATCH_INVARIANT` 是否设置，并从
+它自己导出的 chrome trace 里读回内核实例名与 grid/block。`bi_shape_matrix.py`
+用 `--compiled` 决定是否加 `--enforce-eager`，其余参数与其他脚本一致。
+
+Nsight Systems 的采集脚本（`bi_nsys_capture.py`、`analyze_nsys.py`）一并保留：
+nsys 2023.2 在这套 CUDA 12.9 + 四个 worker 的组合下无法完成引擎初始化，
+本轮没有拿到可用 trace。
+
+## 14.15 生成 SHA256
 
 ```bash
 cd bi_validation

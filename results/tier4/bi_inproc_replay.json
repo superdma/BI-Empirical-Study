@@ -1,0 +1,36 @@
+{
+ "env": {
+  "model": "$HOME/models/Qwen3-30B-A3B",
+  "tp": 4,
+  "eager": true,
+  "max_tokens": 6,
+  "inproc_seq": "2548"
+ },
+ "records": [
+  {
+   "tag": "i256",
+   "seq": 2548,
+   "rank": 0,
+   "rows": 256,
+   "fused": true,
+   "pid": 3048689,
+   "x_row0_vs_engine_row0": 0,
+   "replay_vs_engine_row0": 0,
+   "replay_vs_engine_all": 0,
+   "replay_vs_engine_res_row0": 0
+  },
+  {
+   "tag": "i255",
+   "seq": 2548,
+   "rank": 0,
+   "rows": 255,
+   "fused": true,
+   "pid": 3048689,
+   "x_row0_vs_engine_row0": 0,
+   "replay_vs_engine_row0": 0,
+   "replay_vs_engine_all": 0,
+   "replay_vs_engine_res_row0": 0
+  }
+ ],
+ "total_sec": 24.77956533432007
+}
