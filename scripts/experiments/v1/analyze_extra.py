@@ -3,14 +3,18 @@
 import json, os, struct, glob
 
 def _repo_root():
+    """Repository root, or the deployed layout root when there is no .git."""
     path = os.path.dirname(os.path.abspath(__file__))
-    while not os.path.exists(os.path.join(path, ".git")):
+    while True:
+        if os.path.exists(os.path.join(path, ".git")):
+            return path
+        if (os.path.isdir(os.path.join(path, "scripts"))
+                and os.path.isdir(os.path.join(path, "results"))):
+            return path
         parent = os.path.dirname(path)
         if parent == path:
-            return os.path.dirname(os.path.dirname(os.path.dirname(
-                os.path.abspath(__file__))))
+            return os.path.dirname(os.path.abspath(__file__))
         path = parent
-    return path
 
 
 EXTRA = os.path.join(_repo_root(), "results", "extra")
