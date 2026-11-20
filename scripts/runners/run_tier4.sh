@@ -15,7 +15,8 @@ PY="${PY:-$HOME/miniconda3/envs/vllm_update/bin/python}"
 DATA="${BI_DATA:-$HOME/bi_project/data}"
 RESULTS="${RESULTS:-${ROOT}/results/tier4}"
 LOGS="${LOGS:-${ROOT}/logs/tier4}"
-mkdir -p "${RESULTS}" "${LOGS}" "${DATA}/bi_inproc_dump" "${DATA}/bi_nsys"
+mkdir -p "${RESULTS}" "${LOGS}" "${DATA}/bi_inproc_dump" "${DATA}/bi_inproc" \
+  "${DATA}/bi_nsys"
 
 export NCCL_IB_DISABLE=1
 export VLLM_USE_FLASHINFER_SAMPLER=0
@@ -33,7 +34,7 @@ step() {  # step <name> <command...>
 # A4: repeat the divergent norm call inside the worker process.
 step a4 env PYTHONPATH="${ROOT}/scripts/bi_hook" \
   BI_DUMP="${DATA}/bi_inproc_dump" BI_INPROC_SEQ=2548 \
-  BI_INPROC_OUT="${DATA}/bi_inproc_dump/rec.jsonl" \
+  BI_INPROC_OUT="${DATA}/bi_inproc/rec.jsonl" \
   "$PY" -u "${EM}/bi_inproc_replay.py" --out "${RESULTS}/bi_inproc_replay.json"
 
 # B2: decode batch sizes 255..512 against the 255 baseline.

@@ -12,8 +12,10 @@ the repeated result compares with what the engine returned, and saves both
 row 0s for an offline comparison with the other run.
 
 Usage:
-    BI_DUMP=~/bi_project/data/bi_inproc_dump BI_INPROC_SEQ=2548 BI_INPROC_OUT=~/bi_inproc/rec.jsonl \
-      python bi_inproc_replay.py --out results/tier3/bi_inproc_replay.json
+    BI_DUMP=~/bi_project/data/bi_inproc_dump BI_INPROC_SEQ=2548 \
+      BI_INPROC_OUT=~/bi_project/data/bi_inproc/rec.jsonl \
+      python scripts/experiments/tier4/bi_inproc_replay.py \
+      --out results/tier4/bi_inproc_replay.json
 """
 import argparse
 import json
