@@ -18,7 +18,7 @@ export TOKENIZERS_PARALLELISM=false
 
 ```bash
 cd BI-Empirical-Study
-bash run_all_bi.sh
+bash scripts/runners/run_all_bi.sh
 ```
 
 产出：`results/bi_*.json`，以及 `results/analysis_tables.md`（表 A–D）。脚本默认把新结果写到 `$HOME`；可用 `OUT=` 指到 `results/`。
@@ -26,7 +26,7 @@ bash run_all_bi.sh
 eager fallback 复现（仅限已验证的小批）：
 
 ```bash
-bash serve_bi_eager.sh
+bash scripts/runners/serve_bi_eager.sh
 ```
 
 eager 只建议用于小批、同步、已验证的 prompt 集；通用 BI 用
@@ -35,7 +35,7 @@ eager 只建议用于小批、同步、已验证的 prompt 集；通用 BI 用
 ## 14.3 v1：在线 H1–H6
 
 ```bash
-bash run_http_matrix.sh
+bash scripts/runners/run_http_matrix.sh
 ```
 
 六个配置依次启停：eager 8192/PC1 ×2、eager 2048/PC1、eager 8192/PC0、
@@ -47,8 +47,8 @@ BI=0、compiled 8192/PC1。
 ## 14.4 v1：长 prompt 缓存命中诊断
 
 ```bash
-bash run_diag2.sh    # eager 1900 / 7600
-bash run_diag3.sh    # eager / compiled 7584
+bash scripts/runners/run_diag2.sh    # eager 1900 / 7600
+bash scripts/runners/run_diag3.sh    # eager / compiled 7584
 ```
 
 产出：`results/http/bi_long_probe*.json` 等。
@@ -57,17 +57,17 @@ bash run_diag3.sh    # eager / compiled 7584
 
 ```bash
 # 12 个配置的批大小/TP/attention/chunk/长 prompt 矩阵
-bash run_extra_matrix.sh
+bash scripts/runners/run_extra_matrix.sh
 
 # bs=256 条件隔离
-bash run_diag_bs256.sh
-bash run_diag_bs256b.sh
+bash scripts/runners/run_diag_bs256.sh
+bash scripts/runners/run_diag_bs256b.sh
 
 # 边界与采样
-bash run_diag_bs256c.sh
+bash scripts/runners/run_diag_bs256c.sh
 
 # 256-token re-feed 扫描
-bash run_refeed_b.sh
+bash scripts/runners/run_refeed_b.sh
 ```
 
 产出：`results/extra/bi_extra_*.json`、`results/extra/bi_diag_*.json`、
@@ -76,7 +76,7 @@ bash run_refeed_b.sh
 汇总：
 
 ```bash
-python analyze_extra.py
+python scripts/experiments/v1/analyze_extra.py
 # -> results/extra/analysis_tables.md（表 I–L、Q）
 ```
 
@@ -84,21 +84,21 @@ python analyze_extra.py
 
 ```bash
 # 单次批量请求：逐 prompt 单独 vs 批内
-bash run_batchall.sh          # eager + compiled
-bash run_batchall2.sh         # TRITON_ATTN、无 chunked
+bash scripts/runners/run_batchall.sh          # eager + compiled
+bash scripts/runners/run_batchall2.sh         # TRITON_ATTN、无 chunked
 
 # 独立并发
-bash run_concurrency.sh       # eager PC0/PC1、compiled PC1、长 filler
+bash scripts/runners/run_concurrency.sh       # eager PC0/PC1、compiled PC1、长 filler
 
 # 突发 / 背景解码
-bash run_burst.sh             # eager PC0、compiled PC1
+bash scripts/runners/run_burst.sh             # eager PC0、compiled PC1
 
 # 单个请求插入解码
-bash run_mixed.sh             # eager chunked/nochunk、compiled
+bash scripts/runners/run_mixed.sh             # eager chunked/nochunk、compiled
 
 # 批内长度扫描
-bash run_len.sh               # eager：N=32/L=5,8,9; N=16/30; N=8/40
-bash run_len_compiled.sh      # compiled 对照
+bash scripts/runners/run_len.sh               # eager：N=32/L=5,8,9; N=16/30; N=8/40
+bash scripts/runners/run_len_compiled.sh      # compiled 对照
 ```
 
 产出：`results/http/concurrency/*.json`。
@@ -106,7 +106,7 @@ bash run_len_compiled.sh      # compiled 对照
 汇总：
 
 ```bash
-python analyze_online_extra.py
+python scripts/experiments/online/analyze_online_extra.py
 # -> results/http/concurrency/analysis_tables.md（表 M–P）
 ```
 
@@ -129,63 +129,63 @@ python analyze_online_extra.py
 
 | 文件 | 用途 |
 |---|---|
-| `bi_test_qwen3_30b.py` | v1 离线 BI harness |
-| `compare_bi.py` | 两份离线 JSON 的位级比较 |
+| `scripts/experiments/v1/bi_test_qwen3_30b.py` | v1 离线 BI harness |
+| `scripts/experiments/v1/compare_bi.py` | 两份离线 JSON 的位级比较 |
 | `run_all_bi.sh` | v1 离线矩阵 |
 | `serve_bi_eager.sh` | eager 服务（小批 fallback，默认 MNS=128） |
 | `serve_bi_compiled.sh` | 推荐的通用 BI 服务 |
-| `bi_http_test.py` | v1 在线 H1–H6 |
+| `scripts/experiments/online/bi_http_test.py` | v1 在线 H1–H6 |
 | `run_http_matrix.sh` | v1 在线矩阵 |
-| `bi_long_diag.py` / `bi_long_diag2.py` | 长 prompt 缓存诊断 |
+| `scripts/experiments/v1/bi_long_diag.py` / `bi_long_diag2.py` | 长 prompt 缓存诊断 |
 | `run_diag.sh` / `run_diag2.sh` / `run_diag3.sh` | 上述诊断的启动脚本 |
-| `bi_extra_qwen3_30b.py` | v2 批大小/TP/attention 矩阵 |
-| `bi_extra_diag.py` | v2 bs256 条件隔离 |
+| `scripts/experiments/v1/bi_extra_qwen3_30b.py` | v2 批大小/TP/attention 矩阵 |
+| `scripts/experiments/v1/bi_extra_diag.py` | v2 bs256 条件隔离 |
 | `run_extra_matrix.sh` | v2 12 配置矩阵 |
 | `run_diag_bs256.sh` / `b` / `c` | v2 bs256 诊断 |
-| `bi_refeed_diag.py` | decode vs re-feed 长度扫描 |
+| `scripts/experiments/v1/bi_refeed_diag.py` | decode vs re-feed 长度扫描 |
 | `run_refeed_b.sh` | 上述扫描的启动脚本 |
-| `bi_http_concurrent.py` | 32 路独立并发 |
+| `scripts/experiments/online/bi_http_concurrent.py` | 32 路独立并发 |
 | `run_concurrency.sh` | 并发矩阵 |
-| `bi_http_mixed.py` | 单请求插入解码 |
+| `scripts/experiments/online/bi_http_mixed.py` | 单请求插入解码 |
 | `run_mixed.sh` | 混合矩阵 |
-| `bi_http_burst.py` | 突发 32 请求 |
+| `scripts/experiments/online/bi_http_burst.py` | 突发 32 请求 |
 | `run_burst.sh` | 突发矩阵 |
-| `bi_http_batchall.py` | 32-prompt 单独 vs 批内 |
+| `scripts/experiments/online/bi_http_batchall.py` | 32-prompt 单独 vs 批内 |
 | `run_batchall.sh` / `run_batchall2.sh` | 批量与后端对照 |
-| `bi_http_len.py` | 批内长度扫描 |
+| `scripts/experiments/online/bi_http_len.py` | 批内长度扫描 |
 | `run_len.sh` / `run_len_compiled.sh` | 长度扫描 |
-| `bi_batchall_offline.py` | 离线 32-prompt 复核 |
-| `bi_allreduce_bench.py` | 不加载模型的 NCCL all-reduce 形状探针 |
+| `scripts/experiments/v1/bi_batchall_offline.py` | 离线 32-prompt 复核 |
+| `scripts/experiments/tier1/bi_allreduce_bench.py` | 不加载模型的 NCCL all-reduce 形状探针 |
 | `run_nccl_sweep.sh` | 固定 `NCCL_ALGO` 重跑 32-prompt |
-| `bi_tail_scan.py` | 前缀缓存命中 vs fresh 的 tail 长度扫描 |
-| `bi_bucket_scan.py` | CUDA graph bucket 边界的批大小扫描 |
+| `scripts/experiments/tier1/bi_tail_scan.py` | 前缀缓存命中 vs fresh 的 tail 长度扫描 |
+| `scripts/experiments/tier1/bi_bucket_scan.py` | CUDA graph bucket 边界的批大小扫描 |
 | `run_tier1.sh` | 上述四项按顺序跑一遍 |
-| `analyze_tier1.py` | 把四项结果渲染成表 T1–T4 |
-| `bi_bi_coverage.py` | BI 覆盖了哪些 aten 算子、tile 配置随 M 的扫描 |
-| `bi_matmul_shape.py` | 线性层单独跑：同一行在不同 M 下是否逐位相同 |
-| `bi_op_shape.py` | norm / silu / rotary / MoE 单独跑，含对齐对照 |
-| `bi_attn_shape.py` | 分页 decode attention 单独跑 |
-| `bi_pynccl_bench.py` | 用引擎自己的 pynccl 通信器重做 all-reduce 探针 |
-| `bi_layer_probe.py` | 引擎内逐层打点，驱动脚本 |
-| `bi_hook/sitecustomize.py` | 注入 worker 进程的模块级捕获 |
-| `analyze_layer_dump.py` | 两次打点按调用顺序比对 |
-| `extract_layer_map.py` | 把两次打点压成 步 × 层 的差异矩阵 |
-| `analyze_tier2.py` | 把第二档结果渲染成表 T5–T11 |
-| `bi_composition.py` | 请求组成矩阵，逐层捕获 hidden/residual 与张量布局 |
-| `bi_replay_rmsnorm.py` | 用引擎捕获的张量在独立进程回放第 42 层的 norm |
-| `bi_launch_diff.py` | torch profiler 抓 255/256 的 kernel 启动参数 |
-| `extract_launch_blocks.py` | 从 trace 里汇总 fused add+norm 的 grid/block |
-| `bi_tp2_matrix.py` | TP=2 的 32-prompt、255/256 与重复批 |
-| `analyze_tier3.py` | 把第三档结果渲染成表 T12–T16 |
-| `bi_inproc_replay.py` | 在 worker 进程里现场重算第 2548 次 norm 调用 |
-| `bi_replay_probe.py` | 独立进程回放，记录 BI 开/关各自启动的内核实例与 grid/block |
-| `bi_boundary_sweep.py` | decode 批大小 255–512 的边界扫描 |
-| `bi_shape_matrix.py` | 32 条与 255/256/448/512 的形状矩阵（eager / compiled） |
-| `bi_prompt_control.py` | 两组 prompt 集在两种生成长度下的单独 vs 批内 |
-| `bi_nsys_capture.py` / `analyze_nsys.py` | Nsight Systems 采集与对比（本机组合未跑通，保留脚本） |
-| `analyze_tier4.py` | 把第四档结果渲染成表 T17–T20 |
-| `analyze_extra.py` | 表 I–L、Q |
-| `analyze_online_extra.py` | 表 M–P |
+| `scripts/experiments/tier1/analyze_tier1.py` | 把四项结果渲染成表 T1–T4 |
+| `scripts/experiments/tier2/bi_bi_coverage.py` | BI 覆盖了哪些 aten 算子、tile 配置随 M 的扫描 |
+| `scripts/experiments/tier2/bi_matmul_shape.py` | 线性层单独跑：同一行在不同 M 下是否逐位相同 |
+| `scripts/experiments/tier2/bi_op_shape.py` | norm / silu / rotary / MoE 单独跑，含对齐对照 |
+| `scripts/experiments/tier2/bi_attn_shape.py` | 分页 decode attention 单独跑 |
+| `scripts/experiments/tier1/bi_pynccl_bench.py` | 用引擎自己的 pynccl 通信器重做 all-reduce 探针 |
+| `scripts/experiments/tier2/bi_layer_probe.py` | 引擎内逐层打点，驱动脚本 |
+| `scripts/bi_hook/sitecustomize.py` | 注入 worker 进程的模块级捕获 |
+| `scripts/experiments/tier2/analyze_layer_dump.py` | 两次打点按调用顺序比对 |
+| `scripts/experiments/tier2/extract_layer_map.py` | 把两次打点压成 步 × 层 的差异矩阵 |
+| `scripts/experiments/tier2/analyze_tier2.py` | 把第二档结果渲染成表 T5–T11 |
+| `scripts/experiments/tier3/bi_composition.py` | 请求组成矩阵，逐层捕获 hidden/residual 与张量布局 |
+| `scripts/experiments/tier3/bi_replay_rmsnorm.py` | 用引擎捕获的张量在独立进程回放第 42 层的 norm |
+| `scripts/experiments/tier3/bi_launch_diff.py` | torch profiler 抓 255/256 的 kernel 启动参数 |
+| `scripts/experiments/tier3/extract_launch_blocks.py` | 从 trace 里汇总 fused add+norm 的 grid/block |
+| `scripts/experiments/tier3/bi_tp2_matrix.py` | TP=2 的 32-prompt、255/256 与重复批 |
+| `scripts/experiments/tier3/analyze_tier3.py` | 把第三档结果渲染成表 T12–T16 |
+| `scripts/experiments/tier4/bi_inproc_replay.py` | 在 worker 进程里现场重算第 2548 次 norm 调用 |
+| `scripts/experiments/tier4/bi_replay_probe.py` | 独立进程回放，记录 BI 开/关各自启动的内核实例与 grid/block |
+| `scripts/experiments/tier4/bi_boundary_sweep.py` | decode 批大小 255–512 的边界扫描 |
+| `scripts/experiments/tier4/bi_shape_matrix.py` | 32 条与 255/256/448/512 的形状矩阵（eager / compiled） |
+| `scripts/experiments/tier4/bi_prompt_control.py` | 两组 prompt 集在两种生成长度下的单独 vs 批内 |
+| `scripts/experiments/tier4/bi_nsys_capture.py` / `analyze_nsys.py` | Nsight Systems 采集与对比（本机组合未跑通，保留脚本） |
+| `scripts/experiments/tier4/analyze_tier4.py` | 把第四档结果渲染成表 T17–T20 |
+| `scripts/experiments/v1/analyze_extra.py` | 表 I–L、Q |
+| `scripts/experiments/online/analyze_online_extra.py` | 表 M–P |
 
 ### 结果目录
 
@@ -293,21 +293,21 @@ done
 
 | 脚本 | 图 | 数据来源 |
 |---|---|---|
-| `fig_overview.py` | 图 1（首页） | `results/http/concurrency/*.json`、`sglang/results/*.json` |
-| `fig_method.py` | 图 2（第 1 章） | `results/extra/bi_batchall_offline_eager.json`、`bi_diag_bs256_pc0.json` |
-| `fig_env.py` | 图 3（第 2 章） | 第 2、7 章的版本表 |
+| `scripts/figures/fig_overview.py` | 图 1（首页） | `results/http/concurrency/*.json`、`sglang/results/*.json` |
+| `scripts/figures/fig_method.py` | 图 2（第 1 章） | `results/extra/bi_batchall_offline_eager.json`、`bi_diag_bs256_pc0.json` |
+| `scripts/figures/fig_env.py` | 图 3（第 2 章） | 第 2、7 章的版本表 |
 | `fig_v1_matrix.py` | 图 4（第 4 章） | `results/bi_*.json` |
 | `fig_v1_online.py` | 图 5（第 5 章） | `results/http/bi_http_*.json` |
-| `fig_boundary.py` | 图 6（第 6 章） | `results/extra/bi_diag_*.json`、`bi_refeed_*.json`、`results/http/concurrency/bi_http_len_*.json` |
-| `fig_sgl_offline.py` | 图 7（第 7 章） | `sglang/results/*batchall*.json` |
-| `fig_sgl_online.py` | 图 8（第 7 章） | `sglang/results/*_http_http.json` |
-| `fig_ar_sensitivity.py` | 图 9（第 8 章） | `results/tier1/bi_ar_*.json` |
-| `fig_engine_checks.py` | 图 10（第 8 章） | `results/tier1/bi_nccl_*.json`、`bi_tail_scan.json`、`bi_bucket_scan*.json` |
-| `fig_bi_coverage.py` | 图 11（第 9 章） | `results/tier2/bi_bi_coverage.json`、`bi_pynccl_*.json` |
-| `fig_layer_probe.py` | 图 12（第 9 章） | `results/tier2/bi_layer_map.json` |
+| `scripts/figures/fig_boundary.py` | 图 6（第 6 章） | `results/extra/bi_diag_*.json`、`bi_refeed_*.json`、`results/http/concurrency/bi_http_len_*.json` |
+| `scripts/figures/fig_sgl_offline.py` | 图 7（第 7 章） | `sglang/results/*batchall*.json` |
+| `scripts/figures/fig_sgl_online.py` | 图 8（第 7 章） | `sglang/results/*_http_http.json` |
+| `scripts/figures/fig_ar_sensitivity.py` | 图 9（第 8 章） | `results/tier1/bi_ar_*.json` |
+| `scripts/figures/fig_engine_checks.py` | 图 10（第 8 章） | `results/tier1/bi_nccl_*.json`、`bi_tail_scan.json`、`bi_bucket_scan*.json` |
+| `scripts/figures/fig_bi_coverage.py` | 图 11（第 9 章） | `results/tier2/bi_bi_coverage.json`、`bi_pynccl_*.json` |
+| `scripts/figures/fig_layer_probe.py` | 图 12（第 9 章） | `results/tier2/bi_layer_map.json` |
 | `fig_tier3_composition.py` | 图 13（第 10 章） | `results/tier3/bi_composition.json`、`bi_launch_blocks.json`、`bi_block_probe.json` |
 | `fig_tier4_replay.py` | 图 14（第 10 章） | `results/tier4/probe_bi0.json`、`probe_bi1.json`、`bi_boundary_sweep.json` |
-| `fig_mechanism.py` | 图 15（第 11 章） | 第 4–6、7 章的结论 |
+| `scripts/figures/fig_mechanism.py` | 图 15（第 11 章） | 第 4–6、7 章的结论 |
 
 `figstyle.py` 统一了字号、配色与导出流程：每张图同时写出 SVG、PDF 与
 600 dpi PNG，多面板图在导出前跑一遍面板对齐检查，导出后对 PDF 跑文字与线段
@@ -323,8 +323,8 @@ done
 
 ```bash
 cd BI-Empirical-Study
-bash run_tier1.sh          # all-reduce 探针 → NCCL 算法 → tail → bucket
-python3 analyze_tier1.py results/tier1
+bash scripts/runners/run_tier1.sh          # all-reduce 探针 → NCCL 算法 → tail → bucket
+python3 scripts/experiments/tier1/analyze_tier1.py results/tier1
 ```
 
 单独跑其中一项也可以：
@@ -337,7 +337,7 @@ python -m torch.distributed.run --nproc_per_node=4 bi_allreduce_bench.py \
   --out results/tier1/bi_ar_thresh_w4.json --tag default
 
 # 2. 钉死 NCCL 算法后的 32 条 prompt
-bash run_nccl_sweep.sh
+bash scripts/runners/run_nccl_sweep.sh
 
 # 3. tail 长度扫描（eager，PC=1）
 OUT=results/tier1/bi_tail_scan.json python bi_tail_scan.py
@@ -360,12 +360,12 @@ export NCCL_IB_DISABLE=1 VLLM_USE_FLASHINFER_SAMPLER=0 TOKENIZERS_PARALLELISM=fa
 PY=$HOME/miniconda3/envs/vllm_update/bin/python
 
 # 1. BI 覆盖与配置扫描
-$PY bi_bi_coverage.py --out results/tier2/bi_bi_coverage.json
+$PY scripts/experiments/tier2/bi_bi_coverage.py --out results/tier2/bi_bi_coverage.json
 
 # 2. 线性层、其他算子、分页 attention
-$PY bi_matmul_shape.py --out results/tier2/bi_matmul_shape.json
-$PY bi_op_shape.py     --out results/tier2/bi_op_shape.json
-$PY bi_attn_shape.py   --out results/tier2/bi_attn_shape.json
+$PY scripts/experiments/tier2/bi_matmul_shape.py --out results/tier2/bi_matmul_shape.json
+$PY scripts/experiments/tier2/bi_op_shape.py     --out results/tier2/bi_op_shape.json
+$PY scripts/experiments/tier2/bi_attn_shape.py   --out results/tier2/bi_attn_shape.json
 
 # 3. 引擎通信器：BI 环境 / tree + 8 通道 / NCCL 自动
 $PY -m torch.distributed.run --nproc_per_node=4 bi_pynccl_bench.py \
@@ -376,15 +376,15 @@ $PY -m torch.distributed.run --nproc_per_node=4 bi_pynccl_bench.py --no-bi-env \
   --out results/tier2/bi_pynccl_auto.json --tag auto
 
 # 4. 逐层打点（需要 PYTHONPATH 指向 bi_hook，vLLM 的 worker 才会导入）
-export PYTHONPATH=$PWD/bi_hook
-$PY bi_layer_probe.py --out results/tier2/bi_layer_probe.json
-$PY extract_layer_map.py --dump $HOME/bi_layer_dump --a a256 --b a255 \
+export PYTHONPATH=$PWD/scripts/bi_hook
+$PY scripts/experiments/tier2/bi_layer_probe.py --out results/tier2/bi_layer_probe.json
+$PY scripts/experiments/tier2/extract_layer_map.py --dump $HOME/bi_project/data/bi_layer_dump --a a256 --b a255 \
   --out results/tier2/bi_layer_map.json
 
-python3 analyze_tier2.py results/tier2
+python3 scripts/experiments/tier2/analyze_tier2.py results/tier2
 ```
 
-`bi_layer_probe.py` 会清空并重建 `$HOME/bi_layer_dump`，每次 `generate()`
+`bi_layer_probe.py` 会清空并重建 `$HOME/bi_project/data/bi_layer_dump`，每次 `generate()`
 写到 `<dump>/<tag>/rank0/` 下，一个模块调用一个 `.pt`。`analyze_layer_dump.py`
 按调用顺序比两份，`extract_layer_map.py` 只保留 DecoderLayer 的第 0 行。
 
@@ -398,68 +398,59 @@ export NCCL_IB_DISABLE=1 VLLM_USE_FLASHINFER_SAMPLER=0 TOKENIZERS_PARALLELISM=fa
 PY=$HOME/miniconda3/envs/vllm_update/bin/python
 
 # 1. 请求组成 + 逐层捕获（PYTHONPATH 必须指向 bi_hook）
-export PYTHONPATH=$PWD/bi_hook
-export BI_NORM_META=1 BI_DUMP=$HOME/bi_norm_meta BI_FULL_RANGE=2400:2650
-$PY bi_composition.py --out results/tier3/bi_composition.json
+export PYTHONPATH=$PWD/scripts/bi_hook
+export BI_NORM_META=1 BI_DUMP=$HOME/bi_project/data/bi_norm_meta BI_FULL_RANGE=2400:2650
+$PY scripts/experiments/tier3/bi_composition.py --out results/tier3/bi_composition.json
 unset PYTHONPATH BI_NORM_META BI_DUMP BI_FULL_RANGE
 
 # 2. 回放（不需要加载模型）
-$PY bi_replay_rmsnorm.py --out results/tier3/bi_replay_rmsnorm.json
+$PY scripts/experiments/tier3/bi_replay_rmsnorm.py --out results/tier3/bi_replay_rmsnorm.json
 
 # 3. 启动参数（vLLM 0.23 需要显式打开 profiler）
-export VLLM_TORCH_PROFILER_DIR=$HOME/bi_traces
-$PY bi_launch_diff.py --out results/tier3/bi_launch_diff.json
+export VLLM_TORCH_PROFILER_DIR=$HOME/bi_project/data/bi_traces
+$PY scripts/experiments/tier3/bi_launch_diff.py --out results/tier3/bi_launch_diff.json
 
 # 先跑 256，后跑 255；ls -t 最新的那个是 255
-$PY extract_launch_blocks.py \
-  --traces p256=$(ls -t $HOME/bi_traces/*rank0* | sed -n 2p) \
-           p255=$(ls -t $HOME/bi_traces/*rank0* | sed -n 1p) \
+$PY scripts/experiments/tier3/extract_launch_blocks.py \
+  --traces p256=$(ls -t $HOME/bi_project/data/bi_traces/*rank0* | sed -n 2p) \
+           p255=$(ls -t $HOME/bi_project/data/bi_traces/*rank0* | sed -n 1p) \
   --out results/tier3/bi_launch_blocks.json
 
 # 4. TP=2
-$PY bi_tp2_matrix.py --out results/tier3/bi_tp2_matrix.json
+$PY scripts/experiments/tier3/bi_tp2_matrix.py --out results/tier3/bi_tp2_matrix.json
 
-python3 analyze_tier3.py results/tier3
+python3 scripts/experiments/tier3/analyze_tier3.py results/tier3
 ```
 
-`bi_composition.py` 会清空 `$HOME/bi_norm_meta`，每个 tag 写一份层捕获；只有
+`bi_composition.py` 会清空 `$HOME/bi_project/data/bi_norm_meta`，每个 tag 写一份层捕获；只有
 c256 与 c255 两个 tag 写盘。`BI_FULL_RANGE` 指定保存全量张量的调用序号区间，
 窗口按第 9 章的分叉位置选。`extract_launch_blocks.py` 的 `--traces` 支持多个
 `tag=path`，这里只取 rank 0。
 
 ## 14.14 第四档（第 10 章的更正与补充）
 
-回放与探针不需要加载模型，其余四项各加载一次。全部命令在 `~/bi_tier4` 下执行：
+第四档有整套启动脚本，也可以逐条手动跑。回放与探针不需要加载模型，其余命令
+各加载一次：
 
 ```bash
-cd bi_tier4
+cd BI-Empirical-Study
 export NCCL_IB_DISABLE=1 VLLM_USE_FLASHINFER_SAMPLER=0 TOKENIZERS_PARALLELISM=false
 export VLLM_BATCH_INVARIANT=1
 PY=$HOME/miniconda3/envs/vllm_update/bin/python
 
-# 1. 进程内回放（两次运行，worker 在 seq 2548 现场重算）
-export PYTHONPATH=$PWD/bi_hook BI_DUMP=$HOME/bi_inproc_dump
-export BI_INPROC_SEQ=2548 BI_INPROC_OUT=$HOME/bi_inproc/rec.jsonl
-$PY bi_inproc_replay.py --out out/bi_inproc_replay.json
-unset PYTHONPATH BI_DUMP BI_INPROC_SEQ BI_INPROC_OUT
+bash scripts/runners/run_tier4.sh          # 进程内回放、边界扫描、三套形状矩阵、nsys、prompt 集对照
+```
 
-# 2. 独立进程回放，BI 开与关各一遍（不加载模型）
-$PY bi_replay_probe.py --bi 0 --out out/probe_bi0.json
-$PY bi_replay_probe.py --bi 1 --out out/probe_bi1.json
+`run_tier4.sh` 把结果写到 `results/tier4/`，日志和返回码写到 `logs/tier4/`，
+捕获的张量写到 `${BI_DATA:-$HOME/bi_project/data}`。单独重跑某一项：
 
-# 3. 边界扫描
-$PY bi_boundary_sweep.py --out out/bi_boundary_sweep.json
+```bash
+# 独立进程回放，BI 开与关各一遍（不加载模型）
+$PY scripts/experiments/tier4/bi_replay_probe.py --bi 0 --out results/tier4/probe_bi0.json
+$PY scripts/experiments/tier4/bi_replay_probe.py --bi 1 --out results/tier4/probe_bi1.json
 
-# 4. 形状矩阵：eager 基线、关 breakable graph、compiled
-$PY bi_shape_matrix.py --label eager_default --out out/bi_shapes_eager.json
-VLLM_USE_BREAKABLE_CUDAGRAPH=0 $PY bi_shape_matrix.py --label eager_no_bcg   --out out/bi_shapes_no_bcg.json
-$PY bi_shape_matrix.py --label compiled --compiled --out out/bi_shapes_compiled.json
-
-# 5. prompt 集对照
-$PY bi_prompt_control.py --out out/bi_prompt_control.json
-
-cd ..
-python3 analyze_tier4.py results/tier4
+# 汇总
+python3 scripts/experiments/tier4/analyze_tier4.py results/tier4
 ```
 
 `bi_replay_probe.py` 在导入 vLLM 之前决定 `VLLM_BATCH_INVARIANT` 是否设置，并从
@@ -473,7 +464,7 @@ nsys 2023.2 在这套 CUDA 12.9 + 四个 worker 的组合下无法完成引擎�
 ## 14.15 生成 SHA256
 
 ```bash
-cd bi_validation
+cd BI-Empirical-Study
 find results -name '*.json' | sort | while read -r r; do sha256sum "$r"; done \
   > results/SHA256SUMS
 ```

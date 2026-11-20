@@ -74,8 +74,8 @@ hosting and the repository privacy notes.
 
 ## Recommended serving script
 
-- `serve_bi_compiled.sh` — general BI, recommended.
-- `serve_bi_eager.sh` — eager fallback for small, synchronized, verified
+- `scripts/runners/serve_bi_compiled.sh` — general BI, recommended.
+- `scripts/runners/serve_bi_eager.sh` — eager fallback for small, synchronized, verified
   prompt sets only. It defaults to `--max-num-seqs 128` and prints a warning.
 
 ## Files
@@ -85,21 +85,15 @@ hosting and the repository privacy notes.
 | `docs/00_index.md` | Document collection index and one-page conclusions |
 | `docs/06_boundary_results.md` | v2 boundary experiments (tables I–Q) |
 | `docs/12_deployment.md` | Deployment decision tree and verification checklist |
-| `bi_test_qwen3_30b.py` | v1 offline BI harness |
-| `compare_bi.py` | Bitwise comparison of two offline result JSONs |
-| `run_all_bi.sh` | v1 compiled-mode matrix + BI-off control |
-| `serve_bi_compiled.sh` | Recommended BI serving command |
-| `serve_bi_eager.sh` | Eager fallback serving command |
-| `bi_http_test.py` | v1 online BI test over `/v1/completions` |
-| `run_http_matrix.sh` | v1 online H1–H6 servers |
-| `bi_extra_qwen3_30b.py`, `bi_extra_diag.py` | v2 batch/TP/attention/bs256 tests |
-| `run_extra_matrix.sh`, `run_diag_bs256*.sh` | v2 matrix launchers |
-| `bi_refeed_diag.py`, `run_refeed_b.sh` | decode-vs-refeed length scan |
-| `bi_http_batchall.py` | 32-prompt solo-vs-batch test |
-| `bi_http_concurrent.py`, `bi_http_burst.py`, `bi_http_mixed.py` | arrival/concurrency tests |
-| `bi_http_len.py` | in-batch prompt-length scan |
-| `bi_batchall_offline.py` | offline 32-prompt confirmation |
-| `analyze_extra.py`, `analyze_online_extra.py` | table generators |
+| `scripts/experiments/v1/` | v1 offline harness, diagnostics, table generators |
+| `scripts/experiments/online/` | v1 online tests over `/v1/completions` |
+| `scripts/experiments/tier1/` | chapter 8: all-reduce, NCCL, tail, bucket checks |
+| `scripts/experiments/tier2/` | chapter 9: BI coverage, tile scan, layer probe |
+| `scripts/experiments/tier3/` | chapter 10: composition, replay, launch diff, TP=2 |
+| `scripts/experiments/tier4/` | chapter 10: in-process replay, probes, sweep, shape matrix |
+| `scripts/runners/` | launchers (`run_*.sh`) and serving scripts (`serve_*.sh`) |
+| `scripts/figures/` | one drawing script per figure |
+| `scripts/bi_hook/` | `sitecustomize.py` injected into the workers |
 | `results/*.json` | v1 offline results |
 | `results/http/*.json` | v1 online results and long-prompt diagnostics |
 | `results/extra/*.json` | batch/TP/attention/refeed results |
@@ -117,16 +111,16 @@ hosting and the repository privacy notes.
 export NCCL_IB_DISABLE=1
 export VLLM_USE_FLASHINFER_SAMPLER=0
 
-bash run_all_bi.sh          # v1 offline
-bash run_http_matrix.sh     # v1 online
-bash run_extra_matrix.sh    # v2 batch/TP/attention
-bash run_batchall.sh        # v2 32-prompt solo-vs-batch
-bash run_concurrency.sh     # v2 independent concurrency
-bash run_len.sh             # v2 in-batch length scan
-bash run_refeed_b.sh        # v2 re-feed length scan
+bash scripts/runners/run_all_bi.sh          # v1 offline
+bash scripts/runners/run_http_matrix.sh     # v1 online
+bash scripts/runners/run_extra_matrix.sh    # v2 batch/TP/attention
+bash scripts/runners/run_batchall.sh        # v2 32-prompt solo-vs-batch
+bash scripts/runners/run_concurrency.sh     # v2 independent concurrency
+bash scripts/runners/run_len.sh             # v2 in-batch length scan
+bash scripts/runners/run_refeed_b.sh        # v2 re-feed length scan
 
-python analyze_extra.py
-python analyze_online_extra.py
+python scripts/experiments/v1/analyze_extra.py
+python scripts/experiments/online/analyze_online_extra.py
 ```
 
 ## Notes

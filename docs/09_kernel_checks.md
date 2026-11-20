@@ -18,6 +18,8 @@
 
 ## 9.1 方法
 
+脚本都在 `scripts/experiments/tier2/` 下。
+
 | 检查 | 脚本 | 加载模型 | 墙钟 |
 |---|---|---|---|
 | BI 覆盖面与配置扫描 | `bi_bi_coverage.py` | 否 | 约 3 分钟 |
@@ -25,7 +27,7 @@
 | 其余算子单独跑 | `bi_op_shape.py` | 否 | 1 分钟 |
 | 分页 attention 单独跑 | `bi_attn_shape.py` | 否 | 1 分钟 |
 | 引擎通信器探针 | `bi_pynccl_bench.py` | 否 | 每配置 1 分钟 |
-| 逐层打点 | `bi_layer_probe.py` + `bi_hook/sitecustomize.py` | 是 | 4 分钟 |
+| 逐层打点 | `bi_layer_probe.py` + `scripts/bi_hook/sitecustomize.py` | 是 | 4 分钟 |
 
 汇总：`python3 analyze_tier2.py results/tier2`，原始 JSON 在同一目录。
 

@@ -21,6 +21,8 @@
 
 ## 10.1 方法
 
+脚本在 `scripts/experiments/tier3/` 与 `scripts/experiments/tier4/` 下。
+
 | 检查 | 脚本 | 是否加载模型 | 墙钟 |
 |---|---|---|---|
 | 请求组成与逐层捕获 | `bi_composition.py` | 是（一次加载） | 约 3 分钟 |
