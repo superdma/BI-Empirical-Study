@@ -1,0 +1,13 @@
+panel,series,item,value
+a,vs_engine256,engine256_full,25
+a,vs_engine256,engine256_first255,25
+a,vs_engine256,engine255_full,25
+a,vs_engine256,engine255_pad256,25
+a,vs_engine255,engine256_full,0
+a,vs_engine255,engine256_first255,0
+a,vs_engine255,engine255_full,0
+a,vs_engine255,engine255_pad256,0
+b,TP=4,solo_vs_batch_32,3.1
+b,TP=4,batch_repeat_32,100.0
+b,TP=2,solo_vs_batch_32,50.0
+b,TP=2,batch_repeat_32,100.0

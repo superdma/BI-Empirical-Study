@@ -13,7 +13,7 @@ description: Qwen3-30B-A3B 在 4×RTX A6000 上的批次不变性实测
 
 [一页结论](00_index.md){ .md-button .md-button--primary }
 [看边界实验](06_boundary_results.md){ .md-button }
-[部署建议](11_deployment.md){ .md-button }
+[部署建议](12_deployment.md){ .md-button }
 
 </div>
 
@@ -130,11 +130,20 @@ SGLang 0.5.6 的复现：为什么 TP=4 不够、PP=4 才成立。
 </div>
 
 <div class="card" markdown>
+<p class="card-title" markdown>:material-cog-play-outline: 要看到 kernel 启动</p>
+
+第 10 章：边界只认活跃序列数；同样的输入回放不出 256 的结果；block 在 256 行处
+从 1024 切成 256。
+
+[打开 kernel 启动定位 →](10_launch_isolation.md){ .card-link }
+</div>
+
+<div class="card" markdown>
 <p class="card-title" markdown>:material-lightbulb-on-outline: 要读发现清单</p>
 
-F1–F13：每条发现都给出事实、证据与解释强度。
+F1–F14：每条发现都给出事实、证据与解释强度。
 
-[打开关键发现 →](10_findings.md){ .card-link }
+[打开关键发现 →](11_findings.md){ .card-link }
 </div>
 
 <div class="card" markdown>
@@ -142,7 +151,7 @@ F1–F13：每条发现都给出事实、证据与解释强度。
 
 推荐配置、固定编译产物、发布前逐 prompt 验证清单。
 
-[打开部署建议 →](11_deployment.md){ .card-link }
+[打开部署建议 →](12_deployment.md){ .card-link }
 </div>
 
 </div>
@@ -156,7 +165,7 @@ F1–F13：每条发现都给出事实、证据与解释强度。
 - **范围**：离线 `LLM.generate` 与在线 HTTP 服务都测；同一进程内、跨 warm-cache
   进程、32 路并发、突发、长 prompt、prefix cache 都覆盖。
 
-想看完整实验矩阵和原始 JSON，请从[复现与文件清单](13_reproduction.md)进入。
+想看完整实验矩阵和原始 JSON，请从[复现与文件清单](14_reproduction.md)进入。
 
 ## 结论
 

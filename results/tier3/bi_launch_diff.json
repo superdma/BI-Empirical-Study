@@ -1,0 +1,783 @@
+{
+ "env": {
+  "tp": 4,
+  "eager": true,
+  "max_tokens": 6
+ },
+ "traces": {
+  "p256": {
+   "file": "dp0_pp0_tp0_dcp0_ep0_rank0.1795144344139919889.pt.trace.json.gz",
+   "kernels": 8451,
+   "decode_rms": 580,
+   "distinct": 4
+  },
+  "p255": {
+   "file": "dp0_pp0_tp0_dcp0_ep0_rank0.1795144355496319186.pt.trace.json.gz",
+   "kernels": 8451,
+   "decode_rms": 435,
+   "distinct": 2
+  }
+ },
+ "decode_rms": {
+  "n_256": 580,
+  "n_255": 435,
+  "first_param_diff": {
+   "index": 0,
+   "a": {
+    "name": "_rms_norm_kernel",
+    "grid": [
+     256,
+     1,
+     1
+    ],
+    "block": [
+     128,
+     1,
+     1
+    ],
+    "shared": 16,
+    "regs": 30
+   },
+   "b": {
+    "name": "_rms_norm_kernel",
+    "grid": [
+     255,
+     1,
+     1
+    ],
+    "block": [
+     128,
+     1,
+     1
+    ],
+    "shared": 16,
+    "regs": 30
+   }
+  },
+  "sample_256": [
+   {
+    "name": "_rms_norm_kernel",
+    "grid": [
+     256,
+     1,
+     1
+    ],
+    "block": [
+     128,
+     1,
+     1
+    ],
+    "shared": 16,
+    "regs": 30
+   },
+   {
+    "name": "_rms_norm_kernel",
+    "grid": [
+     256,
+     1,
+     1
+    ],
+    "block": [
+     128,
+     1,
+     1
+    ],
+    "shared": 16,
+    "regs": 30
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     256,
+     1,
+     1
+    ],
+    "block": [
+     256,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     256,
+     1,
+     1
+    ],
+    "block": [
+     256,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   },
+   {
+    "name": "_rms_norm_kernel",
+    "grid": [
+     256,
+     1,
+     1
+    ],
+    "block": [
+     128,
+     1,
+     1
+    ],
+    "shared": 16,
+    "regs": 30
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     256,
+     1,
+     1
+    ],
+    "block": [
+     256,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     256,
+     1,
+     1
+    ],
+    "block": [
+     256,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   },
+   {
+    "name": "_rms_norm_kernel",
+    "grid": [
+     256,
+     1,
+     1
+    ],
+    "block": [
+     128,
+     1,
+     1
+    ],
+    "shared": 16,
+    "regs": 30
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     256,
+     1,
+     1
+    ],
+    "block": [
+     256,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     256,
+     1,
+     1
+    ],
+    "block": [
+     256,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   },
+   {
+    "name": "_rms_norm_kernel",
+    "grid": [
+     256,
+     1,
+     1
+    ],
+    "block": [
+     128,
+     1,
+     1
+    ],
+    "shared": 16,
+    "regs": 30
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     256,
+     1,
+     1
+    ],
+    "block": [
+     256,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     256,
+     1,
+     1
+    ],
+    "block": [
+     256,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   },
+   {
+    "name": "_rms_norm_kernel",
+    "grid": [
+     256,
+     1,
+     1
+    ],
+    "block": [
+     128,
+     1,
+     1
+    ],
+    "shared": 16,
+    "regs": 30
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     256,
+     1,
+     1
+    ],
+    "block": [
+     256,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     256,
+     1,
+     1
+    ],
+    "block": [
+     256,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   },
+   {
+    "name": "_rms_norm_kernel",
+    "grid": [
+     256,
+     1,
+     1
+    ],
+    "block": [
+     128,
+     1,
+     1
+    ],
+    "shared": 16,
+    "regs": 30
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     256,
+     1,
+     1
+    ],
+    "block": [
+     256,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     256,
+     1,
+     1
+    ],
+    "block": [
+     256,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   },
+   {
+    "name": "_rms_norm_kernel",
+    "grid": [
+     256,
+     1,
+     1
+    ],
+    "block": [
+     128,
+     1,
+     1
+    ],
+    "shared": 16,
+    "regs": 30
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     256,
+     1,
+     1
+    ],
+    "block": [
+     256,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     256,
+     1,
+     1
+    ],
+    "block": [
+     256,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   },
+   {
+    "name": "_rms_norm_kernel",
+    "grid": [
+     256,
+     1,
+     1
+    ],
+    "block": [
+     128,
+     1,
+     1
+    ],
+    "shared": 16,
+    "regs": 30
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     256,
+     1,
+     1
+    ],
+    "block": [
+     256,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   }
+  ],
+  "sample_255": [
+   {
+    "name": "_rms_norm_kernel",
+    "grid": [
+     255,
+     1,
+     1
+    ],
+    "block": [
+     128,
+     1,
+     1
+    ],
+    "shared": 16,
+    "regs": 30
+   },
+   {
+    "name": "_rms_norm_kernel",
+    "grid": [
+     255,
+     1,
+     1
+    ],
+    "block": [
+     128,
+     1,
+     1
+    ],
+    "shared": 16,
+    "regs": 30
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     255,
+     1,
+     1
+    ],
+    "block": [
+     1024,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     255,
+     1,
+     1
+    ],
+    "block": [
+     1024,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   },
+   {
+    "name": "_rms_norm_kernel",
+    "grid": [
+     255,
+     1,
+     1
+    ],
+    "block": [
+     128,
+     1,
+     1
+    ],
+    "shared": 16,
+    "regs": 30
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     255,
+     1,
+     1
+    ],
+    "block": [
+     1024,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     255,
+     1,
+     1
+    ],
+    "block": [
+     1024,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   },
+   {
+    "name": "_rms_norm_kernel",
+    "grid": [
+     255,
+     1,
+     1
+    ],
+    "block": [
+     128,
+     1,
+     1
+    ],
+    "shared": 16,
+    "regs": 30
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     255,
+     1,
+     1
+    ],
+    "block": [
+     1024,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     255,
+     1,
+     1
+    ],
+    "block": [
+     1024,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   },
+   {
+    "name": "_rms_norm_kernel",
+    "grid": [
+     255,
+     1,
+     1
+    ],
+    "block": [
+     128,
+     1,
+     1
+    ],
+    "shared": 16,
+    "regs": 30
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     255,
+     1,
+     1
+    ],
+    "block": [
+     1024,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     255,
+     1,
+     1
+    ],
+    "block": [
+     1024,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   },
+   {
+    "name": "_rms_norm_kernel",
+    "grid": [
+     255,
+     1,
+     1
+    ],
+    "block": [
+     128,
+     1,
+     1
+    ],
+    "shared": 16,
+    "regs": 30
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     255,
+     1,
+     1
+    ],
+    "block": [
+     1024,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     255,
+     1,
+     1
+    ],
+    "block": [
+     1024,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   },
+   {
+    "name": "_rms_norm_kernel",
+    "grid": [
+     255,
+     1,
+     1
+    ],
+    "block": [
+     128,
+     1,
+     1
+    ],
+    "shared": 16,
+    "regs": 30
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     255,
+     1,
+     1
+    ],
+    "block": [
+     1024,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     255,
+     1,
+     1
+    ],
+    "block": [
+     1024,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   },
+   {
+    "name": "_rms_norm_kernel",
+    "grid": [
+     255,
+     1,
+     1
+    ],
+    "block": [
+     128,
+     1,
+     1
+    ],
+    "shared": 16,
+    "regs": 30
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     255,
+     1,
+     1
+    ],
+    "block": [
+     1024,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     255,
+     1,
+     1
+    ],
+    "block": [
+     1024,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   },
+   {
+    "name": "_rms_norm_kernel",
+    "grid": [
+     255,
+     1,
+     1
+    ],
+    "block": [
+     128,
+     1,
+     1
+    ],
+    "shared": 16,
+    "regs": 30
+   },
+   {
+    "name": "std::enable_if<((0)==(0))||(!vllm::_typeConvert<c10::BFloat16>::exists), void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 0>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+    "grid": [
+     255,
+     1,
+     1
+    ],
+    "block": [
+     1024,
+     1,
+     1
+    ],
+    "shared": 168,
+    "regs": 23
+   }
+  ]
+ },
+ "total_sec": 43.47507095336914
+}

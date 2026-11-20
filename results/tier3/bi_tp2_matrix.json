@@ -1,0 +1,37 @@
+{
+ "env": {
+  "model": "$HOME/models/Qwen3-30B-A3B",
+  "tp": 2,
+  "eager": true,
+  "bi": "1",
+  "max_tokens": 16
+ },
+ "cmp": {
+  "solo_vs_batch_32": {
+   "n": 32,
+   "bitwise_equal": 16,
+   "ids_equal": 28,
+   "max_abs": 2.224557191133499
+  },
+  "batch_repeat_32": {
+   "n": 32,
+   "bitwise_equal": 32,
+   "max_abs": 0.0
+  },
+  "bs255_vs_bs256": {
+   "n": 255,
+   "bitwise_equal": 110,
+   "ids_equal": 241,
+   "first_token_bad": 15,
+   "max_abs": 1.3597316145896912
+  },
+  "bs256_repeat": {
+   "n": 256,
+   "bitwise_equal": 256,
+   "ids_equal": 256,
+   "first_token_bad": 0,
+   "max_abs": 0.0
+  }
+ },
+ "total_sec": 64.73077702522278
+}

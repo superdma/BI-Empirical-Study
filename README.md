@@ -84,7 +84,7 @@ hosting and the repository privacy notes.
 |---|---|
 | `docs/00_index.md` | Document collection index and one-page conclusions |
 | `docs/06_boundary_results.md` | v2 boundary experiments (tables I–Q) |
-| `docs/11_deployment.md` | Deployment decision tree and verification checklist |
+| `docs/12_deployment.md` | Deployment decision tree and verification checklist |
 | `bi_test_qwen3_30b.py` | v1 offline BI harness |
 | `compare_bi.py` | Bitwise comparison of two offline result JSONs |
 | `run_all_bi.sh` | v1 compiled-mode matrix + BI-off control |

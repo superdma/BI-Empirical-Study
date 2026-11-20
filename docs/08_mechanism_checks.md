@@ -1,6 +1,6 @@
 # 8. 机制验证：先做不需要加载模型的检查
 
-第 10 章给出的解释是：请求形状决定 kernel 的 tile/split 配置，配置决定浮点归约
+第 11 章给出的解释是：请求形状决定 kernel 的 tile/split 配置，配置决定浮点归约
 顺序，归约顺序决定 logits 的末位。这条链条上有三件事可以单独证伪：跨卡归约、
 NCCL 算法选择、CUDA graph 的形状分桶。本章先测这三件，再加一项前缀缓存的
 tail 扫描。四项都不需要改 vLLM 源码，加起来不到十分钟 GPU 时间。
@@ -105,7 +105,7 @@ NCCL 的算法选择不是 255/256 那条边界的原因，但它是这台机器
 
 ## 8.4 缓存命中的分叉不随 tail 变长
 
-第 10 章 F4 的解释是：命中缓存后只剩很短的 tail 需要 prefill，tail 的 chunk
+第 11 章 F4 的解释是：命中缓存后只剩很短的 tail 需要 prefill，tail 的 chunk
 形状与完整 prefill 不同。这个说法隐含“tail 越长越容易分叉”。扫描的结果不
 支持这个单调性。
 
@@ -179,4 +179,4 @@ attention/MoE kernel 的 tile 配置打印出来，直接看 256 前后换了什
 - bucket 扫描只覆盖到 bs=257，更大的批（以及 prefill 与 decode 混合的批）
   没有测。
 
-复现命令与脚本见[复现与文件清单](13_reproduction.md)。
+复现命令与脚本见[复现与文件清单](14_reproduction.md)。

@@ -1,6 +1,6 @@
-# 13. 复现步骤与文件清单
+# 14. 复现步骤与文件清单
 
-## 13.1 前置条件
+## 14.1 前置条件
 
 - 4×RTX A6000 48 GB（或等价 SM86 机器）；
 - vLLM 0.23.0+cu129，PyTorch 2.11.0+cu129，CUDA 12.9；
@@ -14,7 +14,7 @@ export VLLM_USE_FLASHINFER_SAMPLER=0
 export TOKENIZERS_PARALLELISM=false
 ```
 
-## 13.2 v1：离线矩阵
+## 14.2 v1：离线矩阵
 
 ```bash
 cd BI-Empirical-Study
@@ -32,7 +32,7 @@ bash serve_bi_eager.sh
 eager 只建议用于小批、同步、已验证的 prompt 集；通用 BI 用
 `serve_bi_compiled.sh`。
 
-## 13.3 v1：在线 H1–H6
+## 14.3 v1：在线 H1–H6
 
 ```bash
 bash run_http_matrix.sh
@@ -44,7 +44,7 @@ BI=0、compiled 8192/PC1。
 产出：`results/http/bi_http_*.json` 与
 `results/http/analysis_tables.md`（表 E–H）。
 
-## 13.4 v1：长 prompt 缓存命中诊断
+## 14.4 v1：长 prompt 缓存命中诊断
 
 ```bash
 bash run_diag2.sh    # eager 1900 / 7600
@@ -53,7 +53,7 @@ bash run_diag3.sh    # eager / compiled 7584
 
 产出：`results/http/bi_long_probe*.json` 等。
 
-## 13.5 v2：批大小、TP、attention、re-feed
+## 14.5 v2：批大小、TP、attention、re-feed
 
 ```bash
 # 12 个配置的批大小/TP/attention/chunk/长 prompt 矩阵
@@ -80,7 +80,7 @@ python analyze_extra.py
 # -> results/extra/analysis_tables.md（表 I–L、Q）
 ```
 
-## 13.6 v2：32-prompt、并发、突发、长度
+## 14.6 v2：32-prompt、并发、突发、长度
 
 ```bash
 # 单次批量请求：逐 prompt 单独 vs 批内
@@ -110,7 +110,7 @@ python analyze_online_extra.py
 # -> results/http/concurrency/analysis_tables.md（表 M–P）
 ```
 
-## 13.7 判读标准
+## 14.7 判读标准
 
 | 字段 | 通过条件 |
 |---|---|
@@ -123,7 +123,7 @@ python analyze_online_extra.py
 
 任何“小于某个阈值”的判读都不算通过；本报告要求位模式相同。
 
-## 13.8 文件清单
+## 14.8 文件清单
 
 ### 脚本
 
@@ -171,6 +171,12 @@ python analyze_online_extra.py
 | `analyze_layer_dump.py` | 两次打点按调用顺序比对 |
 | `extract_layer_map.py` | 把两次打点压成 步 × 层 的差异矩阵 |
 | `analyze_tier2.py` | 把第二档结果渲染成表 T5–T11 |
+| `bi_composition.py` | 请求组成矩阵，逐层捕获 hidden/residual 与张量布局 |
+| `bi_replay_rmsnorm.py` | 用引擎捕获的张量在独立进程回放第 42 层的 norm |
+| `bi_launch_diff.py` | torch profiler 抓 255/256 的 kernel 启动参数 |
+| `extract_launch_blocks.py` | 从 trace 里汇总 fused add+norm 的 grid/block |
+| `bi_tp2_matrix.py` | TP=2 的 32-prompt、255/256 与重复批 |
+| `analyze_tier3.py` | 把第三档结果渲染成表 T12–T16 |
 | `analyze_extra.py` | 表 I–L、Q |
 | `analyze_online_extra.py` | 表 M–P |
 
@@ -188,6 +194,8 @@ python analyze_online_extra.py
 | `results/tier1/analysis_tables.md` | 表 T1、T1b、T2、T3、T4 |
 | `results/tier2/*.json` | 第 9 章的配置扫描、逐算子与逐层打点结果 |
 | `results/tier2/analysis_tables.md` | 表 T5–T11 |
+| `results/tier3/*.json` | 第 10 章的组成、回放、启动参数、TP=2 结果 |
+| `results/tier3/analysis_tables.md` | 表 T12–T16 |
 
 ### 文档
 
@@ -203,15 +211,16 @@ python analyze_online_extra.py
 | `docs/07_sglang_results.md` | SGLang 复现 |
 | `docs/08_mechanism_checks.md` | 机制验证（第 8 章） |
 | `docs/09_kernel_checks.md` | 第二档：覆盖面、tile 扫描、逐层定位（第 9 章） |
-| `docs/10_findings.md` | F1–F13 |
-| `docs/11_deployment.md` | 部署 |
-| `docs/12_limitations.md` | 局限 |
-| `docs/13_reproduction.md` | 本文 |
-| `docs/14_references.md` | 参考 |
+| `docs/10_launch_isolation.md` | 第三档：组成、回放、启动参数、TP=2（第 10 章） |
+| `docs/11_findings.md` | F1–F14 |
+| `docs/12_deployment.md` | 部署 |
+| `docs/13_limitations.md` | 局限 |
+| `docs/14_reproduction.md` | 本文 |
+| `docs/15_references.md` | 参考 |
 | `docs/appendix_a_logs.md` | 日志 |
 | `docs/appendix_b_precision.md` | 精度 |
 
-## 13.9 SGLang 复现
+## 14.9 SGLang 复现
 
 SGLang 装在独立 venv 里，不覆盖 vLLM 环境。
 
@@ -258,9 +267,9 @@ python3 sglang/analyze_sglang.py sglang/results
 
 脚本里的路径都用 `$HOME`，换机器时只需保证模型与 venv 在同样的相对位置。
 
-## 13.10 图表复现
+## 14.10 图表复现
 
-站内 13 张图都由 `scripts/figures/` 下的脚本从原始 JSON 现算，不复用表格里的
+站内 15 张图都由 `scripts/figures/` 下的脚本从原始 JSON 现算，不复用表格里的
 手抄数字。
 
 ```bash
@@ -287,7 +296,9 @@ done
 | `fig_engine_checks.py` | 图 10（第 8 章） | `results/tier1/bi_nccl_*.json`、`bi_tail_scan.json`、`bi_bucket_scan*.json` |
 | `fig_bi_coverage.py` | 图 11（第 9 章） | `results/tier2/bi_bi_coverage.json`、`bi_pynccl_*.json` |
 | `fig_layer_probe.py` | 图 12（第 9 章） | `results/tier2/bi_layer_map.json` |
-| `fig_mechanism.py` | 图 13（第 10 章） | 第 4–6、7 章的结论 |
+| `fig_tier3_composition.py` | 图 13（第 10 章） | `results/tier3/bi_composition.json`、`bi_launch_blocks.json`、`bi_block_probe.json` |
+| `fig_tier3_replay.py` | 图 14（第 10 章） | `results/tier3/bi_replay_rmsnorm.json`、`bi_tp2_matrix.json` |
+| `fig_mechanism.py` | 图 15（第 11 章） | 第 4–6、7 章的结论 |
 
 `figstyle.py` 统一了字号、配色与导出流程：每张图同时写出 SVG、PDF 与
 600 dpi PNG，多面板图在导出前跑一遍面板对齐检查，导出后对 PDF 跑文字与线段
@@ -297,7 +308,7 @@ done
 
 每张图旁边的 CSV 是画图时取用的数值，方便核对图与表是否一致。
 
-## 13.11 机制验证（第 8 章）
+## 14.11 机制验证（第 8 章）
 
 四项检查按顺序跑，前两项不需要模型，后两项各需要一次 30B 加载：
 
@@ -330,7 +341,7 @@ all-reduce 探针的输出里 `n_diff` 是位模式不同的元素数，`total` 
 总数；`--tests` 可以只跑 `reshape`、`pad`、`threshold`、`sparse`、`pos` 中的
 某几项。
 
-## 13.12 第二档（第 9 章）
+## 14.12 第二档（第 9 章）
 
 前五项不加载模型，最后一项要加载一次 30B：
 
@@ -368,12 +379,51 @@ python3 analyze_tier2.py results/tier2
 写到 `<dump>/<tag>/rank0/` 下，一个模块调用一个 `.pt`。`analyze_layer_dump.py`
 按调用顺序比两份，`extract_layer_map.py` 只保留 DecoderLayer 的第 0 行。
 
-## 13.13 生成 SHA256
+## 14.13 第三档（第 10 章）
+
+三次模型加载，一次纯回放。回放与 trace 汇总可以放在同一次会话里：
+
+```bash
+cd BI-Empirical-Study
+export NCCL_IB_DISABLE=1 VLLM_USE_FLASHINFER_SAMPLER=0 TOKENIZERS_PARALLELISM=false
+PY=$HOME/miniconda3/envs/vllm_update/bin/python
+
+# 1. 请求组成 + 逐层捕获（PYTHONPATH 必须指向 bi_hook）
+export PYTHONPATH=$PWD/bi_hook
+export BI_NORM_META=1 BI_DUMP=$HOME/bi_norm_meta BI_FULL_RANGE=2400:2650
+$PY bi_composition.py --out results/tier3/bi_composition.json
+unset PYTHONPATH BI_NORM_META BI_DUMP BI_FULL_RANGE
+
+# 2. 回放（不需要加载模型）
+$PY bi_replay_rmsnorm.py --out results/tier3/bi_replay_rmsnorm.json
+
+# 3. 启动参数（vLLM 0.23 需要显式打开 profiler）
+export VLLM_TORCH_PROFILER_DIR=$HOME/bi_traces
+$PY bi_launch_diff.py --out results/tier3/bi_launch_diff.json
+
+# 先跑 256，后跑 255；ls -t 最新的那个是 255
+$PY extract_launch_blocks.py \
+  --traces p256=$(ls -t $HOME/bi_traces/*rank0* | sed -n 2p) \
+           p255=$(ls -t $HOME/bi_traces/*rank0* | sed -n 1p) \
+  --out results/tier3/bi_launch_blocks.json
+
+# 4. TP=2
+$PY bi_tp2_matrix.py --out results/tier3/bi_tp2_matrix.json
+
+python3 analyze_tier3.py results/tier3
+```
+
+`bi_composition.py` 会清空 `$HOME/bi_norm_meta`，每个 tag 写一份层捕获；只有
+c256 与 c255 两个 tag 写盘。`BI_FULL_RANGE` 指定保存全量张量的调用序号区间，
+窗口按第 9 章的分叉位置选。`extract_launch_blocks.py` 的 `--traces` 支持多个
+`tag=path`，这里只取 rank 0。
+
+## 14.14 生成 SHA256
 
 ```bash
 cd bi_validation
-find results -name '*.json' -print0 | sort -z | \
-  xargs -0 sha256sum > results/SHA256SUMS
+find results -name '*.json' | sort | while read -r r; do sha256sum "$r"; done \
+  > results/SHA256SUMS
 ```
 
 结果哈希见[附录 B](appendix_b_precision.md)。

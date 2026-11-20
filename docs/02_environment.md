@@ -145,4 +145,4 @@ Ada/Hopper/Blackwell（例如 L40S、H100、B200）。
 - 没有 FP8/INT8 量化；
 - 没有 CUDA graph 之外的图捕获后端。
 
-这些都在[第 12 章](12_limitations.md)中列出。
+这些都在[第 13 章](13_limitations.md)中列出。

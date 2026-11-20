@@ -1,0 +1,47 @@
+{
+ "seq": 2548,
+ "engine_row_diff": 25,
+ "meta": {
+  "x_shape": [
+   256,
+   2048
+  ],
+  "x_stride": [
+   2048,
+   1
+  ],
+  "x_offset": 0,
+  "x_ptr_mod": 0,
+  "eps": 1e-06
+ },
+ "cases": [
+  {
+   "label": "engine256_full",
+   "rows": 256,
+   "vs_engine256": 25,
+   "vs_engine255": 0
+  },
+  {
+   "label": "engine256_first255",
+   "rows": 255,
+   "vs_engine256": 25,
+   "vs_engine255": 0
+  },
+  {
+   "label": "engine255_full",
+   "rows": 255,
+   "vs_engine256": 25,
+   "vs_engine255": 0
+  },
+  {
+   "label": "engine255_pad256",
+   "rows": 256,
+   "vs_engine256": 25,
+   "vs_engine255": 0
+  }
+ ],
+ "case_row0_pairs": {
+  "full256_vs_full255": 0,
+  "cut255_vs_full255": 0
+ }
+}
