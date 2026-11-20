@@ -5,6 +5,9 @@
 set -u
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 EXP="${ROOT}/scripts/experiments"
+RESULTS="${RESULTS:-${ROOT}/results/tier1}"
+LOGS="${LOGS:-${ROOT}/logs}"
+mkdir -p "${RESULTS}" "${LOGS}"
 MODEL=${HOME}/models/Qwen3-30B-A3B
 PY=${HOME}/miniconda3/envs/vllm_update/bin/python
 VLLM=${HOME}/miniconda3/envs/vllm_update/bin/vllm
@@ -12,9 +15,9 @@ export NCCL_IB_DISABLE=1 VLLM_USE_FLASHINFER_SAMPLER=0 TOKENIZERS_PARALLELISM=fa
 
 run_cfg() {
   TAG=$1; PORT=$2; ALGO=$3; PROTO=${4:-}
-  LOG=${HOME}/bi_nccl_${TAG}.server.log
-  TLOG=${HOME}/bi_nccl_${TAG}.test.log
-  OUT=${HOME}/bi_nccl_${TAG}.json
+  LOG=${LOGS}/bi_nccl_${TAG}.server.log
+  TLOG=${LOGS}/bi_nccl_${TAG}.test.log
+  OUT=${RESULTS}/bi_nccl_${TAG}.json
   ENVX=""
   [ -n "$ALGO" ] && ENVX="$ENVX NCCL_ALGO=$ALGO"
   [ -n "$PROTO" ] && ENVX="$ENVX NCCL_PROTO=$PROTO"

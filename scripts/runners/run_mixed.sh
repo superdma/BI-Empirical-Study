@@ -2,6 +2,9 @@
 set -u
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 EXP="${ROOT}/scripts/experiments"
+RESULTS="${RESULTS:-${ROOT}/results/http/concurrency}"
+LOGS="${LOGS:-${ROOT}/logs}"
+mkdir -p "${RESULTS}" "${LOGS}"
 MODEL=${HOME}/models/Qwen3-30B-A3B
 PY=${HOME}/miniconda3/envs/vllm_update/bin/python
 VLLM=${HOME}/miniconda3/envs/vllm_update/bin/vllm
@@ -9,9 +12,9 @@ export NCCL_IB_DISABLE=1 VLLM_USE_FLASHINFER_SAMPLER=0 TOKENIZERS_PARALLELISM=fa
 
 run_cfg() {
   TAG=$1; EAGER=$2; CHUNKED=$3; PORT=$4; TIMEOUT=${5:-1200}
-  LOG=${HOME}/mixed_${TAG}.server.log
-  TLOG=${HOME}/mixed_${TAG}.test.log
-  OUT=${HOME}/bi_http_mixed_${TAG}.json
+  LOG=${LOGS}/mixed_${TAG}.server.log
+  TLOG=${LOGS}/mixed_${TAG}.test.log
+  OUT=${RESULTS}/bi_http_mixed_${TAG}.json
   EXTRA=""
   [ "$EAGER" = "1" ] && EXTRA="--enforce-eager"
   if [ "$CHUNKED" = "1" ]; then EXTRA="$EXTRA --enable-chunked-prefill"; else EXTRA="$EXTRA --no-enable-chunked-prefill"; fi

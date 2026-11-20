@@ -8,6 +8,12 @@
 - 环境 `$HOME/miniconda3/envs/vllm_update`；
 - 无 InfiniBand。
 
+下面的 `python` 指 `vllm_update` 环境里的解释器（3.10 以上）；只读 JSON 的汇总脚本
+标成了 `python3`，用系统解释器也能跑。
+
+下面的仓库目录以 `BI-Empirical-Study` 为例；克隆或同步到别处时，把
+`/path/to/BI-Empirical-Study` 换成实际路径即可。
+
 ```bash
 export NCCL_IB_DISABLE=1
 export VLLM_USE_FLASHINFER_SAMPLER=0
@@ -17,11 +23,11 @@ export TOKENIZERS_PARALLELISM=false
 ## 14.2 v1：离线矩阵
 
 ```bash
-cd BI-Empirical-Study
+cd /path/to/BI-Empirical-Study
 bash scripts/runners/run_all_bi.sh
 ```
 
-产出：`results/bi_*.json`，以及 `results/analysis_tables.md`（表 A–D）。脚本默认把新结果写到 `$HOME`；可用 `OUT=` 指到 `results/`。
+产出：`results/bi_*.json`，以及 `results/analysis_tables.md`（表 A–D）。各启动脚本默认写到 `results/` 下对应目录，日志写到 `logs/`；`RESULTS=`、`LOGS=` 可以改到别处。
 
 eager fallback 复现（仅限已验证的小批）：
 
@@ -51,7 +57,7 @@ bash scripts/runners/run_diag2.sh    # eager 1900 / 7600
 bash scripts/runners/run_diag3.sh    # eager / compiled 7584
 ```
 
-产出：`results/http/bi_long_probe*.json` 等。
+产出：`results/http/bi_long_diag2.json`、`bi_long_diag3.json`（服务端日志在 `logs/`）。
 
 ## 14.5 v2：批大小、TP、attention、re-feed
 
@@ -76,7 +82,7 @@ bash scripts/runners/run_refeed_b.sh
 汇总：
 
 ```bash
-python scripts/experiments/v1/analyze_extra.py
+python3 scripts/experiments/v1/analyze_extra.py
 # -> results/extra/analysis_tables.md（表 I–L、Q）
 ```
 
@@ -106,7 +112,7 @@ bash scripts/runners/run_len_compiled.sh      # compiled 对照
 汇总：
 
 ```bash
-python scripts/experiments/online/analyze_online_extra.py
+python3 scripts/experiments/online/analyze_online_extra.py
 # -> results/http/concurrency/analysis_tables.md（表 M–P）
 ```
 
@@ -322,7 +328,7 @@ done
 四项检查按顺序跑，前两项不需要模型，后两项各需要一次 30B 加载：
 
 ```bash
-cd BI-Empirical-Study
+cd /path/to/BI-Empirical-Study
 bash scripts/runners/run_tier1.sh          # all-reduce 探针 → NCCL 算法 → tail → bucket
 python3 scripts/experiments/tier1/analyze_tier1.py results/tier1
 ```
@@ -355,7 +361,7 @@ all-reduce 探针的输出里 `n_diff` 是位模式不同的元素数，`total` 
 前五项不加载模型，最后一项要加载一次 30B：
 
 ```bash
-cd BI-Empirical-Study
+cd /path/to/BI-Empirical-Study
 export NCCL_IB_DISABLE=1 VLLM_USE_FLASHINFER_SAMPLER=0 TOKENIZERS_PARALLELISM=false
 PY=$HOME/miniconda3/envs/vllm_update/bin/python
 
@@ -393,7 +399,7 @@ python3 scripts/experiments/tier2/analyze_tier2.py results/tier2
 三次模型加载，一次纯回放。回放与 trace 汇总可以放在同一次会话里：
 
 ```bash
-cd BI-Empirical-Study
+cd /path/to/BI-Empirical-Study
 export NCCL_IB_DISABLE=1 VLLM_USE_FLASHINFER_SAMPLER=0 TOKENIZERS_PARALLELISM=false
 PY=$HOME/miniconda3/envs/vllm_update/bin/python
 
@@ -433,7 +439,7 @@ c256 与 c255 两个 tag 写盘。`BI_FULL_RANGE` 指定保存全量张量的调
 各加载一次：
 
 ```bash
-cd BI-Empirical-Study
+cd /path/to/BI-Empirical-Study
 export NCCL_IB_DISABLE=1 VLLM_USE_FLASHINFER_SAMPLER=0 TOKENIZERS_PARALLELISM=false
 export VLLM_BATCH_INVARIANT=1
 PY=$HOME/miniconda3/envs/vllm_update/bin/python
@@ -464,7 +470,7 @@ nsys 2023.2 在这套 CUDA 12.9 + 四个 worker 的组合下无法完成引擎�
 ## 14.15 生成 SHA256
 
 ```bash
-cd BI-Empirical-Study
+cd /path/to/BI-Empirical-Study
 find results -name '*.json' | sort | while read -r r; do sha256sum "$r"; done \
   > results/SHA256SUMS
 ```

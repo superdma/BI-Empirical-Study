@@ -2,6 +2,9 @@
 set -u
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 EXP="${ROOT}/scripts/experiments"
+RESULTS="${RESULTS:-${ROOT}/results/extra}"
+LOGS="${LOGS:-${ROOT}/logs}"
+mkdir -p "${RESULTS}" "${LOGS}"
 PY=${HOME}/miniconda3/envs/vllm_update/bin/python
 export NCCL_IB_DISABLE=1
 export VLLM_USE_FLASHINFER_SAMPLER=0
@@ -9,8 +12,8 @@ export TOKENIZERS_PARALLELISM=false
 
 run_one() {
   TAG=$1; TP=$2; CHUNK=$3; PC=$4; EAGER=$5; ATTN=$6; MOE=$7; BS=$8; MT=$9; TEMP=${10}; TOPP=${11}; LONG=${12}
-  OUT=${HOME}/bi_extra_${TAG}.json
-  LOG=${HOME}/bi_extra_${TAG}.log
+  OUT=${RESULTS}/bi_extra_${TAG}.json
+  LOG=${LOGS}/bi_extra_${TAG}.log
   echo "=== START $TAG $(date -Is) tp=$TP chunk=$CHUNK pc=$PC eager=$EAGER attn=$ATTN moe=$MOE bs=$BS mt=$MT temp=$TEMP long=$LONG"
   free_mem=$(nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits | awk '{s+=$1} END{print s}')
   echo "gpu used before: $free_mem MiB"

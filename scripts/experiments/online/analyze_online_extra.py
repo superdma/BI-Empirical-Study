@@ -2,14 +2,34 @@
 """Build Markdown tables for the online concurrency, batch-all, length and refeed experiments."""
 import json, os, glob
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-C = os.path.join(HERE, "results", "http", "concurrency")
-E = os.path.join(HERE, "results", "extra")
+def _repo_root():
+    path = os.path.dirname(os.path.abspath(__file__))
+    while not os.path.exists(os.path.join(path, ".git")):
+        parent = os.path.dirname(path)
+        if parent == path:
+            return os.path.dirname(os.path.dirname(os.path.dirname(
+                os.path.abspath(__file__))))
+        path = parent
+    return path
+
+
+ROOT = _repo_root()
+C = os.path.join(ROOT, "results", "http", "concurrency")
+E = os.path.join(ROOT, "results", "extra")
 
 
 def load(p):
     with open(p) as f:
         return json.load(f)
+
+
+def find(*names):
+    """First existing file in results/http/concurrency; None if none match."""
+    for name in names:
+        p = os.path.join(C, name)
+        if os.path.exists(p):
+            return p
+    return None
 
 
 def bad_count(cmp, pred=lambda v: v["ids"] and v["bitwise"]):
@@ -33,8 +53,8 @@ def main():
                          "逐 prompt：单独 vs 并发", len(prompt) - bad_count(prompt), len(prompt),
                          max((v["max"] for v in prompt.values()), default=0)))
     for tag, label in [("eager_pc0", "eager PC0"), ("compiled_pc1", "compiled PC1")]:
-        p = os.path.join(C, f"burst_eager_pc0.json" if "eager" in tag else f"burst_compiled_pc1.json")
-        if os.path.exists(p):
+        p = find(f"bi_http_burst_{tag}.json", f"burst_{tag}.json")
+        if p:
             d = load(p)
             for key, name in [("cmp_during", "突发 32 请求（另一请求正在解码）"),
                               ("cmp_alone", "突发 32 请求（无背景解码）")]:
@@ -42,8 +62,8 @@ def main():
                              len(d[key]) - bad_count(d[key]), len(d[key]),
                              max((v["max"] for v in d[key].values()), default=0)))
     for tag, label in [("eager_pc0", "eager PC0"), ("compiled_pc1", "compiled PC1")]:
-        p = os.path.join(C, f"batchall_{tag}.json")
-        if os.path.exists(p):
+        p = find(f"batchall_{tag}.json", f"bi_http_batchall_{tag}.json")
+        if p:
             d = load(p)
             rows.append(("单次批量请求（32 个 prompt 一起提交）", label, 32,
                          "逐 prompt：单独 vs 批内", len(d["cmp"]) - bad_count(d["cmp"]),
@@ -51,8 +71,8 @@ def main():
                          max((v["max"] for v in d["cmp"].values()), default=0)))
     for tag, label in [("eager_chunked_pc0", "eager PC0"), ("eager_nochunk_pc0", "eager 无 chunked"),
                        ("compiled_chunked_pc0", "compiled PC0")]:
-        p = os.path.join(C, f"mixed_{tag}.json")
-        if os.path.exists(p):
+        p = find(f"mixed_{tag}.json", f"bi_http_mixed_{tag}.json")
+        if p:
             d = load(p)
             ok = sum(1 for c in d["cases"] if c["cmp"]["ids"] and c["cmp"]["bitwise"])
             rows.append(("单个请求插入解码中的批次（4 个延迟）", label, 1,

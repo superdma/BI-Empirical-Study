@@ -2,6 +2,9 @@
 set -u
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 EXP="${ROOT}/scripts/experiments"
+RESULTS="${RESULTS:-${ROOT}/results/extra}"
+LOGS="${LOGS:-${ROOT}/logs}"
+mkdir -p "${RESULTS}" "${LOGS}"
 PY=${HOME}/miniconda3/envs/vllm_update/bin/python
 export NCCL_IB_DISABLE=1
 export VLLM_USE_FLASHINFER_SAMPLER=0
@@ -9,8 +12,8 @@ export TOKENIZERS_PARALLELISM=false
 
 run_one() {
   TAG=$1; BS=$2; MT=$3; TEMP=$4; TOPP=$5; MNS=$6
-  OUT=${HOME}/bi_diag_${TAG}.json
-  LOG=${HOME}/bi_diag_${TAG}.log
+  OUT=${RESULTS}/bi_diag_${TAG}.json
+  LOG=${LOGS}/bi_diag_${TAG}.log
   echo "=== START $TAG $(date -Is) bs=$BS mt=$MT temp=$TEMP top_p=$TOPP mns=$MNS"
   env VLLM_BATCH_INVARIANT=1 NCCL_IB_DISABLE=1 VLLM_USE_FLASHINFER_SAMPLER=0 \
       MODEL=${HOME}/models/Qwen3-30B-A3B TP=4 CHUNK=8192 PC=0 EAGER=1 \

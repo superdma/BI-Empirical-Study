@@ -2,8 +2,18 @@
 """Build Markdown tables for the boundary experiments (results/extra)."""
 import json, os, struct, glob
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-EXTRA = os.path.join(HERE, "results", "extra")
+def _repo_root():
+    path = os.path.dirname(os.path.abspath(__file__))
+    while not os.path.exists(os.path.join(path, ".git")):
+        parent = os.path.dirname(path)
+        if parent == path:
+            return os.path.dirname(os.path.dirname(os.path.dirname(
+                os.path.abspath(__file__))))
+        path = parent
+    return path
+
+
+EXTRA = os.path.join(_repo_root(), "results", "extra")
 
 
 def bits(x):

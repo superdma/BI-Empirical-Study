@@ -2,6 +2,9 @@
 set -u
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 EXP="${ROOT}/scripts/experiments"
+RESULTS="${RESULTS:-${ROOT}/results/extra}"
+LOGS="${LOGS:-${ROOT}/logs}"
+mkdir -p "${RESULTS}" "${LOGS}"
 PY=${HOME}/miniconda3/envs/vllm_update/bin/python
 export NCCL_IB_DISABLE=1
 export VLLM_USE_FLASHINFER_SAMPLER=0
@@ -9,8 +12,8 @@ export TOKENIZERS_PARALLELISM=false
 
 run_one() {
   TAG=$1; PC=$2; EAGER=$3; BS=$4; MT=$5; IE=$6; AT=$7; MNS=$8
-  OUT=${HOME}/bi_diag_${TAG}.json
-  LOG=${HOME}/bi_diag_${TAG}.log
+  OUT=${RESULTS}/bi_diag_${TAG}.json
+  LOG=${LOGS}/bi_diag_${TAG}.log
   echo "=== START $TAG $(date -Is) pc=$PC eager=$EAGER bs=$BS mt=$MT ignore_eos=$IE all_target=$AT max_num_seqs=$MNS"
   nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits | awk '{s+=$1} END{print "gpu used before:",s,"MiB"}'
   env VLLM_BATCH_INVARIANT=1 NCCL_IB_DISABLE=1 VLLM_USE_FLASHINFER_SAMPLER=0 \

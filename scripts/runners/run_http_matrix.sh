@@ -2,6 +2,9 @@
 set -u
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 EXP="${ROOT}/scripts/experiments"
+RESULTS="${RESULTS:-${ROOT}/results/http}"
+LOGS="${LOGS:-${ROOT}/logs}"
+mkdir -p "${RESULTS}" "${LOGS}"
 MODEL=${HOME}/models/Qwen3-30B-A3B
 PY=${HOME}/miniconda3/envs/vllm_update/bin/python
 VLLM=${HOME}/miniconda3/envs/vllm_update/bin/vllm
@@ -20,9 +23,9 @@ free_gpus() {
 
 run_cfg() {
   TAG=$1; BI=$2; EAGER=$3; CHUNK=$4; PC=$5; PORT=$6; TIMEOUT=${7:-700}
-  LOG=${HOME}/http_${TAG}.log
-  TLOG=${HOME}/bi_http_${TAG}.test.log
-  OUT=${HOME}/bi_http_${TAG}.json
+  LOG=${LOGS}/http_${TAG}.log
+  TLOG=${LOGS}/bi_http_${TAG}.test.log
+  OUT=${RESULTS}/bi_http_${TAG}.json
   echo "=== START $TAG bi=$BI eager=$EAGER chunk=$CHUNK pc=$PC port=$PORT $(date -Is)"
   free_gpus
   EXTRA=""
