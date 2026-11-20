@@ -12,7 +12,9 @@
 标成了 `python3`，用系统解释器也能跑。
 
 下面的仓库目录以 `BI-Empirical-Study` 为例；克隆或同步到别处时，把
-`/path/to/BI-Empirical-Study` 换成实际路径即可。
+`/path/to/BI-Empirical-Study` 换成实际路径即可。脚本靠 `.git`，或靠同级的
+`scripts/` 与 `results/` 两个目录来认根，所以从仓库导出、没有 `.git` 的运行目录
+也能直接用。
 
 ```bash
 export NCCL_IB_DISABLE=1
